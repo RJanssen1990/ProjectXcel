@@ -253,18 +253,18 @@ namespace Cohort_Archivering
             {
                 // echte loop
                 TextBox[] Fields = {CrebocodeTextBox,CohortTextBox,KdversieTextBox,LeerlingAantalTB };
-                
+                string[] input = {"","","",""};
                 for (int i = 0; i < 4; i++)
                 {
                     if (Fields[i].Text == "")
                     {
                         check = false;
-                        MessageBox(veldenNietinGevuld);
+                        MessageBox.Show(veldenNietinGevuld);
                         return;
                     }
                     else
                     {
-
+                        input[i] = testParse(Fields[i].Text);
                     }
                 }
 
