@@ -251,23 +251,6 @@ namespace Cohort_Archivering
             string veldenNietinGevuld = "Niet alle velden zijn ingevuld";
             try
             {
-                // echte loop
-                TextBox[] Fields = {CrebocodeTextBox,CohortTextBox,KdversieTextBox,LeerlingAantalTB };
-                string[] input = {"","","",""};
-                for (int i = 0; i < 4; i++)
-                {
-                    if (Fields[i].Text == "")
-                    {
-                        check = false;
-                        MessageBox.Show(veldenNietinGevuld);
-                        return;
-                    }
-                    else
-                    {
-                        input[i] = testParse(Fields[i].Text);
-                    }
-                }
-
                     //loop die kijkt of er geen text in de velden staat waar ints inmoeten
                     if (CrebocodeTextBox.Text == "")
                     {
