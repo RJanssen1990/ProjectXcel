@@ -1,0 +1,11 @@
+Functionaliteiten
+
+Werkend formulier om de data makkelijk in te kunnen voeren in een(interne)database.
+Data wordt ingevoerd in een database.
+Een tabel kan worden weergeven met de gegevens uit de database.
+Data uit de database kan worden aangepast.
+Data kan worden verwijdert
+Vanuit de tabel is het mogelijk om van bepaalde opleidingen alle examencriteria te bekijken.
+Alle opleidingsgegevens kunnen in een excel bestand geëxporteerd worden.
+De examineringseisen kunnen in een excel bestand geëxporteerd worden.
+Een excel bestand naar de database importeren.
