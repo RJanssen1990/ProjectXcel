@@ -7,6 +7,24 @@
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
+        private int examenAantal = 0;
+        private int BlokHoogte = 270;
+        
+        private System.Windows.Forms.Panel[] ExamenBlok = new System.Windows.Forms.Panel[20];
+        private System.Windows.Forms.Label[] ExamenTitle = new System.Windows.Forms.Label[20];
+        private System.Windows.Forms.Label[] StatusOpdracht = new System.Windows.Forms.Label[20];
+        private System.Windows.Forms.Label[] NaamOpdracht = new System.Windows.Forms.Label[20];
+        private System.Windows.Forms.Label[] PeriodeAfname = new System.Windows.Forms.Label[20];
+        private System.Windows.Forms.Label[] Werkprocessen = new System.Windows.Forms.Label[20];
+        private System.Windows.Forms.Label[] Kerntaken = new System.Windows.Forms.Label[20];
+        private System.Windows.Forms.Label[] Examen = new System.Windows.Forms.Label[20];
+        private System.Windows.Forms.ComboBox[] StatusOpdrachtBox = new System.Windows.Forms.ComboBox[20];
+        private System.Windows.Forms.ComboBox[] PeriodeAfnameBox = new System.Windows.Forms.ComboBox[20];
+        private System.Windows.Forms.TextBox[] NaamOpdrachtBox = new System.Windows.Forms.TextBox[20];
+        private System.Windows.Forms.TextBox[] WerkprocessenBox = new System.Windows.Forms.TextBox[20];
+        private System.Windows.Forms.TextBox[] KerntakenBox = new System.Windows.Forms.TextBox[20];
+        private System.Windows.Forms.TextBox[] ExamenBox = new System.Windows.Forms.TextBox[20];
+
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -63,25 +81,11 @@
             this.ExamenProfielBox = new System.Windows.Forms.ComboBox();
             this.OpslaanButton = new System.Windows.Forms.Button();
             this.OpslaanPlusButton = new System.Windows.Forms.Button();
-            this.ExamenPaneel = new System.Windows.Forms.Panel();
-            this.StatusOpdracht = new System.Windows.Forms.Label();
-            this.NaamOpdracht = new System.Windows.Forms.Label();
-            this.PeriodeAfname = new System.Windows.Forms.Label();
-            this.Werkprocessen = new System.Windows.Forms.Label();
-            this.Kerntaken = new System.Windows.Forms.Label();
-            this.Examen = new System.Windows.Forms.Label();
-            this.StatusOpdrachtBox = new System.Windows.Forms.ComboBox();
-            this.PeriodeAfnameBox = new System.Windows.Forms.ComboBox();
-            this.ExamenTitle = new System.Windows.Forms.Label();
-            this.NaamOpdrachtBox = new System.Windows.Forms.TextBox();
-            this.WerkprocessenBox = new System.Windows.Forms.TextBox();
-            this.KerntakenBox = new System.Windows.Forms.TextBox();
-            this.ExamenBox = new System.Windows.Forms.TextBox();
             this.toolTips = new System.Windows.Forms.ToolTip(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.ExamenPaneel = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
-            this.ExamenPaneel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -379,145 +383,9 @@
             this.toolTips.SetToolTip(this.OpslaanPlusButton, "De ingevulde gegevens worden opgeslagen en het formulier wordt leeggemaakt");
             this.OpslaanPlusButton.UseVisualStyleBackColor = true;
             // 
-            // ExamenPaneel
-            // 
-            this.ExamenPaneel.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ExamenPaneel.Controls.Add(this.button2);
-            this.ExamenPaneel.Controls.Add(this.StatusOpdracht);
-            this.ExamenPaneel.Controls.Add(this.NaamOpdracht);
-            this.ExamenPaneel.Controls.Add(this.PeriodeAfname);
-            this.ExamenPaneel.Controls.Add(this.Werkprocessen);
-            this.ExamenPaneel.Controls.Add(this.Kerntaken);
-            this.ExamenPaneel.Controls.Add(this.Examen);
-            this.ExamenPaneel.Controls.Add(this.StatusOpdrachtBox);
-            this.ExamenPaneel.Controls.Add(this.PeriodeAfnameBox);
-            this.ExamenPaneel.Controls.Add(this.ExamenTitle);
-            this.ExamenPaneel.Controls.Add(this.NaamOpdrachtBox);
-            this.ExamenPaneel.Controls.Add(this.WerkprocessenBox);
-            this.ExamenPaneel.Controls.Add(this.KerntakenBox);
-            this.ExamenPaneel.Controls.Add(this.ExamenBox);
-            this.ExamenPaneel.Location = new System.Drawing.Point(388, 37);
-            this.ExamenPaneel.Name = "ExamenPaneel";
-            this.ExamenPaneel.Size = new System.Drawing.Size(325, 300);
-            this.ExamenPaneel.TabIndex = 6;
-            // 
-            // StatusOpdracht
-            // 
-            this.StatusOpdracht.AutoSize = true;
-            this.StatusOpdracht.Location = new System.Drawing.Point(15, 200);
-            this.StatusOpdracht.Name = "StatusOpdracht";
-            this.StatusOpdracht.Size = new System.Drawing.Size(84, 13);
-            this.StatusOpdracht.TabIndex = 0;
-            this.StatusOpdracht.Text = "Status Opdracht";
-            this.toolTips.SetToolTip(this.StatusOpdracht, "Het status van de examenopdracht.");
-            // 
-            // NaamOpdracht
-            // 
-            this.NaamOpdracht.AutoSize = true;
-            this.NaamOpdracht.Location = new System.Drawing.Point(15, 170);
-            this.NaamOpdracht.Name = "NaamOpdracht";
-            this.NaamOpdracht.Size = new System.Drawing.Size(82, 13);
-            this.NaamOpdracht.TabIndex = 0;
-            this.NaamOpdracht.Text = "Naam Opdracht";
-            this.toolTips.SetToolTip(this.NaamOpdracht, "De naam van de examenopdracht.");
-            // 
-            // PeriodeAfname
-            // 
-            this.PeriodeAfname.AutoSize = true;
-            this.PeriodeAfname.Location = new System.Drawing.Point(15, 140);
-            this.PeriodeAfname.Name = "PeriodeAfname";
-            this.PeriodeAfname.Size = new System.Drawing.Size(82, 13);
-            this.PeriodeAfname.TabIndex = 0;
-            this.PeriodeAfname.Text = "Periode Afname";
-            this.toolTips.SetToolTip(this.PeriodeAfname, "De periode waarin het examen wordt afgenomen.");
-            // 
-            // Werkprocessen
-            // 
-            this.Werkprocessen.AutoSize = true;
-            this.Werkprocessen.Location = new System.Drawing.Point(15, 110);
-            this.Werkprocessen.Name = "Werkprocessen";
-            this.Werkprocessen.Size = new System.Drawing.Size(82, 13);
-            this.Werkprocessen.TabIndex = 0;
-            this.Werkprocessen.Text = "Werkprocessen";
-            this.toolTips.SetToolTip(this.Werkprocessen, "De werkprocessen die vereist zijn bij dit examen.");
-            // 
-            // Kerntaken
-            // 
-            this.Kerntaken.AutoSize = true;
-            this.Kerntaken.Location = new System.Drawing.Point(15, 80);
-            this.Kerntaken.Name = "Kerntaken";
-            this.Kerntaken.Size = new System.Drawing.Size(56, 13);
-            this.Kerntaken.TabIndex = 0;
-            this.Kerntaken.Text = "Kerntaken";
-            this.toolTips.SetToolTip(this.Kerntaken, "De kerntaken die vereist zijn bij dit examen.");
-            // 
-            // Examen
-            // 
-            this.Examen.AutoSize = true;
-            this.Examen.Location = new System.Drawing.Point(15, 50);
-            this.Examen.Name = "Examen";
-            this.Examen.Size = new System.Drawing.Size(45, 13);
-            this.Examen.TabIndex = 0;
-            this.Examen.Text = "Examen";
-            this.toolTips.SetToolTip(this.Examen, "De naam van het examen zoals bekend bij de opleiding.");
-            // 
-            // StatusOpdrachtBox
-            // 
-            this.StatusOpdrachtBox.FormattingEnabled = true;
-            this.StatusOpdrachtBox.Location = new System.Drawing.Point(120, 197);
-            this.StatusOpdrachtBox.Name = "StatusOpdrachtBox";
-            this.StatusOpdrachtBox.Size = new System.Drawing.Size(160, 21);
-            this.StatusOpdrachtBox.TabIndex = 4;
-            // 
-            // PeriodeAfnameBox
-            // 
-            this.PeriodeAfnameBox.FormattingEnabled = true;
-            this.PeriodeAfnameBox.Location = new System.Drawing.Point(120, 137);
-            this.PeriodeAfnameBox.Name = "PeriodeAfnameBox";
-            this.PeriodeAfnameBox.Size = new System.Drawing.Size(160, 21);
-            this.PeriodeAfnameBox.TabIndex = 4;
-            // 
-            // ExamenTitle
-            // 
-            this.ExamenTitle.AutoSize = true;
-            this.ExamenTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExamenTitle.Location = new System.Drawing.Point(15, 20);
-            this.ExamenTitle.Name = "ExamenTitle";
-            this.ExamenTitle.Size = new System.Drawing.Size(63, 16);
-            this.ExamenTitle.TabIndex = 0;
-            this.ExamenTitle.Text = "Examen";
-            // 
-            // NaamOpdrachtBox
-            // 
-            this.NaamOpdrachtBox.Location = new System.Drawing.Point(120, 167);
-            this.NaamOpdrachtBox.Name = "NaamOpdrachtBox";
-            this.NaamOpdrachtBox.Size = new System.Drawing.Size(160, 20);
-            this.NaamOpdrachtBox.TabIndex = 3;
-            // 
-            // WerkprocessenBox
-            // 
-            this.WerkprocessenBox.Location = new System.Drawing.Point(120, 107);
-            this.WerkprocessenBox.Name = "WerkprocessenBox";
-            this.WerkprocessenBox.Size = new System.Drawing.Size(160, 20);
-            this.WerkprocessenBox.TabIndex = 3;
-            // 
-            // KerntakenBox
-            // 
-            this.KerntakenBox.Location = new System.Drawing.Point(120, 77);
-            this.KerntakenBox.Name = "KerntakenBox";
-            this.KerntakenBox.Size = new System.Drawing.Size(160, 20);
-            this.KerntakenBox.TabIndex = 3;
-            // 
-            // ExamenBox
-            // 
-            this.ExamenBox.Location = new System.Drawing.Point(120, 47);
-            this.ExamenBox.Name = "ExamenBox";
-            this.ExamenBox.Size = new System.Drawing.Size(160, 20);
-            this.ExamenBox.TabIndex = 3;
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(406, 343);
+            this.button1.Location = new System.Drawing.Point(451, 457);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(138, 23);
             this.button1.TabIndex = 5;
@@ -527,12 +395,22 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(120, 225);
+            this.button2.Location = new System.Drawing.Point(622, 457);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 5;
             this.button2.Text = "Verwijder";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // ExamenPaneel
+            // 
+            this.ExamenPaneel.AutoScroll = true;
+            this.ExamenPaneel.BackColor = System.Drawing.Color.Transparent;
+            this.ExamenPaneel.Location = new System.Drawing.Point(400, 100);
+            this.ExamenPaneel.Name = "ExamenPaneel";
+            this.ExamenPaneel.Size = new System.Drawing.Size(360, 260);
+            this.ExamenPaneel.TabIndex = 6;
             // 
             // Form1
             // 
@@ -540,6 +418,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 557);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.ExamenPaneel);
             this.Controls.Add(this.OpslaanPlusButton);
             this.Controls.Add(this.OpslaanButton);
@@ -577,19 +456,187 @@
             this.Text = "Cohort Archivering";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.ExamenPaneel.ResumeLayout(false);
-            this.ExamenPaneel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
-        }
-
-        private void examenPlus()
-        {
-
-        }
+            this.examenPlus();
+       }
 
         #endregion
+
+        public void examenPlus()
+        {
+            if (examenAantal < 20)
+            {
+                ExamenBlok[examenAantal] = new System.Windows.Forms.Panel();
+                ExamenTitle[examenAantal] = new System.Windows.Forms.Label();
+                StatusOpdracht[examenAantal] = new System.Windows.Forms.Label();
+                NaamOpdracht[examenAantal] = new System.Windows.Forms.Label();
+                PeriodeAfname[examenAantal] = new System.Windows.Forms.Label();
+                Werkprocessen[examenAantal] = new System.Windows.Forms.Label();
+                Kerntaken[examenAantal] = new System.Windows.Forms.Label();
+                Examen[examenAantal] = new System.Windows.Forms.Label();
+                StatusOpdrachtBox[examenAantal] = new System.Windows.Forms.ComboBox();
+                PeriodeAfnameBox[examenAantal] = new System.Windows.Forms.ComboBox();
+                NaamOpdrachtBox[examenAantal] = new System.Windows.Forms.TextBox();
+                WerkprocessenBox[examenAantal] = new System.Windows.Forms.TextBox();
+                KerntakenBox[examenAantal] = new System.Windows.Forms.TextBox();
+                ExamenBox[examenAantal] = new System.Windows.Forms.TextBox();
+                // 
+                // ExamenBlok
+                //
+                this.ExamenBlok[examenAantal].BackColor = System.Drawing.Color.Silver;
+                if (examenAantal == 0)
+                {
+                    this.ExamenBlok[examenAantal].Location = new System.Drawing.Point(10, 10);
+                }
+                else
+                {
+                    this.ExamenBlok[examenAantal].Location = new System.Drawing.Point(10, this.ExamenPaneel.AutoScrollPosition.Y + (BlokHoogte * examenAantal));
+                }                
+                this.ExamenBlok[examenAantal].Name = "ExamenPaneel";
+                this.ExamenBlok[examenAantal].Size = new System.Drawing.Size(330, 250);
+                this.ExamenBlok[examenAantal].TabIndex = 6;
+                // 
+                // StatusOpdracht
+                // 
+                this.StatusOpdracht[examenAantal].AutoSize = true;
+                this.StatusOpdracht[examenAantal].Location = new System.Drawing.Point(15, 200);
+                this.StatusOpdracht[examenAantal].Name = "StatusOpdracht";
+                this.StatusOpdracht[examenAantal].Size = new System.Drawing.Size(84, 13);
+                this.StatusOpdracht[examenAantal].TabIndex = 0;
+                this.StatusOpdracht[examenAantal].Text = "Status Opdracht";
+                toolTips.SetToolTip(this.StatusOpdracht[examenAantal], "Het status van de examenopdracht.");
+                // 
+                // NaamOpdracht
+                // 
+                this.NaamOpdracht[examenAantal].AutoSize = true;
+                this.NaamOpdracht[examenAantal].Location = new System.Drawing.Point(15, 170);
+                this.NaamOpdracht[examenAantal].Name = "NaamOpdracht";
+                this.NaamOpdracht[examenAantal].Size = new System.Drawing.Size(82, 13);
+                this.NaamOpdracht[examenAantal].TabIndex = 0;
+                this.NaamOpdracht[examenAantal].Text = "Naam Opdracht";
+                this.toolTips.SetToolTip(this.NaamOpdracht[examenAantal], "De naam van de examenopdracht.");
+                // 
+                // PeriodeAfname
+                // 
+                this.PeriodeAfname[examenAantal].AutoSize = true;
+                this.PeriodeAfname[examenAantal].Location = new System.Drawing.Point(15, 140);
+                this.PeriodeAfname[examenAantal].Name = "PeriodeAfname";
+                this.PeriodeAfname[examenAantal].Size = new System.Drawing.Size(82, 13);
+                this.PeriodeAfname[examenAantal].TabIndex = 0;
+                this.PeriodeAfname[examenAantal].Text = "Periode Afname";
+                this.toolTips.SetToolTip(this.PeriodeAfname[examenAantal], "De periode waarin het examen wordt afgenomen.");
+                // 
+                // Werkprocessen
+                // 
+                this.Werkprocessen[examenAantal].AutoSize = true;
+                this.Werkprocessen[examenAantal].Location = new System.Drawing.Point(15, 110);
+                this.Werkprocessen[examenAantal].Name = "Werkprocessen";
+                this.Werkprocessen[examenAantal].Size = new System.Drawing.Size(82, 13);
+                this.Werkprocessen[examenAantal].TabIndex = 0;
+                this.Werkprocessen[examenAantal].Text = "Werkprocessen";
+                this.toolTips.SetToolTip(this.Werkprocessen[examenAantal], "De werkprocessen die vereist zijn bij dit examen.");
+                // 
+                // Kerntaken
+                // 
+                this.Kerntaken[examenAantal].AutoSize = true;
+                this.Kerntaken[examenAantal].Location = new System.Drawing.Point(15, 80);
+                this.Kerntaken[examenAantal].Name = "Kerntaken";
+                this.Kerntaken[examenAantal].Size = new System.Drawing.Size(56, 13);
+                this.Kerntaken[examenAantal].TabIndex = 0;
+                this.Kerntaken[examenAantal].Text = "Kerntaken";
+                this.toolTips.SetToolTip(this.Kerntaken[examenAantal], "De kerntaken die vereist zijn bij dit examen.");
+                // 
+                // Examen
+                // 
+                this.Examen[examenAantal].AutoSize = true;
+                this.Examen[examenAantal].Location = new System.Drawing.Point(15, 50);
+                this.Examen[examenAantal].Name = "Examen";
+                this.Examen[examenAantal].Size = new System.Drawing.Size(45, 13);
+                this.Examen[examenAantal].TabIndex = 0;
+                this.Examen[examenAantal].Text = "Examen";
+                this.toolTips.SetToolTip(this.Examen[examenAantal], "De naam van het examen zoals bekend bij de opleiding.");
+                // 
+                // StatusOpdrachtBox
+                // 
+                this.StatusOpdrachtBox[examenAantal].FormattingEnabled = true;
+                this.StatusOpdrachtBox[examenAantal].Location = new System.Drawing.Point(120, 197);
+                this.StatusOpdrachtBox[examenAantal].Name = "StatusOpdrachtBox";
+                this.StatusOpdrachtBox[examenAantal].Size = new System.Drawing.Size(160, 21);
+                this.StatusOpdrachtBox[examenAantal].TabIndex = 4;
+                // 
+                // PeriodeAfnameBox
+                // 
+                this.PeriodeAfnameBox[examenAantal].FormattingEnabled = true;
+                this.PeriodeAfnameBox[examenAantal].Location = new System.Drawing.Point(120, 137);
+                this.PeriodeAfnameBox[examenAantal].Name = "PeriodeAfnameBox";
+                this.PeriodeAfnameBox[examenAantal].Size = new System.Drawing.Size(160, 21);
+                this.PeriodeAfnameBox[examenAantal].TabIndex = 4;
+                // 
+                // ExamenTitle
+                // 
+                this.ExamenTitle[examenAantal].AutoSize = true;
+                this.ExamenTitle[examenAantal].Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                this.ExamenTitle[examenAantal].Location = new System.Drawing.Point(15, 20);
+                this.ExamenTitle[examenAantal].Name = "ExamenTitle";
+                this.ExamenTitle[examenAantal].Size = new System.Drawing.Size(63, 16);
+                this.ExamenTitle[examenAantal].TabIndex = 0;
+                this.ExamenTitle[examenAantal].Text = "Examen " + (examenAantal + 1);
+                // 
+                // NaamOpdrachtBox
+                // 
+                this.NaamOpdrachtBox[examenAantal].Location = new System.Drawing.Point(120, 167);
+                this.NaamOpdrachtBox[examenAantal].Name = "NaamOpdrachtBox";
+                this.NaamOpdrachtBox[examenAantal].Size = new System.Drawing.Size(160, 20);
+                this.NaamOpdrachtBox[examenAantal].TabIndex = 3;
+                // 
+                // WerkprocessenBox
+                // 
+                this.WerkprocessenBox[examenAantal].Location = new System.Drawing.Point(120, 107);
+                this.WerkprocessenBox[examenAantal].Name = "WerkprocessenBox";
+                this.WerkprocessenBox[examenAantal].Size = new System.Drawing.Size(160, 20);
+                this.WerkprocessenBox[examenAantal].TabIndex = 3;
+                // 
+                // KerntakenBox
+                // 
+                this.KerntakenBox[examenAantal].Location = new System.Drawing.Point(120, 77);
+                this.KerntakenBox[examenAantal].Name = "KerntakenBox";
+                this.KerntakenBox[examenAantal].Size = new System.Drawing.Size(160, 20);
+                this.KerntakenBox[examenAantal].TabIndex = 3;
+                // 
+                // ExamenBox
+                // 
+                this.ExamenBox[examenAantal].Location = new System.Drawing.Point(120, 47);
+                this.ExamenBox[examenAantal].Name = "ExamenBox";
+                this.ExamenBox[examenAantal].Size = new System.Drawing.Size(160, 20);
+                this.ExamenBox[examenAantal].TabIndex = 3;
+
+                this.ExamenPaneel.Controls.Add(this.ExamenBlok[examenAantal]);
+                this.ExamenBlok[examenAantal].Controls.Add(this.StatusOpdracht[examenAantal]);
+                this.ExamenBlok[examenAantal].Controls.Add(this.NaamOpdracht[examenAantal]);
+                this.ExamenBlok[examenAantal].Controls.Add(this.PeriodeAfname[examenAantal]);
+                this.ExamenBlok[examenAantal].Controls.Add(this.Werkprocessen[examenAantal]);
+                this.ExamenBlok[examenAantal].Controls.Add(this.Kerntaken[examenAantal]);
+                this.ExamenBlok[examenAantal].Controls.Add(this.Examen[examenAantal]);
+                this.ExamenBlok[examenAantal].Controls.Add(this.StatusOpdrachtBox[examenAantal]);
+                this.ExamenBlok[examenAantal].Controls.Add(this.PeriodeAfnameBox[examenAantal]);
+                this.ExamenBlok[examenAantal].Controls.Add(this.ExamenTitle[examenAantal]);
+                this.ExamenBlok[examenAantal].Controls.Add(this.NaamOpdrachtBox[examenAantal]);
+                this.ExamenBlok[examenAantal].Controls.Add(this.WerkprocessenBox[examenAantal]);
+                this.ExamenBlok[examenAantal].Controls.Add(this.KerntakenBox[examenAantal]);
+                this.ExamenBlok[examenAantal].Controls.Add(this.ExamenBox[examenAantal]);
+                examenAantal++;
+            }
+        }
+
+        private void examenMin()
+        {
+            if (examenAantal > 1)
+            {
+                this.ExamenPaneel.Controls.Remove(ExamenBlok[examenAantal - 1]);
+                examenAantal--;
+            }
+        }
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem bestandToolStripMenuItem;
@@ -625,23 +672,10 @@
         private System.Windows.Forms.ComboBox ExamenProfielBox;
         private System.Windows.Forms.Button OpslaanButton;
         private System.Windows.Forms.Button OpslaanPlusButton;
-        private System.Windows.Forms.Panel ExamenPaneel;
-        private System.Windows.Forms.Label ExamenTitle;
-        private System.Windows.Forms.Label NaamOpdracht;
-        private System.Windows.Forms.Label PeriodeAfname;
-        private System.Windows.Forms.Label Werkprocessen;
-        private System.Windows.Forms.Label Kerntaken;
-        private System.Windows.Forms.Label Examen;
-        private System.Windows.Forms.Label StatusOpdracht;
-        private System.Windows.Forms.TextBox ExamenBox;
-        private System.Windows.Forms.TextBox NaamOpdrachtBox;
-        private System.Windows.Forms.TextBox WerkprocessenBox;
-        private System.Windows.Forms.TextBox KerntakenBox;
-        private System.Windows.Forms.ComboBox StatusOpdrachtBox;
-        private System.Windows.Forms.ComboBox PeriodeAfnameBox;
         private System.Windows.Forms.ToolTip toolTips;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel ExamenPaneel;
     }
 }
 
