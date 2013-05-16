@@ -39,5 +39,20 @@ namespace Cohort_Archivering
         {
             this.examenMin();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.NextExam();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.PrevExam();
+        }
+
+        private void OpslaanPlusButton_Click(object sender, EventArgs e)
+        {
+            this.WipeForm();
+        }
     }
 }
