@@ -27,8 +27,8 @@ namespace WindowsFormsApplication1
 
         private void Main_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'databaseDataSet.overzicht' table. You can move, or remove it, as needed.
-            this.overzichtTableAdapter.Fill(this.databaseDataSet.overzicht);
+            // TODO: This line of code loads data into the 'databaseDataSet.examens' table. You can move, or remove it, as needed.
+            this.examensTableAdapter.Fill(this.databaseDataSet.examens);
             // TODO: This line of code loads data into the 'databaseDataSet.overzicht' table. You can move, or remove it, as needed.
             this.overzichtTableAdapter.Fill(this.databaseDataSet.overzicht);
         }
@@ -112,11 +112,7 @@ namespace WindowsFormsApplication1
                 string opleiding = dataGridView1.Rows[rowIndex].Cells[opleidingDataGridViewTextBoxColumn.Index].Value.ToString();
                 string crebo = dataGridView1.Rows[rowIndex].Cells[creboDataGridViewTextBoxColumn.Index].Value.ToString();
 
-                
-
                 tabControl1.SelectTab("tabPage1");
-
-               
 
                 /*Formulier form = new Formulier(this, rowIndex, opleiding, crebo);
                 form.Visible = true;
@@ -132,8 +128,8 @@ namespace WindowsFormsApplication1
 
         private void buttonOpslaan_Click(object sender, EventArgs e)
         {
-            DatabaseDataSet.overzichtRow row = databaseDataSet.overzicht.NewoverzichtRow();
-            //int rowIndex = dataGridView1.CurrentCell.RowIndex;
+            //overzicht tabel
+            DatabaseDataSet.overzichtRow overzichtRow = databaseDataSet.overzicht.NewoverzichtRow();
             String opleiding = OpleidingBox.Text;
             String crebo = CreboBox.Text;
             String kwalificatie = KwalificatieBox.Text;
@@ -148,27 +144,44 @@ namespace WindowsFormsApplication1
             String portefeuillehouder = PortHouderBox.Text;
             String aanspreekpunt = AanspreekBox.Text;
             String manager = ManagerBox.Text;
-            //updateDataGridView(rowIndex, opleiding, crebo);
 
-            row.opleiding = opleiding;
-            row.crebo = crebo;
-            row.kwalificatie = kwalificatie;
-            row.uitstroom = uitstroom;
-            row.niveau = niveau;
-            row.leerroute = leerroute;
-            row.kenniscentrum = kenniscentrum;
-            row.cohort = cohort;
-            row.kd_versie = kdversie;
-            row.examenprofiel = examenprofiel;
-            row.explan = examenplan;
-            row.portefeuillehouder = portefeuillehouder;
-            row.aanspreekpunt = aanspreekpunt;
-            row.manager = manager;
+            overzichtRow.opleiding = opleiding;
+            overzichtRow.crebo = crebo;
+            overzichtRow.kwalificatie = kwalificatie;
+            overzichtRow.uitstroom = uitstroom;
+            overzichtRow.niveau = niveau;
+            overzichtRow.leerroute = leerroute;
+            overzichtRow.kenniscentrum = kenniscentrum;
+            overzichtRow.cohort = cohort;
+            overzichtRow.kd_versie = kdversie;
+            overzichtRow.examenprofiel = examenprofiel;
+            overzichtRow.explan = examenplan;
+            overzichtRow.portefeuillehouder = portefeuillehouder;
+            overzichtRow.aanspreekpunt = aanspreekpunt;
+            overzichtRow.manager = manager;
 
-            databaseDataSet.overzicht.AddoverzichtRow(row);
+            //examentabel
+            for (int i = 0; i < examenAantal; i++)
+            {
+                DatabaseDataSet.examensRow examenRow = databaseDataSet.examens.NewexamensRow();
+                examenRow.examen_vak = ExamenBox[i].Text;
+                examenRow.examen_nummer = ExamenNummerBox[i].Text;
+                examenRow.examen_constructeur = ConstructeurBox[i].Text;
+                examenRow.examen_periode_afname = PeriodeAfnameBox[i].Text;
+                examenRow.examen_locatie = LocatieBox[i].Text;
+                examenRow.examen_naam_opdracht = NaamOpdrachtBox[i].Text;
+                examenRow.examen_status_opdracht = StatusOpdrachtBox[i].Text;
+
+                databaseDataSet.examens.AddexamensRow(examenRow);
+            }
+
+            //voegt overzicht row toe nadat de examens gemaakt zijn
+            databaseDataSet.overzicht.AddoverzichtRow(overzichtRow);
 
             updateDatabase();
             this.overzichtTableAdapter.Fill(this.databaseDataSet.overzicht);
+            this.examensTableAdapter.Fill(this.databaseDataSet.examens);
+
 
             if (sender.Equals(OpslaanButton))
             {
@@ -219,7 +232,9 @@ namespace WindowsFormsApplication1
             try
             {
                 this.overzichtBindingSource.EndEdit();
+                this.examensBindingSource.EndEdit();
                 this.overzichtTableAdapter.Update(this.databaseDataSet.overzicht);
+                this.examensTableAdapter.Update(this.databaseDataSet.examens);
             }
             catch (Exception ex)
             {
