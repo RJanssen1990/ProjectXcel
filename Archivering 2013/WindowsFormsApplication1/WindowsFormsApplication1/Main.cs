@@ -182,10 +182,10 @@ namespace WindowsFormsApplication1
                 UitstroomBox.Clear();
                 NiveauBox.SelectedIndex = -1;
                 LeerrouteBox.SelectedIndex = -1;
-                KenniscentrumBox.SelectedIndex = -1;
+                KenniscentrumBox.SelectedIndex = -1; KenniscentrumBox.Text = "";
                 CohortBox.Clear();
                 KdVersieBox.Clear();
-                ExamenProfielBox.SelectedIndex = -1;
+                ExamenProfielBox.SelectedIndex = -1; ExamenProfielBox.Text = "";
                 ExamenPlanBox.Clear();
                 PortHouderBox.Clear();
                 AanspreekBox.Clear();
@@ -197,7 +197,6 @@ namespace WindowsFormsApplication1
         private void buttonNieuw_Click(object sender, EventArgs e)
         {
             DatabaseDataSet.overzichtRow row = databaseDataSet.overzicht.NewoverzichtRow();
-            
 
             databaseDataSet.overzicht.AddoverzichtRow(row);
 
@@ -257,21 +256,42 @@ namespace WindowsFormsApplication1
             xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
             int row = 1;
-            int c = 2;
-            foreach (string title in columnNames)
+            int c = 1;
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
             {
-                xlWorkSheet.Cells[1, c] = title;
-                c++;
+                if (column.Visible == true)
+                    xlWorkSheet.Cells[1, c] = column.HeaderText;
+               c++;
             }
             foreach (DataGridViewRow itemRow in dataGridView1.Rows)
             {
                 for (int column = 0; column < dataGridView1.Columns.Count; column++)
                 {
-                    xlWorkSheet.Cells[row + 1, column + 1] = itemRow.Cells[column].Value;
-
+                    if (itemRow.Cells[column].Visible == true)
+                    {
+                        xlWorkSheet.Cells[row + 1, column + 1] = itemRow.Cells[column].Value;
+                    }
                 }
                 row++;
                 es.progressBar1.Value++;
+            }
+            xlWorkSheet.Cells.Columns.AutoFit();
+
+            Excel.Range usedRange = xlWorkSheet.UsedRange;
+            Excel.Range rows = usedRange.Rows;
+
+            for (int i = 0; i < dataGridView1.RowCount; i++)
+            {
+                //Excel.Range firstCell = r.Cells[1];
+                //string firstCellValue = firstCell.Value as string;
+                if (dataGridView1.Rows[i].Cells[gecontroleerdDataGridViewTextBoxColumn.Index].Value != null && dataGridView1.Rows[i].Cells[gecontroleerdDataGridViewTextBoxColumn.Index].Value.Equals(1))
+                {
+                    rows[i + 2].Interior.Color = Color.YellowGreen;
+                }
+                else
+                {
+                    rows[i + 2].Interior.Color = Color.Tomato;
+                }
             }
 
             try
@@ -334,14 +354,23 @@ namespace WindowsFormsApplication1
 
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(dataGridView1.SelectedRows.Count.ToString());
+            if (MessageBox.Show("Weet u zeker de geselecteerde item(s) te verwijderen?", "Verwijderen", MessageBoxButtons.YesNo) != DialogResult.Yes)
+            {
+                return;
+            }
+            //dataGridView1.SelectedRows.Count.ToString()
 
+            //rows geselecteerd
             foreach(DataGridViewRow row in dataGridView1.SelectedRows)
             {
                 dataGridView1.Rows.RemoveAt(row.Index);
             }
             
-            
+            //cellen geselecteerd
+            foreach (DataGridViewCell cell in dataGridView1.SelectedCells)
+            {
+                dataGridView1.Rows.RemoveAt(cell.RowIndex);
+            }
             
             updateDatabase();
         }

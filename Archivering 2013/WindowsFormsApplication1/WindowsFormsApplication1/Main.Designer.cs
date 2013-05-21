@@ -602,14 +602,14 @@
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "#";
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // creboDataGridViewTextBoxColumn
             // 
             this.creboDataGridViewTextBoxColumn.DataPropertyName = "crebo";
-            this.creboDataGridViewTextBoxColumn.HeaderText = "crebo";
+            this.creboDataGridViewTextBoxColumn.HeaderText = "Crebo";
             this.creboDataGridViewTextBoxColumn.Name = "creboDataGridViewTextBoxColumn";
             // 
             // kwalificatieDataGridViewTextBoxColumn
