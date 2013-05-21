@@ -34,7 +34,6 @@
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.bestandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.functiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CreboCode = new System.Windows.Forms.Label();
             this.OpleidingsNaam = new System.Windows.Forms.Label();
@@ -78,8 +77,7 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bestandToolStripMenuItem,
-            this.functiesToolStripMenuItem,
+            this.bestandToolStripMenuItem,            
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -92,12 +90,6 @@
             this.bestandToolStripMenuItem.Name = "bestandToolStripMenuItem";
             this.bestandToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.bestandToolStripMenuItem.Text = "Bestand";
-            // 
-            // functiesToolStripMenuItem
-            // 
-            this.functiesToolStripMenuItem.Name = "functiesToolStripMenuItem";
-            this.functiesToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
-            this.functiesToolStripMenuItem.Text = "Functies";
             // 
             // helpToolStripMenuItem
             // 

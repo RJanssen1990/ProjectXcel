@@ -13,10 +13,15 @@ namespace WindowsFormsApplication1
 {
     public partial class Main : Form
     {
+        private int examenAantal = 0;
+        private int huidigExamen = 0;
+        
         public Main()
         {
             InitializeComponent();
+            examenPlus();
         }
+
 
         private void Main_Load(object sender, EventArgs e)
         {
@@ -105,15 +110,11 @@ namespace WindowsFormsApplication1
                 string opleiding = dataGridView1.Rows[rowIndex].Cells[opleidingDataGridViewTextBoxColumn.Index].Value.ToString();
                 string crebo = dataGridView1.Rows[rowIndex].Cells[creboDataGridViewTextBoxColumn.Index].Value.ToString();
 
-                textBox1.Text = opleiding;
-                textBox2.Text = crebo;
+                
 
                 tabControl1.SelectTab("tabPage1");
 
-                buttonNieuw.Visible = false;
-                buttonNieuw.Enabled = false;
-                buttonOpslaan.Visible = true;
-                buttonOpslaan.Enabled = true;
+               
 
                 /*Formulier form = new Formulier(this, rowIndex, opleiding, crebo);
                 form.Visible = true;
@@ -129,28 +130,72 @@ namespace WindowsFormsApplication1
 
         private void buttonOpslaan_Click(object sender, EventArgs e)
         {
-            int rowIndex = dataGridView1.CurrentCell.RowIndex;
-            String opleiding = textBox1.Text;
-            String crebo = textBox2.Text;
-            updateDataGridView(rowIndex, opleiding, crebo);
+            DatabaseDataSet.overzichtRow row = databaseDataSet.overzicht.NewoverzichtRow();
+            //int rowIndex = dataGridView1.CurrentCell.RowIndex;
+            String opleiding = OpleidingBox.Text;
+            String crebo = CreboBox.Text;
+            String kwalificatie = KwalificatieBox.Text;
+            String uitstroom = UitstroomBox.Text;
+            String niveau = NiveauBox.Text;
+            String leerroute = LeerrouteBox.Text;
+            String kenniscentrum = KenniscentrumBox.Text;
+            String cohort = CohortBox.Text;
+            String kdversie = KdVersieBox.Text;
+            String examenprofiel = ExamenProfielBox.Text;
+            String examenplan = ExamenPlanBox.Text;
+            String portefeuillehouder = PortHouderBox.Text;
+            String aanspreekpunt = AanspreekBox.Text;
+            String manager = ManagerBox.Text;
+            //updateDataGridView(rowIndex, opleiding, crebo);
 
-            //textbox leegmaken
-            textBox1.Text = "";
-            textBox2.Text = "";
+            row.opleiding = opleiding;
+            row.crebo = crebo;
+            row.kwalificatie = kwalificatie;
+            row.uitstroom = uitstroom;
+            row.niveau = niveau;
+            row.leerroute = leerroute;
+            row.kenniscentrum = kenniscentrum;
+            row.cohort = cohort;
+            row.kd_versie = kdversie;
+            row.examenprofiel = examenprofiel;
+            row.explan = examenplan;
+            row.portefeuillehouder = portefeuillehouder;
+            row.aanspreekpunt = aanspreekpunt;
+            row.manager = manager;
 
-            buttonNieuw.Visible = true;
-            buttonNieuw.Enabled = true;
-            buttonOpslaan.Visible = false;
-            buttonOpslaan.Enabled = false;
+            databaseDataSet.overzicht.AddoverzichtRow(row);
 
-            tabControl1.SelectTab("tabPage2");
+            updateDatabase();
+            this.overzichtTableAdapter.Fill(this.databaseDataSet.overzicht);
+
+            if (sender.Equals(OpslaanButton))
+            {
+                tabControl1.SelectTab("tabPage2");
+            }
+            else
+            {
+                OpleidingBox.Clear();
+                CreboBox.Clear();
+                KwalificatieBox.Clear();
+                UitstroomBox.Clear();
+                NiveauBox.SelectedIndex = -1;
+                LeerrouteBox.SelectedIndex = -1;
+                KenniscentrumBox.SelectedIndex = -1;
+                CohortBox.Clear();
+                KdVersieBox.Clear();
+                ExamenProfielBox.SelectedIndex = -1;
+                ExamenPlanBox.Clear();
+                PortHouderBox.Clear();
+                AanspreekBox.Clear();
+                ManagerBox.Clear();
+            }
+
         }
 
         private void buttonNieuw_Click(object sender, EventArgs e)
         {
             DatabaseDataSet.overzichtRow row = databaseDataSet.overzicht.NewoverzichtRow();
-            row.crebo = textBox1.Text;
-            row.opleiding = textBox2.Text;
+            
 
             databaseDataSet.overzicht.AddoverzichtRow(row);
 
@@ -166,26 +211,6 @@ namespace WindowsFormsApplication1
             sfd.ShowDialog();
 
             SaveExcel(sfd.FileName);
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void overzichtBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void updateDatabase()
@@ -277,6 +302,40 @@ namespace WindowsFormsApplication1
         private void bindingNavigator1_RefreshItems(object sender, EventArgs e)
         {
 
+        }
+
+        private void PrevExamButton_Click(object sender, EventArgs e)
+        {
+            this.PrevExam();
+        }
+
+        private void nextExamButton_Click(object sender, EventArgs e)
+        {
+            this.NextExam();
+        }
+
+        private void ExamPlusButton_Click(object sender, EventArgs e)
+        {
+            this.examenPlus();
+        }
+
+        private void ExamMinButton_Click(object sender, EventArgs e)
+        {
+            this.examenMin();
+        }
+
+        private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(dataGridView1.SelectedRows.Count.ToString());
+
+            foreach(DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                dataGridView1.Rows.RemoveAt(row.Index);
+            }
+            
+            
+            
+            updateDatabase();
         }
     }
 }
