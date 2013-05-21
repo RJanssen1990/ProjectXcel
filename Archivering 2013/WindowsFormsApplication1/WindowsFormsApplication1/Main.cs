@@ -15,6 +15,8 @@ namespace WindowsFormsApplication1
     {
         private int examenAantal = 0;
         private int huidigExamen = 0;
+        private string[] savedStrings = new string[14];
+        private string[] columnNames = { "Crebocode",	"Kwalificatie",	"Uitstroom",	"Opleidingsnaam",	"Niveau",	"Leerroute",	"Kenniscentrum",	"Cohort",	"KD Versie",	"Examenprofiel",	"Examenplan",	"Portefeuillehouder",	"Aanspreekpunt",	"Manager"};
         
         public Main()
         {
@@ -255,11 +257,17 @@ namespace WindowsFormsApplication1
             xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
             int row = 1;
+            int c = 2;
+            foreach (string title in columnNames)
+            {
+                xlWorkSheet.Cells[1, c] = title;
+                c++;
+            }
             foreach (DataGridViewRow itemRow in dataGridView1.Rows)
             {
                 for (int column = 0; column < dataGridView1.Columns.Count; column++)
                 {
-                    xlWorkSheet.Cells[row, column + 1] = itemRow.Cells[column].Value;
+                    xlWorkSheet.Cells[row + 1, column + 1] = itemRow.Cells[column].Value;
 
                 }
                 row++;
