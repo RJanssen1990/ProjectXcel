@@ -69,6 +69,13 @@
             this.ExamenPlan = new System.Windows.Forms.Label();
             this.ExamenPlanBox = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.kerntaakidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kerntaaknaamDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kerntaaknummerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kerntaakwerkprocessenDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kerntakenBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.databaseDataSet = new WindowsFormsApplication1.DatabaseDataSet();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.examenidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.examenvakDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,7 +92,6 @@
             this.examenkerntaak5DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.examenkerntaak6DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.examensBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.databaseDataSet = new WindowsFormsApplication1.DatabaseDataSet();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.creboDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -139,29 +145,23 @@
             this.aanpassenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.toolTips = new System.Windows.Forms.ToolTip(this.components);
-            this.kerntakenBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.kerntakenTableAdapter = new WindowsFormsApplication1.DatabaseDataSetTableAdapters.kerntakenTableAdapter();
             this.overzichtTableAdapter = new WindowsFormsApplication1.DatabaseDataSetTableAdapters.overzichtTableAdapter();
             this.examensTableAdapter = new WindowsFormsApplication1.DatabaseDataSetTableAdapters.examensTableAdapter();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.kerntaakidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kerntaaknaamDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kerntaaknummerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kerntaakwerkprocessenDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kerntakenBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.examensBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.overzichtBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kerntakenBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -278,7 +278,7 @@
             this.ExamenPaneel.BackColor = System.Drawing.Color.Silver;
             this.ExamenPaneel.Location = new System.Drawing.Point(400, 40);
             this.ExamenPaneel.Name = "ExamenPaneel";
-            this.ExamenPaneel.Size = new System.Drawing.Size(340, 373);
+            this.ExamenPaneel.Size = new System.Drawing.Size(380, 373);
             this.ExamenPaneel.TabIndex = 4;
             // 
             // OpslaanPlusButton
@@ -606,6 +606,59 @@
             this.tabPage2.Text = "Overzicht";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // dataGridView3
+            // 
+            this.dataGridView3.AllowUserToAddRows = false;
+            this.dataGridView3.AutoGenerateColumns = false;
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.kerntaakidDataGridViewTextBoxColumn,
+            this.kerntaaknaamDataGridViewTextBoxColumn,
+            this.kerntaaknummerDataGridViewTextBoxColumn,
+            this.kerntaakwerkprocessenDataGridViewTextBoxColumn});
+            this.dataGridView3.DataSource = this.kerntakenBindingSource;
+            this.dataGridView3.Location = new System.Drawing.Point(518, 207);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.Size = new System.Drawing.Size(471, 318);
+            this.dataGridView3.TabIndex = 3;
+            this.dataGridView3.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.updateDatabase_Change);
+            this.dataGridView3.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.rowRemovedHandler);
+            // 
+            // kerntaakidDataGridViewTextBoxColumn
+            // 
+            this.kerntaakidDataGridViewTextBoxColumn.DataPropertyName = "kerntaak_id";
+            this.kerntaakidDataGridViewTextBoxColumn.HeaderText = "kerntaak_id";
+            this.kerntaakidDataGridViewTextBoxColumn.Name = "kerntaakidDataGridViewTextBoxColumn";
+            this.kerntaakidDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // kerntaaknaamDataGridViewTextBoxColumn
+            // 
+            this.kerntaaknaamDataGridViewTextBoxColumn.DataPropertyName = "kerntaak_naam";
+            this.kerntaaknaamDataGridViewTextBoxColumn.HeaderText = "kerntaak_naam";
+            this.kerntaaknaamDataGridViewTextBoxColumn.Name = "kerntaaknaamDataGridViewTextBoxColumn";
+            // 
+            // kerntaaknummerDataGridViewTextBoxColumn
+            // 
+            this.kerntaaknummerDataGridViewTextBoxColumn.DataPropertyName = "kerntaak_nummer";
+            this.kerntaaknummerDataGridViewTextBoxColumn.HeaderText = "kerntaak_nummer";
+            this.kerntaaknummerDataGridViewTextBoxColumn.Name = "kerntaaknummerDataGridViewTextBoxColumn";
+            // 
+            // kerntaakwerkprocessenDataGridViewTextBoxColumn
+            // 
+            this.kerntaakwerkprocessenDataGridViewTextBoxColumn.DataPropertyName = "kerntaak_werkprocessen";
+            this.kerntaakwerkprocessenDataGridViewTextBoxColumn.HeaderText = "kerntaak_werkprocessen";
+            this.kerntaakwerkprocessenDataGridViewTextBoxColumn.Name = "kerntaakwerkprocessenDataGridViewTextBoxColumn";
+            // 
+            // kerntakenBindingSource
+            // 
+            this.kerntakenBindingSource.DataMember = "kerntaken";
+            this.kerntakenBindingSource.DataSource = this.databaseDataSet;
+            // 
+            // databaseDataSet
+            // 
+            this.databaseDataSet.DataSetName = "DatabaseDataSet";
+            this.databaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // dataGridView2
             // 
             this.dataGridView2.AllowUserToAddRows = false;
@@ -631,7 +684,6 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(471, 173);
             this.dataGridView2.TabIndex = 2;
-            this.dataGridView2.Visible = false;
             this.dataGridView2.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.updateDatabase_Change);
             this.dataGridView2.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.rowRemovedHandler);
             // 
@@ -725,11 +777,6 @@
             this.examensBindingSource.DataMember = "examens";
             this.examensBindingSource.DataSource = this.databaseDataSet;
             // 
-            // databaseDataSet
-            // 
-            this.databaseDataSet.DataSetName = "DatabaseDataSet";
-            this.databaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -763,10 +810,9 @@
             this.examen9DataGridViewTextBoxColumn,
             this.examen10DataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.overzichtBindingSource;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 28);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(986, 497);
+            this.dataGridView1.Size = new System.Drawing.Size(509, 497);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.updateDatabase_Change);
             this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
@@ -1142,11 +1188,6 @@
             this.aanpassenToolStripMenuItem.Text = "Aanpassen..";
             this.aanpassenToolStripMenuItem.Click += new System.EventHandler(this.aanpassen_Click);
             // 
-            // kerntakenBindingSource
-            // 
-            this.kerntakenBindingSource.DataMember = "kerntaken";
-            this.kerntakenBindingSource.DataSource = this.databaseDataSet;
-            // 
             // kerntakenTableAdapter
             // 
             this.kerntakenTableAdapter.ClearBeforeFill = true;
@@ -1158,48 +1199,6 @@
             // examensTableAdapter
             // 
             this.examensTableAdapter.ClearBeforeFill = true;
-            // 
-            // dataGridView3
-            // 
-            this.dataGridView3.AllowUserToAddRows = false;
-            this.dataGridView3.AutoGenerateColumns = false;
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.kerntaakidDataGridViewTextBoxColumn,
-            this.kerntaaknaamDataGridViewTextBoxColumn,
-            this.kerntaaknummerDataGridViewTextBoxColumn,
-            this.kerntaakwerkprocessenDataGridViewTextBoxColumn});
-            this.dataGridView3.DataSource = this.kerntakenBindingSource;
-            this.dataGridView3.Location = new System.Drawing.Point(518, 207);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(471, 318);
-            this.dataGridView3.TabIndex = 3;
-            this.dataGridView3.Visible = false;
-            // 
-            // kerntaakidDataGridViewTextBoxColumn
-            // 
-            this.kerntaakidDataGridViewTextBoxColumn.DataPropertyName = "kerntaak_id";
-            this.kerntaakidDataGridViewTextBoxColumn.HeaderText = "kerntaak_id";
-            this.kerntaakidDataGridViewTextBoxColumn.Name = "kerntaakidDataGridViewTextBoxColumn";
-            this.kerntaakidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // kerntaaknaamDataGridViewTextBoxColumn
-            // 
-            this.kerntaaknaamDataGridViewTextBoxColumn.DataPropertyName = "kerntaak_naam";
-            this.kerntaaknaamDataGridViewTextBoxColumn.HeaderText = "kerntaak_naam";
-            this.kerntaaknaamDataGridViewTextBoxColumn.Name = "kerntaaknaamDataGridViewTextBoxColumn";
-            // 
-            // kerntaaknummerDataGridViewTextBoxColumn
-            // 
-            this.kerntaaknummerDataGridViewTextBoxColumn.DataPropertyName = "kerntaak_nummer";
-            this.kerntaaknummerDataGridViewTextBoxColumn.HeaderText = "kerntaak_nummer";
-            this.kerntaaknummerDataGridViewTextBoxColumn.Name = "kerntaaknummerDataGridViewTextBoxColumn";
-            // 
-            // kerntaakwerkprocessenDataGridViewTextBoxColumn
-            // 
-            this.kerntaakwerkprocessenDataGridViewTextBoxColumn.DataPropertyName = "kerntaak_werkprocessen";
-            this.kerntaakwerkprocessenDataGridViewTextBoxColumn.HeaderText = "kerntaak_werkprocessen";
-            this.kerntaakwerkprocessenDataGridViewTextBoxColumn.Name = "kerntaakwerkprocessenDataGridViewTextBoxColumn";
             // 
             // Main
             // 
@@ -1218,9 +1217,11 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kerntakenBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.examensBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.overzichtBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
@@ -1229,8 +1230,6 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kerntakenBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1260,9 +1259,6 @@
                 StatusOpdracht[examenAantal] = new System.Windows.Forms.Label();
                 StatusOpdrachtBox[examenAantal] = new System.Windows.Forms.ComboBox();
 
-
-
-
                 // 
                 // Examen Blok
                 //
@@ -1272,11 +1268,11 @@
                 }
                 else
                 {
-                    this.ExamenBlok[examenAantal].Location = new System.Drawing.Point(this.ExamenPaneel.AutoScrollPosition.X + (330 * examenAantal), this.ExamenPaneel.AutoScrollPosition.Y);
+                    this.ExamenBlok[examenAantal].Location = new System.Drawing.Point(this.ExamenPaneel.AutoScrollPosition.X + (350 * examenAantal), this.ExamenPaneel.AutoScrollPosition.Y);
                 }
                 this.ExamenBlok[examenAantal].Name = "ExamenBlok";
-                this.ExamenBlok[examenAantal].Size = new System.Drawing.Size(320, 800);
-                this.ExamenBlok[examenAantal].AutoSize = false;
+                //this.ExamenBlok[examenAantal].Size = new System.Drawing.Size(320, 800);
+                this.ExamenBlok[examenAantal].AutoSize = true;
                 // 
                 // Examen Titel
                 // 
