@@ -160,6 +160,11 @@ namespace WindowsFormsApplication1
             overzichtRow.aanspreekpunt = aanspreekpunt;
             overzichtRow.manager = manager;
 
+            //examen id's array voor de overzichtRow
+            int[] ids = new int[examenAantal];
+            //kerntaken id's array voor de examenRow
+            int[] ktids = new int[6];
+
             //examentabel
             for (int i = 0; i < examenAantal; i++)
             {
@@ -172,17 +177,75 @@ namespace WindowsFormsApplication1
                 examenRow.examen_naam_opdracht = NaamOpdrachtBox[i].Text;
                 examenRow.examen_status_opdracht = StatusOpdrachtBox[i].Text;
 
+                for (int j = 0; j < 6; j++)
+                {
+                    DatabaseDataSet.kerntakenRow kerntaakRow = databaseDataSet.kerntaken.NewkerntakenRow();
+                    kerntaakRow.kerntaak_naam = KerntakenBox[i, j].Text;
+                    kerntaakRow.kerntaak_nummer = KerntaakNrBox[i, j].Text;
+                    kerntaakRow.kerntaak_werkprocessen = WerkprocessenBox[i, j].Text;
+
+                    databaseDataSet.kerntaken.AddkerntakenRow(kerntaakRow);
+
+                    //update database etc
+                    updateDatabase();
+                    this.kerntakenTableAdapter.Fill(this.databaseDataSet.kerntaken);
+
+                    //verkrijg de "nieuwe" ids
+                    int ktid = (int)databaseDataSet.kerntaken.Rows[databaseDataSet.kerntaken.Rows.Count - 1][0];
+                    ktids[j] = ktid;
+                }
+
+                //voeg kerntaken ids toe aan de examenRow
+                for (int k = 0; k < ktids.Count(); k++)
+                {
+                    switch (k)
+                    {
+                        case 0: examenRow.examen_kerntaak1 = ktids[k]; break;
+                        case 1: examenRow.examen_kerntaak2 = ktids[k]; break;
+                        case 2: examenRow.examen_kerntaak3 = ktids[k]; break;
+                        case 3: examenRow.examen_kerntaak4 = ktids[k]; break;
+                        case 4: examenRow.examen_kerntaak5 = ktids[k]; break;
+                        case 5: examenRow.examen_kerntaak6 = ktids[k]; break;
+                    }
+                }
+
                 databaseDataSet.examens.AddexamensRow(examenRow);
+
+                //update database etc
+                updateDatabase();
+                this.examensTableAdapter.Fill(this.databaseDataSet.examens);
+
+                //verkrijg de "nieuwe" ids
+                int id = (int)databaseDataSet.examens.Rows[databaseDataSet.examens.Rows.Count-1][0];
+                ids[i] = id;
+                //MessageBox.Show(id.ToString());
+            }
+
+            //voeg examen ids toe aan de overzicht row
+            for (int i = 0; i < ids.Count(); i++)
+            {
+                switch (i)
+                {
+                    case 0: overzichtRow.examen1 = ids[i]; break;
+                    case 1: overzichtRow.examen2 = ids[i]; break;
+                    case 2: overzichtRow.examen3 = ids[i]; break;
+                    case 3: overzichtRow.examen4 = ids[i]; break;
+                    case 4: overzichtRow.examen5 = ids[i]; break;
+                    case 5: overzichtRow.examen6 = ids[i]; break;
+                    case 6: overzichtRow.examen7 = ids[i]; break;
+                    case 7: overzichtRow.examen8 = ids[i]; break;
+                    case 8: overzichtRow.examen9 = ids[i]; break;
+                    case 9: overzichtRow.examen10 = ids[i]; break;
+                }
             }
 
             //voegt overzicht row toe nadat de examens gemaakt zijn
             databaseDataSet.overzicht.AddoverzichtRow(overzichtRow);
 
             updateDatabase();
+
             this.overzichtTableAdapter.Fill(this.databaseDataSet.overzicht);
-            this.examensTableAdapter.Fill(this.databaseDataSet.examens);
-
-
+            
             if (sender.Equals(OpslaanButton))
             {
                 tabControl1.SelectTab("tabPage2");
@@ -233,8 +296,10 @@ namespace WindowsFormsApplication1
             {
                 this.overzichtBindingSource.EndEdit();
                 this.examensBindingSource.EndEdit();
+                this.kerntakenBindingSource.EndEdit();
                 this.overzichtTableAdapter.Update(this.databaseDataSet.overzicht);
                 this.examensTableAdapter.Update(this.databaseDataSet.examens);
+                this.kerntakenTableAdapter.Update(this.databaseDataSet.kerntaken);
             }
             catch (Exception ex)
             {
@@ -388,6 +453,16 @@ namespace WindowsFormsApplication1
             }
             
             updateDatabase();
+        }
+
+        //zorgt ervoor dat de "DELETE" knop niet werkt..
+        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Delete)
+            {
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
         }
     }
 }

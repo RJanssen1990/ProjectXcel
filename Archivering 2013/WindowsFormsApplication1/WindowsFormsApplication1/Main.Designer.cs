@@ -70,6 +70,22 @@
             this.ExamenPlanBox = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.examenidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.examenvakDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.examennummerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.examenconstructeurDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.examenperiodeafnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.examenlocatieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.examennaamopdrachtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.examenstatusopdrachtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.examenkerntaak1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.examenkerntaak2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.examenkerntaak3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.examenkerntaak4DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.examenkerntaak5DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.examenkerntaak6DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.examensBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.databaseDataSet = new WindowsFormsApplication1.DatabaseDataSet();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.creboDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -98,7 +114,6 @@
             this.examen9DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.examen10DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.overzichtBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.databaseDataSet = new WindowsFormsApplication1.DatabaseDataSet();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -124,35 +139,29 @@
             this.aanpassenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.toolTips = new System.Windows.Forms.ToolTip(this.components);
+            this.kerntakenBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.kerntakenTableAdapter = new WindowsFormsApplication1.DatabaseDataSetTableAdapters.kerntakenTableAdapter();
             this.overzichtTableAdapter = new WindowsFormsApplication1.DatabaseDataSetTableAdapters.overzichtTableAdapter();
-            this.examensBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.examensTableAdapter = new WindowsFormsApplication1.DatabaseDataSetTableAdapters.examensTableAdapter();
-            this.examenidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.examenvakDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.examennummerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.examenconstructeurDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.examenperiodeafnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.examenlocatieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.examennaamopdrachtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.examenstatusopdrachtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.examenkerntaak1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.examenkertnaak2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.examenkertnaak3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.examenkertnaak4DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.examenkertnaak5DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.examenkertnaak6DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.kerntaakidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kerntaaknaamDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kerntaaknummerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kerntaakwerkprocessenDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.examensBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.overzichtBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.examensBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kerntakenBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -585,6 +594,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.dataGridView3);
             this.tabPage2.Controls.Add(this.dataGridView2);
             this.tabPage2.Controls.Add(this.dataGridView1);
             this.tabPage2.Controls.Add(this.bindingNavigator1);
@@ -598,6 +608,7 @@
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.AutoGenerateColumns = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -610,19 +621,114 @@
             this.examennaamopdrachtDataGridViewTextBoxColumn,
             this.examenstatusopdrachtDataGridViewTextBoxColumn,
             this.examenkerntaak1DataGridViewTextBoxColumn,
-            this.examenkertnaak2DataGridViewTextBoxColumn,
-            this.examenkertnaak3DataGridViewTextBoxColumn,
-            this.examenkertnaak4DataGridViewTextBoxColumn,
-            this.examenkertnaak5DataGridViewTextBoxColumn,
-            this.examenkertnaak6DataGridViewTextBoxColumn});
+            this.examenkerntaak2DataGridViewTextBoxColumn,
+            this.examenkerntaak3DataGridViewTextBoxColumn,
+            this.examenkerntaak4DataGridViewTextBoxColumn,
+            this.examenkerntaak5DataGridViewTextBoxColumn,
+            this.examenkerntaak6DataGridViewTextBoxColumn});
             this.dataGridView2.DataSource = this.examensBindingSource;
-            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Right;
             this.dataGridView2.Location = new System.Drawing.Point(518, 28);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(471, 497);
+            this.dataGridView2.Size = new System.Drawing.Size(471, 173);
             this.dataGridView2.TabIndex = 2;
+            this.dataGridView2.Visible = false;
             this.dataGridView2.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.updateDatabase_Change);
             this.dataGridView2.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.rowRemovedHandler);
+            // 
+            // examenidDataGridViewTextBoxColumn
+            // 
+            this.examenidDataGridViewTextBoxColumn.DataPropertyName = "examen_id";
+            this.examenidDataGridViewTextBoxColumn.HeaderText = "examen_id";
+            this.examenidDataGridViewTextBoxColumn.Name = "examenidDataGridViewTextBoxColumn";
+            this.examenidDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // examenvakDataGridViewTextBoxColumn
+            // 
+            this.examenvakDataGridViewTextBoxColumn.DataPropertyName = "examen_vak";
+            this.examenvakDataGridViewTextBoxColumn.HeaderText = "examen_vak";
+            this.examenvakDataGridViewTextBoxColumn.Name = "examenvakDataGridViewTextBoxColumn";
+            // 
+            // examennummerDataGridViewTextBoxColumn
+            // 
+            this.examennummerDataGridViewTextBoxColumn.DataPropertyName = "examen_nummer";
+            this.examennummerDataGridViewTextBoxColumn.HeaderText = "examen_nummer";
+            this.examennummerDataGridViewTextBoxColumn.Name = "examennummerDataGridViewTextBoxColumn";
+            // 
+            // examenconstructeurDataGridViewTextBoxColumn
+            // 
+            this.examenconstructeurDataGridViewTextBoxColumn.DataPropertyName = "examen_constructeur";
+            this.examenconstructeurDataGridViewTextBoxColumn.HeaderText = "examen_constructeur";
+            this.examenconstructeurDataGridViewTextBoxColumn.Name = "examenconstructeurDataGridViewTextBoxColumn";
+            // 
+            // examenperiodeafnameDataGridViewTextBoxColumn
+            // 
+            this.examenperiodeafnameDataGridViewTextBoxColumn.DataPropertyName = "examen_periode_afname";
+            this.examenperiodeafnameDataGridViewTextBoxColumn.HeaderText = "examen_periode_afname";
+            this.examenperiodeafnameDataGridViewTextBoxColumn.Name = "examenperiodeafnameDataGridViewTextBoxColumn";
+            // 
+            // examenlocatieDataGridViewTextBoxColumn
+            // 
+            this.examenlocatieDataGridViewTextBoxColumn.DataPropertyName = "examen_locatie";
+            this.examenlocatieDataGridViewTextBoxColumn.HeaderText = "examen_locatie";
+            this.examenlocatieDataGridViewTextBoxColumn.Name = "examenlocatieDataGridViewTextBoxColumn";
+            // 
+            // examennaamopdrachtDataGridViewTextBoxColumn
+            // 
+            this.examennaamopdrachtDataGridViewTextBoxColumn.DataPropertyName = "examen_naam_opdracht";
+            this.examennaamopdrachtDataGridViewTextBoxColumn.HeaderText = "examen_naam_opdracht";
+            this.examennaamopdrachtDataGridViewTextBoxColumn.Name = "examennaamopdrachtDataGridViewTextBoxColumn";
+            // 
+            // examenstatusopdrachtDataGridViewTextBoxColumn
+            // 
+            this.examenstatusopdrachtDataGridViewTextBoxColumn.DataPropertyName = "examen_status_opdracht";
+            this.examenstatusopdrachtDataGridViewTextBoxColumn.HeaderText = "examen_status_opdracht";
+            this.examenstatusopdrachtDataGridViewTextBoxColumn.Name = "examenstatusopdrachtDataGridViewTextBoxColumn";
+            // 
+            // examenkerntaak1DataGridViewTextBoxColumn
+            // 
+            this.examenkerntaak1DataGridViewTextBoxColumn.DataPropertyName = "examen_kerntaak1";
+            this.examenkerntaak1DataGridViewTextBoxColumn.HeaderText = "examen_kerntaak1";
+            this.examenkerntaak1DataGridViewTextBoxColumn.Name = "examenkerntaak1DataGridViewTextBoxColumn";
+            // 
+            // examenkerntaak2DataGridViewTextBoxColumn
+            // 
+            this.examenkerntaak2DataGridViewTextBoxColumn.DataPropertyName = "examen_kerntaak2";
+            this.examenkerntaak2DataGridViewTextBoxColumn.HeaderText = "examen_kerntaak2";
+            this.examenkerntaak2DataGridViewTextBoxColumn.Name = "examenkerntaak2DataGridViewTextBoxColumn";
+            // 
+            // examenkerntaak3DataGridViewTextBoxColumn
+            // 
+            this.examenkerntaak3DataGridViewTextBoxColumn.DataPropertyName = "examen_kerntaak3";
+            this.examenkerntaak3DataGridViewTextBoxColumn.HeaderText = "examen_kerntaak3";
+            this.examenkerntaak3DataGridViewTextBoxColumn.Name = "examenkerntaak3DataGridViewTextBoxColumn";
+            // 
+            // examenkerntaak4DataGridViewTextBoxColumn
+            // 
+            this.examenkerntaak4DataGridViewTextBoxColumn.DataPropertyName = "examen_kerntaak4";
+            this.examenkerntaak4DataGridViewTextBoxColumn.HeaderText = "examen_kerntaak4";
+            this.examenkerntaak4DataGridViewTextBoxColumn.Name = "examenkerntaak4DataGridViewTextBoxColumn";
+            // 
+            // examenkerntaak5DataGridViewTextBoxColumn
+            // 
+            this.examenkerntaak5DataGridViewTextBoxColumn.DataPropertyName = "examen_kerntaak5";
+            this.examenkerntaak5DataGridViewTextBoxColumn.HeaderText = "examen_kerntaak5";
+            this.examenkerntaak5DataGridViewTextBoxColumn.Name = "examenkerntaak5DataGridViewTextBoxColumn";
+            // 
+            // examenkerntaak6DataGridViewTextBoxColumn
+            // 
+            this.examenkerntaak6DataGridViewTextBoxColumn.DataPropertyName = "examen_kerntaak6";
+            this.examenkerntaak6DataGridViewTextBoxColumn.HeaderText = "examen_kerntaak6";
+            this.examenkerntaak6DataGridViewTextBoxColumn.Name = "examenkerntaak6DataGridViewTextBoxColumn";
+            // 
+            // examensBindingSource
+            // 
+            this.examensBindingSource.DataMember = "examens";
+            this.examensBindingSource.DataSource = this.databaseDataSet;
+            // 
+            // databaseDataSet
+            // 
+            this.databaseDataSet.DataSetName = "DatabaseDataSet";
+            this.databaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // dataGridView1
             // 
@@ -657,15 +763,16 @@
             this.examen9DataGridViewTextBoxColumn,
             this.examen10DataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.overzichtBindingSource;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 28);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(509, 497);
+            this.dataGridView1.Size = new System.Drawing.Size(986, 497);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.updateDatabase_Change);
             this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
             this.dataGridView1.RowContextMenuStripNeeded += new System.Windows.Forms.DataGridViewRowContextMenuStripNeededEventHandler(this.showContextMenuStrip);
             this.dataGridView1.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.rowRemovedHandler);
+            this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -770,21 +877,18 @@
             this.examen1DataGridViewTextBoxColumn.DataPropertyName = "examen1";
             this.examen1DataGridViewTextBoxColumn.HeaderText = "examen1";
             this.examen1DataGridViewTextBoxColumn.Name = "examen1DataGridViewTextBoxColumn";
-            this.examen1DataGridViewTextBoxColumn.Visible = false;
             // 
             // examen2DataGridViewTextBoxColumn
             // 
             this.examen2DataGridViewTextBoxColumn.DataPropertyName = "examen2";
             this.examen2DataGridViewTextBoxColumn.HeaderText = "examen2";
             this.examen2DataGridViewTextBoxColumn.Name = "examen2DataGridViewTextBoxColumn";
-            this.examen2DataGridViewTextBoxColumn.Visible = false;
             // 
             // examen3DataGridViewTextBoxColumn
             // 
             this.examen3DataGridViewTextBoxColumn.DataPropertyName = "examen3";
             this.examen3DataGridViewTextBoxColumn.HeaderText = "examen3";
             this.examen3DataGridViewTextBoxColumn.Name = "examen3DataGridViewTextBoxColumn";
-            this.examen3DataGridViewTextBoxColumn.Visible = false;
             // 
             // examen4DataGridViewTextBoxColumn
             // 
@@ -839,11 +943,6 @@
             // 
             this.overzichtBindingSource.DataMember = "overzicht";
             this.overzichtBindingSource.DataSource = this.databaseDataSet;
-            // 
-            // databaseDataSet
-            // 
-            this.databaseDataSet.DataSetName = "DatabaseDataSet";
-            this.databaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // bindingNavigator1
             // 
@@ -1043,103 +1142,64 @@
             this.aanpassenToolStripMenuItem.Text = "Aanpassen..";
             this.aanpassenToolStripMenuItem.Click += new System.EventHandler(this.aanpassen_Click);
             // 
+            // kerntakenBindingSource
+            // 
+            this.kerntakenBindingSource.DataMember = "kerntaken";
+            this.kerntakenBindingSource.DataSource = this.databaseDataSet;
+            // 
+            // kerntakenTableAdapter
+            // 
+            this.kerntakenTableAdapter.ClearBeforeFill = true;
+            // 
             // overzichtTableAdapter
             // 
             this.overzichtTableAdapter.ClearBeforeFill = true;
-            // 
-            // examensBindingSource
-            // 
-            this.examensBindingSource.DataMember = "examens";
-            this.examensBindingSource.DataSource = this.databaseDataSet;
             // 
             // examensTableAdapter
             // 
             this.examensTableAdapter.ClearBeforeFill = true;
             // 
-            // examenidDataGridViewTextBoxColumn
+            // dataGridView3
             // 
-            this.examenidDataGridViewTextBoxColumn.DataPropertyName = "examen_id";
-            this.examenidDataGridViewTextBoxColumn.HeaderText = "examen_id";
-            this.examenidDataGridViewTextBoxColumn.Name = "examenidDataGridViewTextBoxColumn";
-            this.examenidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dataGridView3.AllowUserToAddRows = false;
+            this.dataGridView3.AutoGenerateColumns = false;
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.kerntaakidDataGridViewTextBoxColumn,
+            this.kerntaaknaamDataGridViewTextBoxColumn,
+            this.kerntaaknummerDataGridViewTextBoxColumn,
+            this.kerntaakwerkprocessenDataGridViewTextBoxColumn});
+            this.dataGridView3.DataSource = this.kerntakenBindingSource;
+            this.dataGridView3.Location = new System.Drawing.Point(518, 207);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.Size = new System.Drawing.Size(471, 318);
+            this.dataGridView3.TabIndex = 3;
+            this.dataGridView3.Visible = false;
             // 
-            // examenvakDataGridViewTextBoxColumn
+            // kerntaakidDataGridViewTextBoxColumn
             // 
-            this.examenvakDataGridViewTextBoxColumn.DataPropertyName = "examen_vak";
-            this.examenvakDataGridViewTextBoxColumn.HeaderText = "examen_vak";
-            this.examenvakDataGridViewTextBoxColumn.Name = "examenvakDataGridViewTextBoxColumn";
+            this.kerntaakidDataGridViewTextBoxColumn.DataPropertyName = "kerntaak_id";
+            this.kerntaakidDataGridViewTextBoxColumn.HeaderText = "kerntaak_id";
+            this.kerntaakidDataGridViewTextBoxColumn.Name = "kerntaakidDataGridViewTextBoxColumn";
+            this.kerntaakidDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // examennummerDataGridViewTextBoxColumn
+            // kerntaaknaamDataGridViewTextBoxColumn
             // 
-            this.examennummerDataGridViewTextBoxColumn.DataPropertyName = "examen_nummer";
-            this.examennummerDataGridViewTextBoxColumn.HeaderText = "examen_nummer";
-            this.examennummerDataGridViewTextBoxColumn.Name = "examennummerDataGridViewTextBoxColumn";
+            this.kerntaaknaamDataGridViewTextBoxColumn.DataPropertyName = "kerntaak_naam";
+            this.kerntaaknaamDataGridViewTextBoxColumn.HeaderText = "kerntaak_naam";
+            this.kerntaaknaamDataGridViewTextBoxColumn.Name = "kerntaaknaamDataGridViewTextBoxColumn";
             // 
-            // examenconstructeurDataGridViewTextBoxColumn
+            // kerntaaknummerDataGridViewTextBoxColumn
             // 
-            this.examenconstructeurDataGridViewTextBoxColumn.DataPropertyName = "examen_constructeur";
-            this.examenconstructeurDataGridViewTextBoxColumn.HeaderText = "examen_constructeur";
-            this.examenconstructeurDataGridViewTextBoxColumn.Name = "examenconstructeurDataGridViewTextBoxColumn";
+            this.kerntaaknummerDataGridViewTextBoxColumn.DataPropertyName = "kerntaak_nummer";
+            this.kerntaaknummerDataGridViewTextBoxColumn.HeaderText = "kerntaak_nummer";
+            this.kerntaaknummerDataGridViewTextBoxColumn.Name = "kerntaaknummerDataGridViewTextBoxColumn";
             // 
-            // examenperiodeafnameDataGridViewTextBoxColumn
+            // kerntaakwerkprocessenDataGridViewTextBoxColumn
             // 
-            this.examenperiodeafnameDataGridViewTextBoxColumn.DataPropertyName = "examen_periode_afname";
-            this.examenperiodeafnameDataGridViewTextBoxColumn.HeaderText = "examen_periode_afname";
-            this.examenperiodeafnameDataGridViewTextBoxColumn.Name = "examenperiodeafnameDataGridViewTextBoxColumn";
-            // 
-            // examenlocatieDataGridViewTextBoxColumn
-            // 
-            this.examenlocatieDataGridViewTextBoxColumn.DataPropertyName = "examen_locatie";
-            this.examenlocatieDataGridViewTextBoxColumn.HeaderText = "examen_locatie";
-            this.examenlocatieDataGridViewTextBoxColumn.Name = "examenlocatieDataGridViewTextBoxColumn";
-            // 
-            // examennaamopdrachtDataGridViewTextBoxColumn
-            // 
-            this.examennaamopdrachtDataGridViewTextBoxColumn.DataPropertyName = "examen_naam_opdracht";
-            this.examennaamopdrachtDataGridViewTextBoxColumn.HeaderText = "examen_naam_opdracht";
-            this.examennaamopdrachtDataGridViewTextBoxColumn.Name = "examennaamopdrachtDataGridViewTextBoxColumn";
-            // 
-            // examenstatusopdrachtDataGridViewTextBoxColumn
-            // 
-            this.examenstatusopdrachtDataGridViewTextBoxColumn.DataPropertyName = "examen_status_opdracht";
-            this.examenstatusopdrachtDataGridViewTextBoxColumn.HeaderText = "examen_status_opdracht";
-            this.examenstatusopdrachtDataGridViewTextBoxColumn.Name = "examenstatusopdrachtDataGridViewTextBoxColumn";
-            // 
-            // examenkerntaak1DataGridViewTextBoxColumn
-            // 
-            this.examenkerntaak1DataGridViewTextBoxColumn.DataPropertyName = "examen_kerntaak1";
-            this.examenkerntaak1DataGridViewTextBoxColumn.HeaderText = "examen_kerntaak1";
-            this.examenkerntaak1DataGridViewTextBoxColumn.Name = "examenkerntaak1DataGridViewTextBoxColumn";
-            // 
-            // examenkertnaak2DataGridViewTextBoxColumn
-            // 
-            this.examenkertnaak2DataGridViewTextBoxColumn.DataPropertyName = "examen_kertnaak2";
-            this.examenkertnaak2DataGridViewTextBoxColumn.HeaderText = "examen_kertnaak2";
-            this.examenkertnaak2DataGridViewTextBoxColumn.Name = "examenkertnaak2DataGridViewTextBoxColumn";
-            // 
-            // examenkertnaak3DataGridViewTextBoxColumn
-            // 
-            this.examenkertnaak3DataGridViewTextBoxColumn.DataPropertyName = "examen_kertnaak3";
-            this.examenkertnaak3DataGridViewTextBoxColumn.HeaderText = "examen_kertnaak3";
-            this.examenkertnaak3DataGridViewTextBoxColumn.Name = "examenkertnaak3DataGridViewTextBoxColumn";
-            // 
-            // examenkertnaak4DataGridViewTextBoxColumn
-            // 
-            this.examenkertnaak4DataGridViewTextBoxColumn.DataPropertyName = "examen_kertnaak4";
-            this.examenkertnaak4DataGridViewTextBoxColumn.HeaderText = "examen_kertnaak4";
-            this.examenkertnaak4DataGridViewTextBoxColumn.Name = "examenkertnaak4DataGridViewTextBoxColumn";
-            // 
-            // examenkertnaak5DataGridViewTextBoxColumn
-            // 
-            this.examenkertnaak5DataGridViewTextBoxColumn.DataPropertyName = "examen_kertnaak5";
-            this.examenkertnaak5DataGridViewTextBoxColumn.HeaderText = "examen_kertnaak5";
-            this.examenkertnaak5DataGridViewTextBoxColumn.Name = "examenkertnaak5DataGridViewTextBoxColumn";
-            // 
-            // examenkertnaak6DataGridViewTextBoxColumn
-            // 
-            this.examenkertnaak6DataGridViewTextBoxColumn.DataPropertyName = "examen_kertnaak6";
-            this.examenkertnaak6DataGridViewTextBoxColumn.HeaderText = "examen_kertnaak6";
-            this.examenkertnaak6DataGridViewTextBoxColumn.Name = "examenkertnaak6DataGridViewTextBoxColumn";
+            this.kerntaakwerkprocessenDataGridViewTextBoxColumn.DataPropertyName = "kerntaak_werkprocessen";
+            this.kerntaakwerkprocessenDataGridViewTextBoxColumn.HeaderText = "kerntaak_werkprocessen";
+            this.kerntaakwerkprocessenDataGridViewTextBoxColumn.Name = "kerntaakwerkprocessenDataGridViewTextBoxColumn";
             // 
             // Main
             // 
@@ -1159,16 +1219,18 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.examensBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.overzichtBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.examensBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kerntakenBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1595,6 +1657,9 @@
         private DatabaseDataSet databaseDataSet;
         private System.Windows.Forms.BindingSource overzichtBindingSource;
         private DatabaseDataSetTableAdapters.overzichtTableAdapter overzichtTableAdapter;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.BindingSource kerntakenBindingSource;
+        private DatabaseDataSetTableAdapters.kerntakenTableAdapter kerntakenTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn creboDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn kwalificatieDataGridViewTextBoxColumn;
@@ -1621,7 +1686,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn examen8DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn examen9DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn examen10DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.BindingSource examensBindingSource;
         private DatabaseDataSetTableAdapters.examensTableAdapter examensTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn examenidDataGridViewTextBoxColumn;
@@ -1633,10 +1697,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn examennaamopdrachtDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn examenstatusopdrachtDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn examenkerntaak1DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn examenkertnaak2DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn examenkertnaak3DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn examenkertnaak4DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn examenkertnaak5DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn examenkertnaak6DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn examenkerntaak2DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn examenkerntaak3DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn examenkerntaak4DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn examenkerntaak5DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn examenkerntaak6DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn kerntaakidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn kerntaaknaamDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn kerntaaknummerDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn kerntaakwerkprocessenDataGridViewTextBoxColumn;
     }
 }

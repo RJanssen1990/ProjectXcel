@@ -26,9 +26,9 @@ namespace WindowsFormsApplication1 {
         
         private overzichtDataTable tableoverzicht;
         
-        private examensDataTable tableexamens;
-        
         private kerntakenDataTable tablekerntaken;
+        
+        private examensDataTable tableexamens;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -61,11 +61,11 @@ namespace WindowsFormsApplication1 {
                 if ((ds.Tables["overzicht"] != null)) {
                     base.Tables.Add(new overzichtDataTable(ds.Tables["overzicht"]));
                 }
-                if ((ds.Tables["examens"] != null)) {
-                    base.Tables.Add(new examensDataTable(ds.Tables["examens"]));
-                }
                 if ((ds.Tables["kerntaken"] != null)) {
                     base.Tables.Add(new kerntakenDataTable(ds.Tables["kerntaken"]));
+                }
+                if ((ds.Tables["examens"] != null)) {
+                    base.Tables.Add(new examensDataTable(ds.Tables["examens"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -99,9 +99,9 @@ namespace WindowsFormsApplication1 {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public examensDataTable examens {
+        public kerntakenDataTable kerntaken {
             get {
-                return this.tableexamens;
+                return this.tablekerntaken;
             }
         }
         
@@ -109,9 +109,9 @@ namespace WindowsFormsApplication1 {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public kerntakenDataTable kerntaken {
+        public examensDataTable examens {
             get {
-                return this.tablekerntaken;
+                return this.tableexamens;
             }
         }
         
@@ -185,11 +185,11 @@ namespace WindowsFormsApplication1 {
                 if ((ds.Tables["overzicht"] != null)) {
                     base.Tables.Add(new overzichtDataTable(ds.Tables["overzicht"]));
                 }
-                if ((ds.Tables["examens"] != null)) {
-                    base.Tables.Add(new examensDataTable(ds.Tables["examens"]));
-                }
                 if ((ds.Tables["kerntaken"] != null)) {
                     base.Tables.Add(new kerntakenDataTable(ds.Tables["kerntaken"]));
+                }
+                if ((ds.Tables["examens"] != null)) {
+                    base.Tables.Add(new examensDataTable(ds.Tables["examens"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -230,16 +230,16 @@ namespace WindowsFormsApplication1 {
                     this.tableoverzicht.InitVars();
                 }
             }
-            this.tableexamens = ((examensDataTable)(base.Tables["examens"]));
-            if ((initTable == true)) {
-                if ((this.tableexamens != null)) {
-                    this.tableexamens.InitVars();
-                }
-            }
             this.tablekerntaken = ((kerntakenDataTable)(base.Tables["kerntaken"]));
             if ((initTable == true)) {
                 if ((this.tablekerntaken != null)) {
                     this.tablekerntaken.InitVars();
+                }
+            }
+            this.tableexamens = ((examensDataTable)(base.Tables["examens"]));
+            if ((initTable == true)) {
+                if ((this.tableexamens != null)) {
+                    this.tableexamens.InitVars();
                 }
             }
         }
@@ -254,10 +254,10 @@ namespace WindowsFormsApplication1 {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableoverzicht = new overzichtDataTable();
             base.Tables.Add(this.tableoverzicht);
-            this.tableexamens = new examensDataTable();
-            base.Tables.Add(this.tableexamens);
             this.tablekerntaken = new kerntakenDataTable();
             base.Tables.Add(this.tablekerntaken);
+            this.tableexamens = new examensDataTable();
+            base.Tables.Add(this.tableexamens);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -268,13 +268,13 @@ namespace WindowsFormsApplication1 {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeexamens() {
+        private bool ShouldSerializekerntaken() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializekerntaken() {
+        private bool ShouldSerializeexamens() {
             return false;
         }
         
@@ -337,10 +337,10 @@ namespace WindowsFormsApplication1 {
         public delegate void overzichtRowChangeEventHandler(object sender, overzichtRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void examensRowChangeEventHandler(object sender, examensRowChangeEvent e);
+        public delegate void kerntakenRowChangeEventHandler(object sender, kerntakenRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void kerntakenRowChangeEventHandler(object sender, kerntakenRowChangeEvent e);
+        public delegate void examensRowChangeEventHandler(object sender, examensRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -998,457 +998,6 @@ namespace WindowsFormsApplication1 {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class examensDataTable : global::System.Data.TypedTableBase<examensRow> {
-            
-            private global::System.Data.DataColumn columnexamen_id;
-            
-            private global::System.Data.DataColumn columnexamen_vak;
-            
-            private global::System.Data.DataColumn columnexamen_nummer;
-            
-            private global::System.Data.DataColumn columnexamen_constructeur;
-            
-            private global::System.Data.DataColumn columnexamen_periode_afname;
-            
-            private global::System.Data.DataColumn columnexamen_locatie;
-            
-            private global::System.Data.DataColumn columnexamen_naam_opdracht;
-            
-            private global::System.Data.DataColumn columnexamen_status_opdracht;
-            
-            private global::System.Data.DataColumn columnexamen_kerntaak1;
-            
-            private global::System.Data.DataColumn columnexamen_kertnaak2;
-            
-            private global::System.Data.DataColumn columnexamen_kertnaak3;
-            
-            private global::System.Data.DataColumn columnexamen_kertnaak4;
-            
-            private global::System.Data.DataColumn columnexamen_kertnaak5;
-            
-            private global::System.Data.DataColumn columnexamen_kertnaak6;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public examensDataTable() {
-                this.TableName = "examens";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal examensDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected examensDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn examen_idColumn {
-                get {
-                    return this.columnexamen_id;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn examen_vakColumn {
-                get {
-                    return this.columnexamen_vak;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn examen_nummerColumn {
-                get {
-                    return this.columnexamen_nummer;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn examen_constructeurColumn {
-                get {
-                    return this.columnexamen_constructeur;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn examen_periode_afnameColumn {
-                get {
-                    return this.columnexamen_periode_afname;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn examen_locatieColumn {
-                get {
-                    return this.columnexamen_locatie;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn examen_naam_opdrachtColumn {
-                get {
-                    return this.columnexamen_naam_opdracht;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn examen_status_opdrachtColumn {
-                get {
-                    return this.columnexamen_status_opdracht;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn examen_kerntaak1Column {
-                get {
-                    return this.columnexamen_kerntaak1;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn examen_kertnaak2Column {
-                get {
-                    return this.columnexamen_kertnaak2;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn examen_kertnaak3Column {
-                get {
-                    return this.columnexamen_kertnaak3;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn examen_kertnaak4Column {
-                get {
-                    return this.columnexamen_kertnaak4;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn examen_kertnaak5Column {
-                get {
-                    return this.columnexamen_kertnaak5;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn examen_kertnaak6Column {
-                get {
-                    return this.columnexamen_kertnaak6;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public examensRow this[int index] {
-                get {
-                    return ((examensRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event examensRowChangeEventHandler examensRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event examensRowChangeEventHandler examensRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event examensRowChangeEventHandler examensRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event examensRowChangeEventHandler examensRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddexamensRow(examensRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public examensRow AddexamensRow(string examen_vak, string examen_nummer, string examen_constructeur, string examen_periode_afname, string examen_locatie, string examen_naam_opdracht, string examen_status_opdracht, int examen_kerntaak1, int examen_kertnaak2, int examen_kertnaak3, int examen_kertnaak4, int examen_kertnaak5, int examen_kertnaak6) {
-                examensRow rowexamensRow = ((examensRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        examen_vak,
-                        examen_nummer,
-                        examen_constructeur,
-                        examen_periode_afname,
-                        examen_locatie,
-                        examen_naam_opdracht,
-                        examen_status_opdracht,
-                        examen_kerntaak1,
-                        examen_kertnaak2,
-                        examen_kertnaak3,
-                        examen_kertnaak4,
-                        examen_kertnaak5,
-                        examen_kertnaak6};
-                rowexamensRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowexamensRow);
-                return rowexamensRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public examensRow FindByexamen_id(int examen_id) {
-                return ((examensRow)(this.Rows.Find(new object[] {
-                            examen_id})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                examensDataTable cln = ((examensDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new examensDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
-                this.columnexamen_id = base.Columns["examen_id"];
-                this.columnexamen_vak = base.Columns["examen_vak"];
-                this.columnexamen_nummer = base.Columns["examen_nummer"];
-                this.columnexamen_constructeur = base.Columns["examen_constructeur"];
-                this.columnexamen_periode_afname = base.Columns["examen_periode_afname"];
-                this.columnexamen_locatie = base.Columns["examen_locatie"];
-                this.columnexamen_naam_opdracht = base.Columns["examen_naam_opdracht"];
-                this.columnexamen_status_opdracht = base.Columns["examen_status_opdracht"];
-                this.columnexamen_kerntaak1 = base.Columns["examen_kerntaak1"];
-                this.columnexamen_kertnaak2 = base.Columns["examen_kertnaak2"];
-                this.columnexamen_kertnaak3 = base.Columns["examen_kertnaak3"];
-                this.columnexamen_kertnaak4 = base.Columns["examen_kertnaak4"];
-                this.columnexamen_kertnaak5 = base.Columns["examen_kertnaak5"];
-                this.columnexamen_kertnaak6 = base.Columns["examen_kertnaak6"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
-                this.columnexamen_id = new global::System.Data.DataColumn("examen_id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnexamen_id);
-                this.columnexamen_vak = new global::System.Data.DataColumn("examen_vak", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnexamen_vak);
-                this.columnexamen_nummer = new global::System.Data.DataColumn("examen_nummer", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnexamen_nummer);
-                this.columnexamen_constructeur = new global::System.Data.DataColumn("examen_constructeur", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnexamen_constructeur);
-                this.columnexamen_periode_afname = new global::System.Data.DataColumn("examen_periode_afname", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnexamen_periode_afname);
-                this.columnexamen_locatie = new global::System.Data.DataColumn("examen_locatie", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnexamen_locatie);
-                this.columnexamen_naam_opdracht = new global::System.Data.DataColumn("examen_naam_opdracht", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnexamen_naam_opdracht);
-                this.columnexamen_status_opdracht = new global::System.Data.DataColumn("examen_status_opdracht", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnexamen_status_opdracht);
-                this.columnexamen_kerntaak1 = new global::System.Data.DataColumn("examen_kerntaak1", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnexamen_kerntaak1);
-                this.columnexamen_kertnaak2 = new global::System.Data.DataColumn("examen_kertnaak2", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnexamen_kertnaak2);
-                this.columnexamen_kertnaak3 = new global::System.Data.DataColumn("examen_kertnaak3", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnexamen_kertnaak3);
-                this.columnexamen_kertnaak4 = new global::System.Data.DataColumn("examen_kertnaak4", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnexamen_kertnaak4);
-                this.columnexamen_kertnaak5 = new global::System.Data.DataColumn("examen_kertnaak5", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnexamen_kertnaak5);
-                this.columnexamen_kertnaak6 = new global::System.Data.DataColumn("examen_kertnaak6", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnexamen_kertnaak6);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnexamen_id}, true));
-                this.columnexamen_id.AutoIncrement = true;
-                this.columnexamen_id.AutoIncrementSeed = -1;
-                this.columnexamen_id.AutoIncrementStep = -1;
-                this.columnexamen_id.AllowDBNull = false;
-                this.columnexamen_id.ReadOnly = true;
-                this.columnexamen_id.Unique = true;
-                this.columnexamen_vak.MaxLength = 255;
-                this.columnexamen_nummer.MaxLength = 255;
-                this.columnexamen_constructeur.MaxLength = 255;
-                this.columnexamen_periode_afname.MaxLength = 255;
-                this.columnexamen_locatie.MaxLength = 255;
-                this.columnexamen_naam_opdracht.MaxLength = 255;
-                this.columnexamen_status_opdracht.MaxLength = 255;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public examensRow NewexamensRow() {
-                return ((examensRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new examensRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(examensRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.examensRowChanged != null)) {
-                    this.examensRowChanged(this, new examensRowChangeEvent(((examensRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.examensRowChanging != null)) {
-                    this.examensRowChanging(this, new examensRowChangeEvent(((examensRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.examensRowDeleted != null)) {
-                    this.examensRowDeleted(this, new examensRowChangeEvent(((examensRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.examensRowDeleting != null)) {
-                    this.examensRowDeleting(this, new examensRowChangeEvent(((examensRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveexamensRow(examensRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DatabaseDataSet ds = new DatabaseDataSet();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "examensDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class kerntakenDataTable : global::System.Data.TypedTableBase<kerntakenRow> {
             
             private global::System.Data.DataColumn columnkerntaak_id;
@@ -1711,6 +1260,457 @@ namespace WindowsFormsApplication1 {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "kerntakenDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class examensDataTable : global::System.Data.TypedTableBase<examensRow> {
+            
+            private global::System.Data.DataColumn columnexamen_id;
+            
+            private global::System.Data.DataColumn columnexamen_vak;
+            
+            private global::System.Data.DataColumn columnexamen_nummer;
+            
+            private global::System.Data.DataColumn columnexamen_constructeur;
+            
+            private global::System.Data.DataColumn columnexamen_periode_afname;
+            
+            private global::System.Data.DataColumn columnexamen_locatie;
+            
+            private global::System.Data.DataColumn columnexamen_naam_opdracht;
+            
+            private global::System.Data.DataColumn columnexamen_status_opdracht;
+            
+            private global::System.Data.DataColumn columnexamen_kerntaak1;
+            
+            private global::System.Data.DataColumn columnexamen_kerntaak2;
+            
+            private global::System.Data.DataColumn columnexamen_kerntaak3;
+            
+            private global::System.Data.DataColumn columnexamen_kerntaak4;
+            
+            private global::System.Data.DataColumn columnexamen_kerntaak5;
+            
+            private global::System.Data.DataColumn columnexamen_kerntaak6;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public examensDataTable() {
+                this.TableName = "examens";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal examensDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected examensDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn examen_idColumn {
+                get {
+                    return this.columnexamen_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn examen_vakColumn {
+                get {
+                    return this.columnexamen_vak;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn examen_nummerColumn {
+                get {
+                    return this.columnexamen_nummer;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn examen_constructeurColumn {
+                get {
+                    return this.columnexamen_constructeur;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn examen_periode_afnameColumn {
+                get {
+                    return this.columnexamen_periode_afname;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn examen_locatieColumn {
+                get {
+                    return this.columnexamen_locatie;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn examen_naam_opdrachtColumn {
+                get {
+                    return this.columnexamen_naam_opdracht;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn examen_status_opdrachtColumn {
+                get {
+                    return this.columnexamen_status_opdracht;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn examen_kerntaak1Column {
+                get {
+                    return this.columnexamen_kerntaak1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn examen_kerntaak2Column {
+                get {
+                    return this.columnexamen_kerntaak2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn examen_kerntaak3Column {
+                get {
+                    return this.columnexamen_kerntaak3;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn examen_kerntaak4Column {
+                get {
+                    return this.columnexamen_kerntaak4;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn examen_kerntaak5Column {
+                get {
+                    return this.columnexamen_kerntaak5;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn examen_kerntaak6Column {
+                get {
+                    return this.columnexamen_kerntaak6;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public examensRow this[int index] {
+                get {
+                    return ((examensRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event examensRowChangeEventHandler examensRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event examensRowChangeEventHandler examensRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event examensRowChangeEventHandler examensRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event examensRowChangeEventHandler examensRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddexamensRow(examensRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public examensRow AddexamensRow(string examen_vak, string examen_nummer, string examen_constructeur, string examen_periode_afname, string examen_locatie, string examen_naam_opdracht, string examen_status_opdracht, int examen_kerntaak1, int examen_kerntaak2, int examen_kerntaak3, int examen_kerntaak4, int examen_kerntaak5, int examen_kerntaak6) {
+                examensRow rowexamensRow = ((examensRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        examen_vak,
+                        examen_nummer,
+                        examen_constructeur,
+                        examen_periode_afname,
+                        examen_locatie,
+                        examen_naam_opdracht,
+                        examen_status_opdracht,
+                        examen_kerntaak1,
+                        examen_kerntaak2,
+                        examen_kerntaak3,
+                        examen_kerntaak4,
+                        examen_kerntaak5,
+                        examen_kerntaak6};
+                rowexamensRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowexamensRow);
+                return rowexamensRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public examensRow FindByexamen_id(int examen_id) {
+                return ((examensRow)(this.Rows.Find(new object[] {
+                            examen_id})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                examensDataTable cln = ((examensDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new examensDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnexamen_id = base.Columns["examen_id"];
+                this.columnexamen_vak = base.Columns["examen_vak"];
+                this.columnexamen_nummer = base.Columns["examen_nummer"];
+                this.columnexamen_constructeur = base.Columns["examen_constructeur"];
+                this.columnexamen_periode_afname = base.Columns["examen_periode_afname"];
+                this.columnexamen_locatie = base.Columns["examen_locatie"];
+                this.columnexamen_naam_opdracht = base.Columns["examen_naam_opdracht"];
+                this.columnexamen_status_opdracht = base.Columns["examen_status_opdracht"];
+                this.columnexamen_kerntaak1 = base.Columns["examen_kerntaak1"];
+                this.columnexamen_kerntaak2 = base.Columns["examen_kerntaak2"];
+                this.columnexamen_kerntaak3 = base.Columns["examen_kerntaak3"];
+                this.columnexamen_kerntaak4 = base.Columns["examen_kerntaak4"];
+                this.columnexamen_kerntaak5 = base.Columns["examen_kerntaak5"];
+                this.columnexamen_kerntaak6 = base.Columns["examen_kerntaak6"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnexamen_id = new global::System.Data.DataColumn("examen_id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnexamen_id);
+                this.columnexamen_vak = new global::System.Data.DataColumn("examen_vak", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnexamen_vak);
+                this.columnexamen_nummer = new global::System.Data.DataColumn("examen_nummer", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnexamen_nummer);
+                this.columnexamen_constructeur = new global::System.Data.DataColumn("examen_constructeur", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnexamen_constructeur);
+                this.columnexamen_periode_afname = new global::System.Data.DataColumn("examen_periode_afname", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnexamen_periode_afname);
+                this.columnexamen_locatie = new global::System.Data.DataColumn("examen_locatie", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnexamen_locatie);
+                this.columnexamen_naam_opdracht = new global::System.Data.DataColumn("examen_naam_opdracht", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnexamen_naam_opdracht);
+                this.columnexamen_status_opdracht = new global::System.Data.DataColumn("examen_status_opdracht", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnexamen_status_opdracht);
+                this.columnexamen_kerntaak1 = new global::System.Data.DataColumn("examen_kerntaak1", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnexamen_kerntaak1);
+                this.columnexamen_kerntaak2 = new global::System.Data.DataColumn("examen_kerntaak2", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnexamen_kerntaak2);
+                this.columnexamen_kerntaak3 = new global::System.Data.DataColumn("examen_kerntaak3", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnexamen_kerntaak3);
+                this.columnexamen_kerntaak4 = new global::System.Data.DataColumn("examen_kerntaak4", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnexamen_kerntaak4);
+                this.columnexamen_kerntaak5 = new global::System.Data.DataColumn("examen_kerntaak5", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnexamen_kerntaak5);
+                this.columnexamen_kerntaak6 = new global::System.Data.DataColumn("examen_kerntaak6", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnexamen_kerntaak6);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnexamen_id}, true));
+                this.columnexamen_id.AutoIncrement = true;
+                this.columnexamen_id.AutoIncrementSeed = -1;
+                this.columnexamen_id.AutoIncrementStep = -1;
+                this.columnexamen_id.AllowDBNull = false;
+                this.columnexamen_id.ReadOnly = true;
+                this.columnexamen_id.Unique = true;
+                this.columnexamen_vak.MaxLength = 255;
+                this.columnexamen_nummer.MaxLength = 255;
+                this.columnexamen_constructeur.MaxLength = 255;
+                this.columnexamen_periode_afname.MaxLength = 255;
+                this.columnexamen_locatie.MaxLength = 255;
+                this.columnexamen_naam_opdracht.MaxLength = 255;
+                this.columnexamen_status_opdracht.MaxLength = 255;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public examensRow NewexamensRow() {
+                return ((examensRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new examensRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(examensRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.examensRowChanged != null)) {
+                    this.examensRowChanged(this, new examensRowChangeEvent(((examensRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.examensRowChanging != null)) {
+                    this.examensRowChanging(this, new examensRowChangeEvent(((examensRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.examensRowDeleted != null)) {
+                    this.examensRowDeleted(this, new examensRowChangeEvent(((examensRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.examensRowDeleting != null)) {
+                    this.examensRowDeleting(this, new examensRowChangeEvent(((examensRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveexamensRow(examensRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DatabaseDataSet ds = new DatabaseDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "examensDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -2480,6 +2480,116 @@ namespace WindowsFormsApplication1 {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
+        public partial class kerntakenRow : global::System.Data.DataRow {
+            
+            private kerntakenDataTable tablekerntaken;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal kerntakenRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tablekerntaken = ((kerntakenDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int kerntaak_id {
+                get {
+                    return ((int)(this[this.tablekerntaken.kerntaak_idColumn]));
+                }
+                set {
+                    this[this.tablekerntaken.kerntaak_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string kerntaak_naam {
+                get {
+                    try {
+                        return ((string)(this[this.tablekerntaken.kerntaak_naamColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'kerntaak_naam\' in table \'kerntaken\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablekerntaken.kerntaak_naamColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string kerntaak_nummer {
+                get {
+                    try {
+                        return ((string)(this[this.tablekerntaken.kerntaak_nummerColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'kerntaak_nummer\' in table \'kerntaken\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablekerntaken.kerntaak_nummerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string kerntaak_werkprocessen {
+                get {
+                    try {
+                        return ((string)(this[this.tablekerntaken.kerntaak_werkprocessenColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'kerntaak_werkprocessen\' in table \'kerntaken\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablekerntaken.kerntaak_werkprocessenColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iskerntaak_naamNull() {
+                return this.IsNull(this.tablekerntaken.kerntaak_naamColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setkerntaak_naamNull() {
+                this[this.tablekerntaken.kerntaak_naamColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iskerntaak_nummerNull() {
+                return this.IsNull(this.tablekerntaken.kerntaak_nummerColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setkerntaak_nummerNull() {
+                this[this.tablekerntaken.kerntaak_nummerColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iskerntaak_werkprocessenNull() {
+                return this.IsNull(this.tablekerntaken.kerntaak_werkprocessenColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setkerntaak_werkprocessenNull() {
+                this[this.tablekerntaken.kerntaak_werkprocessenColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
         public partial class examensRow : global::System.Data.DataRow {
             
             private examensDataTable tableexamens;
@@ -2632,81 +2742,81 @@ namespace WindowsFormsApplication1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int examen_kertnaak2 {
+            public int examen_kerntaak2 {
                 get {
                     try {
-                        return ((int)(this[this.tableexamens.examen_kertnaak2Column]));
+                        return ((int)(this[this.tableexamens.examen_kerntaak2Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'examen_kertnaak2\' in table \'examens\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'examen_kerntaak2\' in table \'examens\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableexamens.examen_kertnaak2Column] = value;
+                    this[this.tableexamens.examen_kerntaak2Column] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int examen_kertnaak3 {
+            public int examen_kerntaak3 {
                 get {
                     try {
-                        return ((int)(this[this.tableexamens.examen_kertnaak3Column]));
+                        return ((int)(this[this.tableexamens.examen_kerntaak3Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'examen_kertnaak3\' in table \'examens\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'examen_kerntaak3\' in table \'examens\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableexamens.examen_kertnaak3Column] = value;
+                    this[this.tableexamens.examen_kerntaak3Column] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int examen_kertnaak4 {
+            public int examen_kerntaak4 {
                 get {
                     try {
-                        return ((int)(this[this.tableexamens.examen_kertnaak4Column]));
+                        return ((int)(this[this.tableexamens.examen_kerntaak4Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'examen_kertnaak4\' in table \'examens\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'examen_kerntaak4\' in table \'examens\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableexamens.examen_kertnaak4Column] = value;
+                    this[this.tableexamens.examen_kerntaak4Column] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int examen_kertnaak5 {
+            public int examen_kerntaak5 {
                 get {
                     try {
-                        return ((int)(this[this.tableexamens.examen_kertnaak5Column]));
+                        return ((int)(this[this.tableexamens.examen_kerntaak5Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'examen_kertnaak5\' in table \'examens\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'examen_kerntaak5\' in table \'examens\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableexamens.examen_kertnaak5Column] = value;
+                    this[this.tableexamens.examen_kerntaak5Column] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int examen_kertnaak6 {
+            public int examen_kerntaak6 {
                 get {
                     try {
-                        return ((int)(this[this.tableexamens.examen_kertnaak6Column]));
+                        return ((int)(this[this.tableexamens.examen_kerntaak6Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'examen_kertnaak6\' in table \'examens\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'examen_kerntaak6\' in table \'examens\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableexamens.examen_kertnaak6Column] = value;
+                    this[this.tableexamens.examen_kerntaak6Column] = value;
                 }
             }
             
@@ -2808,172 +2918,62 @@ namespace WindowsFormsApplication1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isexamen_kertnaak2Null() {
-                return this.IsNull(this.tableexamens.examen_kertnaak2Column);
+            public bool Isexamen_kerntaak2Null() {
+                return this.IsNull(this.tableexamens.examen_kerntaak2Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setexamen_kertnaak2Null() {
-                this[this.tableexamens.examen_kertnaak2Column] = global::System.Convert.DBNull;
+            public void Setexamen_kerntaak2Null() {
+                this[this.tableexamens.examen_kerntaak2Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isexamen_kertnaak3Null() {
-                return this.IsNull(this.tableexamens.examen_kertnaak3Column);
+            public bool Isexamen_kerntaak3Null() {
+                return this.IsNull(this.tableexamens.examen_kerntaak3Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setexamen_kertnaak3Null() {
-                this[this.tableexamens.examen_kertnaak3Column] = global::System.Convert.DBNull;
+            public void Setexamen_kerntaak3Null() {
+                this[this.tableexamens.examen_kerntaak3Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isexamen_kertnaak4Null() {
-                return this.IsNull(this.tableexamens.examen_kertnaak4Column);
+            public bool Isexamen_kerntaak4Null() {
+                return this.IsNull(this.tableexamens.examen_kerntaak4Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setexamen_kertnaak4Null() {
-                this[this.tableexamens.examen_kertnaak4Column] = global::System.Convert.DBNull;
+            public void Setexamen_kerntaak4Null() {
+                this[this.tableexamens.examen_kerntaak4Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isexamen_kertnaak5Null() {
-                return this.IsNull(this.tableexamens.examen_kertnaak5Column);
+            public bool Isexamen_kerntaak5Null() {
+                return this.IsNull(this.tableexamens.examen_kerntaak5Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setexamen_kertnaak5Null() {
-                this[this.tableexamens.examen_kertnaak5Column] = global::System.Convert.DBNull;
+            public void Setexamen_kerntaak5Null() {
+                this[this.tableexamens.examen_kerntaak5Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isexamen_kertnaak6Null() {
-                return this.IsNull(this.tableexamens.examen_kertnaak6Column);
+            public bool Isexamen_kerntaak6Null() {
+                return this.IsNull(this.tableexamens.examen_kerntaak6Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setexamen_kertnaak6Null() {
-                this[this.tableexamens.examen_kertnaak6Column] = global::System.Convert.DBNull;
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class kerntakenRow : global::System.Data.DataRow {
-            
-            private kerntakenDataTable tablekerntaken;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal kerntakenRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tablekerntaken = ((kerntakenDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int kerntaak_id {
-                get {
-                    return ((int)(this[this.tablekerntaken.kerntaak_idColumn]));
-                }
-                set {
-                    this[this.tablekerntaken.kerntaak_idColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string kerntaak_naam {
-                get {
-                    try {
-                        return ((string)(this[this.tablekerntaken.kerntaak_naamColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'kerntaak_naam\' in table \'kerntaken\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablekerntaken.kerntaak_naamColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string kerntaak_nummer {
-                get {
-                    try {
-                        return ((string)(this[this.tablekerntaken.kerntaak_nummerColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'kerntaak_nummer\' in table \'kerntaken\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablekerntaken.kerntaak_nummerColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string kerntaak_werkprocessen {
-                get {
-                    try {
-                        return ((string)(this[this.tablekerntaken.kerntaak_werkprocessenColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'kerntaak_werkprocessen\' in table \'kerntaken\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablekerntaken.kerntaak_werkprocessenColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Iskerntaak_naamNull() {
-                return this.IsNull(this.tablekerntaken.kerntaak_naamColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setkerntaak_naamNull() {
-                this[this.tablekerntaken.kerntaak_naamColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Iskerntaak_nummerNull() {
-                return this.IsNull(this.tablekerntaken.kerntaak_nummerColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setkerntaak_nummerNull() {
-                this[this.tablekerntaken.kerntaak_nummerColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Iskerntaak_werkprocessenNull() {
-                return this.IsNull(this.tablekerntaken.kerntaak_werkprocessenColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setkerntaak_werkprocessenNull() {
-                this[this.tablekerntaken.kerntaak_werkprocessenColumn] = global::System.Convert.DBNull;
+            public void Setexamen_kerntaak6Null() {
+                this[this.tableexamens.examen_kerntaak6Column] = global::System.Convert.DBNull;
             }
         }
         
@@ -3015,22 +3015,22 @@ namespace WindowsFormsApplication1 {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class examensRowChangeEvent : global::System.EventArgs {
+        public class kerntakenRowChangeEvent : global::System.EventArgs {
             
-            private examensRow eventRow;
+            private kerntakenRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public examensRowChangeEvent(examensRow row, global::System.Data.DataRowAction action) {
+            public kerntakenRowChangeEvent(kerntakenRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public examensRow Row {
+            public kerntakenRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -3049,22 +3049,22 @@ namespace WindowsFormsApplication1 {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class kerntakenRowChangeEvent : global::System.EventArgs {
+        public class examensRowChangeEvent : global::System.EventArgs {
             
-            private kerntakenRow eventRow;
+            private examensRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public kerntakenRowChangeEvent(kerntakenRow row, global::System.Data.DataRowAction action) {
+            public examensRowChangeEvent(examensRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public kerntakenRow Row {
+            public examensRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -3795,476 +3795,6 @@ FROM            overzicht";
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class examensTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SqlServerCe.SqlCeDataAdapter _adapter;
-        
-        private global::System.Data.SqlServerCe.SqlCeConnection _connection;
-        
-        private global::System.Data.SqlServerCe.SqlCeTransaction _transaction;
-        
-        private global::System.Data.SqlServerCe.SqlCeCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public examensTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected internal global::System.Data.SqlServerCe.SqlCeDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SqlServerCe.SqlCeConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SqlServerCe.SqlCeCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SqlServerCe.SqlCeTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected global::System.Data.SqlServerCe.SqlCeCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SqlServerCe.SqlCeDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "examens";
-            tableMapping.ColumnMappings.Add("examen_id", "examen_id");
-            tableMapping.ColumnMappings.Add("examen_vak", "examen_vak");
-            tableMapping.ColumnMappings.Add("examen_nummer", "examen_nummer");
-            tableMapping.ColumnMappings.Add("examen_constructeur", "examen_constructeur");
-            tableMapping.ColumnMappings.Add("examen_periode_afname", "examen_periode_afname");
-            tableMapping.ColumnMappings.Add("examen_locatie", "examen_locatie");
-            tableMapping.ColumnMappings.Add("examen_naam_opdracht", "examen_naam_opdracht");
-            tableMapping.ColumnMappings.Add("examen_status_opdracht", "examen_status_opdracht");
-            tableMapping.ColumnMappings.Add("examen_kerntaak1", "examen_kerntaak1");
-            tableMapping.ColumnMappings.Add("examen_kertnaak2", "examen_kertnaak2");
-            tableMapping.ColumnMappings.Add("examen_kertnaak3", "examen_kertnaak3");
-            tableMapping.ColumnMappings.Add("examen_kertnaak4", "examen_kertnaak4");
-            tableMapping.ColumnMappings.Add("examen_kertnaak5", "examen_kertnaak5");
-            tableMapping.ColumnMappings.Add("examen_kertnaak6", "examen_kertnaak6");
-            this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.SqlServerCe.SqlCeCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [examens] WHERE (([examen_id] = @Original_examen_id))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@Original_examen_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_id", global::System.Data.DataRowVersion.Original, null));
-            this._adapter.InsertCommand = new global::System.Data.SqlServerCe.SqlCeCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [examens] ([examen_vak], [examen_nummer], [examen_constructeur], [examen_periode_afname], [examen_locatie], [examen_naam_opdracht], [examen_status_opdracht], [examen_kerntaak1], [examen_kertnaak2], [examen_kertnaak3], [examen_kertnaak4], [examen_kertnaak5], [examen_kertnaak6]) VALUES (@examen_vak, @examen_nummer, @examen_constructeur, @examen_periode_afname, @examen_locatie, @examen_naam_opdracht, @examen_status_opdracht, @examen_kerntaak1, @examen_kertnaak2, @examen_kertnaak3, @examen_kertnaak4, @examen_kertnaak5, @examen_kertnaak6)";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_vak", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_vak", global::System.Data.DataRowVersion.Current, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_nummer", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_nummer", global::System.Data.DataRowVersion.Current, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_constructeur", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_constructeur", global::System.Data.DataRowVersion.Current, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_periode_afname", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_periode_afname", global::System.Data.DataRowVersion.Current, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_locatie", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_locatie", global::System.Data.DataRowVersion.Current, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_naam_opdracht", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_naam_opdracht", global::System.Data.DataRowVersion.Current, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_status_opdracht", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_status_opdracht", global::System.Data.DataRowVersion.Current, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_kerntaak1", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_kerntaak1", global::System.Data.DataRowVersion.Current, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_kertnaak2", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_kertnaak2", global::System.Data.DataRowVersion.Current, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_kertnaak3", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_kertnaak3", global::System.Data.DataRowVersion.Current, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_kertnaak4", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_kertnaak4", global::System.Data.DataRowVersion.Current, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_kertnaak5", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_kertnaak5", global::System.Data.DataRowVersion.Current, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_kertnaak6", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_kertnaak6", global::System.Data.DataRowVersion.Current, null));
-            this._adapter.UpdateCommand = new global::System.Data.SqlServerCe.SqlCeCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [examens] SET [examen_vak] = @examen_vak, [examen_nummer] = @examen_nummer, [examen_constructeur] = @examen_constructeur, [examen_periode_afname] = @examen_periode_afname, [examen_locatie] = @examen_locatie, [examen_naam_opdracht] = @examen_naam_opdracht, [examen_status_opdracht] = @examen_status_opdracht, [examen_kerntaak1] = @examen_kerntaak1, [examen_kertnaak2] = @examen_kertnaak2, [examen_kertnaak3] = @examen_kertnaak3, [examen_kertnaak4] = @examen_kertnaak4, [examen_kertnaak5] = @examen_kertnaak5, [examen_kertnaak6] = @examen_kertnaak6 WHERE (([examen_id] = @Original_examen_id))";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_vak", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_vak", global::System.Data.DataRowVersion.Current, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_nummer", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_nummer", global::System.Data.DataRowVersion.Current, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_constructeur", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_constructeur", global::System.Data.DataRowVersion.Current, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_periode_afname", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_periode_afname", global::System.Data.DataRowVersion.Current, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_locatie", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_locatie", global::System.Data.DataRowVersion.Current, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_naam_opdracht", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_naam_opdracht", global::System.Data.DataRowVersion.Current, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_status_opdracht", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_status_opdracht", global::System.Data.DataRowVersion.Current, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_kerntaak1", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_kerntaak1", global::System.Data.DataRowVersion.Current, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_kertnaak2", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_kertnaak2", global::System.Data.DataRowVersion.Current, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_kertnaak3", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_kertnaak3", global::System.Data.DataRowVersion.Current, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_kertnaak4", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_kertnaak4", global::System.Data.DataRowVersion.Current, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_kertnaak5", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_kertnaak5", global::System.Data.DataRowVersion.Current, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_kertnaak6", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_kertnaak6", global::System.Data.DataRowVersion.Current, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@Original_examen_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_id", global::System.Data.DataRowVersion.Original, null));
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SqlServerCe.SqlCeConnection();
-            this._connection.ConnectionString = global::WindowsFormsApplication1.Properties.Settings.Default.Database1ConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlServerCe.SqlCeCommand[1];
-            this._commandCollection[0] = new global::System.Data.SqlServerCe.SqlCeCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT [examen_id], [examen_vak], [examen_nummer], [examen_constructeur], [examen_periode_afname], [examen_locatie], [examen_naam_opdracht], [examen_status_opdracht], [examen_kerntaak1], [examen_kertnaak2], [examen_kertnaak3], [examen_kertnaak4], [examen_kertnaak5], [examen_kertnaak6] FROM [examens]";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DatabaseDataSet.examensDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DatabaseDataSet.examensDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            DatabaseDataSet.examensDataTable dataTable = new DatabaseDataSet.examensDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DatabaseDataSet.examensDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DatabaseDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "examens");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_examen_id) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_examen_id));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string examen_vak, string examen_nummer, string examen_constructeur, string examen_periode_afname, string examen_locatie, string examen_naam_opdracht, string examen_status_opdracht, global::System.Nullable<int> examen_kerntaak1, global::System.Nullable<int> examen_kertnaak2, global::System.Nullable<int> examen_kertnaak3, global::System.Nullable<int> examen_kertnaak4, global::System.Nullable<int> examen_kertnaak5, global::System.Nullable<int> examen_kertnaak6) {
-            if ((examen_vak == null)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(examen_vak));
-            }
-            if ((examen_nummer == null)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(examen_nummer));
-            }
-            if ((examen_constructeur == null)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(examen_constructeur));
-            }
-            if ((examen_periode_afname == null)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(examen_periode_afname));
-            }
-            if ((examen_locatie == null)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(examen_locatie));
-            }
-            if ((examen_naam_opdracht == null)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(examen_naam_opdracht));
-            }
-            if ((examen_status_opdracht == null)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(examen_status_opdracht));
-            }
-            if ((examen_kerntaak1.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((int)(examen_kerntaak1.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            if ((examen_kertnaak2.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((int)(examen_kertnaak2.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            if ((examen_kertnaak3.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[9].Value = ((int)(examen_kertnaak3.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            if ((examen_kertnaak4.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[10].Value = ((int)(examen_kertnaak4.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
-            }
-            if ((examen_kertnaak5.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[11].Value = ((int)(examen_kertnaak5.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
-            }
-            if ((examen_kertnaak6.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[12].Value = ((int)(examen_kertnaak6.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string examen_vak, string examen_nummer, string examen_constructeur, string examen_periode_afname, string examen_locatie, string examen_naam_opdracht, string examen_status_opdracht, global::System.Nullable<int> examen_kerntaak1, global::System.Nullable<int> examen_kertnaak2, global::System.Nullable<int> examen_kertnaak3, global::System.Nullable<int> examen_kertnaak4, global::System.Nullable<int> examen_kertnaak5, global::System.Nullable<int> examen_kertnaak6, int Original_examen_id) {
-            if ((examen_vak == null)) {
-                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(examen_vak));
-            }
-            if ((examen_nummer == null)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(examen_nummer));
-            }
-            if ((examen_constructeur == null)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(examen_constructeur));
-            }
-            if ((examen_periode_afname == null)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(examen_periode_afname));
-            }
-            if ((examen_locatie == null)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(examen_locatie));
-            }
-            if ((examen_naam_opdracht == null)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(examen_naam_opdracht));
-            }
-            if ((examen_status_opdracht == null)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(examen_status_opdracht));
-            }
-            if ((examen_kerntaak1.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(examen_kerntaak1.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            if ((examen_kertnaak2.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(examen_kertnaak2.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            if ((examen_kertnaak3.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(examen_kertnaak3.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            if ((examen_kertnaak4.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(examen_kertnaak4.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
-            }
-            if ((examen_kertnaak5.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(examen_kertnaak5.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
-            }
-            if ((examen_kertnaak6.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(examen_kertnaak6.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Original_examen_id));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
     public partial class kerntakenTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlServerCe.SqlCeDataAdapter _adapter;
@@ -4581,6 +4111,476 @@ FROM            overzicht";
     }
     
     /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class examensTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlServerCe.SqlCeDataAdapter _adapter;
+        
+        private global::System.Data.SqlServerCe.SqlCeConnection _connection;
+        
+        private global::System.Data.SqlServerCe.SqlCeTransaction _transaction;
+        
+        private global::System.Data.SqlServerCe.SqlCeCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public examensTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SqlServerCe.SqlCeDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlServerCe.SqlCeConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlServerCe.SqlCeCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlServerCe.SqlCeTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SqlServerCe.SqlCeCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlServerCe.SqlCeDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "examens";
+            tableMapping.ColumnMappings.Add("examen_id", "examen_id");
+            tableMapping.ColumnMappings.Add("examen_vak", "examen_vak");
+            tableMapping.ColumnMappings.Add("examen_nummer", "examen_nummer");
+            tableMapping.ColumnMappings.Add("examen_constructeur", "examen_constructeur");
+            tableMapping.ColumnMappings.Add("examen_periode_afname", "examen_periode_afname");
+            tableMapping.ColumnMappings.Add("examen_locatie", "examen_locatie");
+            tableMapping.ColumnMappings.Add("examen_naam_opdracht", "examen_naam_opdracht");
+            tableMapping.ColumnMappings.Add("examen_status_opdracht", "examen_status_opdracht");
+            tableMapping.ColumnMappings.Add("examen_kerntaak1", "examen_kerntaak1");
+            tableMapping.ColumnMappings.Add("examen_kerntaak2", "examen_kerntaak2");
+            tableMapping.ColumnMappings.Add("examen_kerntaak3", "examen_kerntaak3");
+            tableMapping.ColumnMappings.Add("examen_kerntaak4", "examen_kerntaak4");
+            tableMapping.ColumnMappings.Add("examen_kerntaak5", "examen_kerntaak5");
+            tableMapping.ColumnMappings.Add("examen_kerntaak6", "examen_kerntaak6");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlServerCe.SqlCeCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [examens] WHERE (([examen_id] = @Original_examen_id))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@Original_examen_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_id", global::System.Data.DataRowVersion.Original, null));
+            this._adapter.InsertCommand = new global::System.Data.SqlServerCe.SqlCeCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [examens] ([examen_vak], [examen_nummer], [examen_constructeur], [examen_periode_afname], [examen_locatie], [examen_naam_opdracht], [examen_status_opdracht], [examen_kerntaak1], [examen_kerntaak2], [examen_kerntaak3], [examen_kerntaak4], [examen_kerntaak5], [examen_kerntaak6]) VALUES (@examen_vak, @examen_nummer, @examen_constructeur, @examen_periode_afname, @examen_locatie, @examen_naam_opdracht, @examen_status_opdracht, @examen_kerntaak1, @examen_kerntaak2, @examen_kerntaak3, @examen_kerntaak4, @examen_kerntaak5, @examen_kerntaak6)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_vak", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_vak", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_nummer", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_nummer", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_constructeur", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_constructeur", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_periode_afname", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_periode_afname", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_locatie", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_locatie", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_naam_opdracht", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_naam_opdracht", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_status_opdracht", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_status_opdracht", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_kerntaak1", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_kerntaak1", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_kerntaak2", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_kerntaak2", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_kerntaak3", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_kerntaak3", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_kerntaak4", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_kerntaak4", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_kerntaak5", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_kerntaak5", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_kerntaak6", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_kerntaak6", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.UpdateCommand = new global::System.Data.SqlServerCe.SqlCeCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [examens] SET [examen_vak] = @examen_vak, [examen_nummer] = @examen_nummer, [examen_constructeur] = @examen_constructeur, [examen_periode_afname] = @examen_periode_afname, [examen_locatie] = @examen_locatie, [examen_naam_opdracht] = @examen_naam_opdracht, [examen_status_opdracht] = @examen_status_opdracht, [examen_kerntaak1] = @examen_kerntaak1, [examen_kerntaak2] = @examen_kerntaak2, [examen_kerntaak3] = @examen_kerntaak3, [examen_kerntaak4] = @examen_kerntaak4, [examen_kerntaak5] = @examen_kerntaak5, [examen_kerntaak6] = @examen_kerntaak6 WHERE (([examen_id] = @Original_examen_id))";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_vak", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_vak", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_nummer", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_nummer", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_constructeur", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_constructeur", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_periode_afname", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_periode_afname", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_locatie", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_locatie", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_naam_opdracht", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_naam_opdracht", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_status_opdracht", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_status_opdracht", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_kerntaak1", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_kerntaak1", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_kerntaak2", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_kerntaak2", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_kerntaak3", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_kerntaak3", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_kerntaak4", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_kerntaak4", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_kerntaak5", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_kerntaak5", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@examen_kerntaak6", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_kerntaak6", global::System.Data.DataRowVersion.Current, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@Original_examen_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "examen_id", global::System.Data.DataRowVersion.Original, null));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlServerCe.SqlCeConnection();
+            this._connection.ConnectionString = global::WindowsFormsApplication1.Properties.Settings.Default.Database1ConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlServerCe.SqlCeCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlServerCe.SqlCeCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = @"SELECT [examen_id], [examen_vak], [examen_nummer], [examen_constructeur], [examen_periode_afname], [examen_locatie], [examen_naam_opdracht], [examen_status_opdracht], [examen_kerntaak1], [examen_kerntaak2], [examen_kerntaak3], [examen_kerntaak4], [examen_kerntaak5], [examen_kerntaak6] FROM [examens]";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(DatabaseDataSet.examensDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual DatabaseDataSet.examensDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            DatabaseDataSet.examensDataTable dataTable = new DatabaseDataSet.examensDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(DatabaseDataSet.examensDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(DatabaseDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "examens");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_examen_id) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_examen_id));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(string examen_vak, string examen_nummer, string examen_constructeur, string examen_periode_afname, string examen_locatie, string examen_naam_opdracht, string examen_status_opdracht, global::System.Nullable<int> examen_kerntaak1, global::System.Nullable<int> examen_kerntaak2, global::System.Nullable<int> examen_kerntaak3, global::System.Nullable<int> examen_kerntaak4, global::System.Nullable<int> examen_kerntaak5, global::System.Nullable<int> examen_kerntaak6) {
+            if ((examen_vak == null)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(examen_vak));
+            }
+            if ((examen_nummer == null)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(examen_nummer));
+            }
+            if ((examen_constructeur == null)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(examen_constructeur));
+            }
+            if ((examen_periode_afname == null)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(examen_periode_afname));
+            }
+            if ((examen_locatie == null)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(examen_locatie));
+            }
+            if ((examen_naam_opdracht == null)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(examen_naam_opdracht));
+            }
+            if ((examen_status_opdracht == null)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(examen_status_opdracht));
+            }
+            if ((examen_kerntaak1.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((int)(examen_kerntaak1.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            if ((examen_kerntaak2.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((int)(examen_kerntaak2.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((examen_kerntaak3.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[9].Value = ((int)(examen_kerntaak3.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            if ((examen_kerntaak4.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[10].Value = ((int)(examen_kerntaak4.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            if ((examen_kerntaak5.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[11].Value = ((int)(examen_kerntaak5.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            if ((examen_kerntaak6.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[12].Value = ((int)(examen_kerntaak6.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string examen_vak, string examen_nummer, string examen_constructeur, string examen_periode_afname, string examen_locatie, string examen_naam_opdracht, string examen_status_opdracht, global::System.Nullable<int> examen_kerntaak1, global::System.Nullable<int> examen_kerntaak2, global::System.Nullable<int> examen_kerntaak3, global::System.Nullable<int> examen_kerntaak4, global::System.Nullable<int> examen_kerntaak5, global::System.Nullable<int> examen_kerntaak6, int Original_examen_id) {
+            if ((examen_vak == null)) {
+                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(examen_vak));
+            }
+            if ((examen_nummer == null)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(examen_nummer));
+            }
+            if ((examen_constructeur == null)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(examen_constructeur));
+            }
+            if ((examen_periode_afname == null)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(examen_periode_afname));
+            }
+            if ((examen_locatie == null)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(examen_locatie));
+            }
+            if ((examen_naam_opdracht == null)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(examen_naam_opdracht));
+            }
+            if ((examen_status_opdracht == null)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(examen_status_opdracht));
+            }
+            if ((examen_kerntaak1.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(examen_kerntaak1.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            if ((examen_kerntaak2.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(examen_kerntaak2.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((examen_kerntaak3.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(examen_kerntaak3.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            if ((examen_kerntaak4.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(examen_kerntaak4.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            if ((examen_kerntaak5.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(examen_kerntaak5.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            if ((examen_kerntaak6.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(examen_kerntaak6.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Original_examen_id));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+    }
+    
+    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4594,9 +4594,9 @@ FROM            overzicht";
         
         private overzichtTableAdapter _overzichtTableAdapter;
         
-        private examensTableAdapter _examensTableAdapter;
-        
         private kerntakenTableAdapter _kerntakenTableAdapter;
+        
+        private examensTableAdapter _examensTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -4632,12 +4632,12 @@ FROM            overzicht";
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public examensTableAdapter examensTableAdapter {
+        public kerntakenTableAdapter kerntakenTableAdapter {
             get {
-                return this._examensTableAdapter;
+                return this._kerntakenTableAdapter;
             }
             set {
-                this._examensTableAdapter = value;
+                this._kerntakenTableAdapter = value;
             }
         }
         
@@ -4646,12 +4646,12 @@ FROM            overzicht";
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public kerntakenTableAdapter kerntakenTableAdapter {
+        public examensTableAdapter examensTableAdapter {
             get {
-                return this._kerntakenTableAdapter;
+                return this._examensTableAdapter;
             }
             set {
-                this._kerntakenTableAdapter = value;
+                this._examensTableAdapter = value;
             }
         }
         
@@ -4678,13 +4678,13 @@ FROM            overzicht";
                             && (this._overzichtTableAdapter.Connection != null))) {
                     return this._overzichtTableAdapter.Connection;
                 }
-                if (((this._examensTableAdapter != null) 
-                            && (this._examensTableAdapter.Connection != null))) {
-                    return this._examensTableAdapter.Connection;
-                }
                 if (((this._kerntakenTableAdapter != null) 
                             && (this._kerntakenTableAdapter.Connection != null))) {
                     return this._kerntakenTableAdapter.Connection;
+                }
+                if (((this._examensTableAdapter != null) 
+                            && (this._examensTableAdapter.Connection != null))) {
+                    return this._examensTableAdapter.Connection;
                 }
                 return null;
             }
@@ -4702,10 +4702,10 @@ FROM            overzicht";
                 if ((this._overzichtTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._examensTableAdapter != null)) {
+                if ((this._kerntakenTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._kerntakenTableAdapter != null)) {
+                if ((this._examensTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -4728,21 +4728,21 @@ FROM            overzicht";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._examensTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.examens.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._examensTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._kerntakenTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.kerntaken.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._kerntakenTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._examensTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.examens.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._examensTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -4764,19 +4764,19 @@ FROM            overzicht";
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._examensTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.examens.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._examensTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._kerntakenTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.kerntaken.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._kerntakenTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._examensTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.examens.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._examensTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -4790,19 +4790,19 @@ FROM            overzicht";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(DatabaseDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._kerntakenTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.kerntaken.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._kerntakenTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._examensTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.examens.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._examensTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._kerntakenTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.kerntaken.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._kerntakenTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -4858,13 +4858,13 @@ FROM            overzicht";
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._examensTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._examensTableAdapter.Connection) == false))) {
+            if (((this._kerntakenTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._kerntakenTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._kerntakenTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._kerntakenTableAdapter.Connection) == false))) {
+            if (((this._examensTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._examensTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -4909,15 +4909,6 @@ FROM            overzicht";
                         adaptersWithAcceptChangesDuringUpdate.Add(this._overzichtTableAdapter.Adapter);
                     }
                 }
-                if ((this._examensTableAdapter != null)) {
-                    revertConnections.Add(this._examensTableAdapter, this._examensTableAdapter.Connection);
-                    this._examensTableAdapter.Connection = ((global::System.Data.SqlServerCe.SqlCeConnection)(workConnection));
-                    this._examensTableAdapter.Transaction = ((global::System.Data.SqlServerCe.SqlCeTransaction)(workTransaction));
-                    if (this._examensTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._examensTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._examensTableAdapter.Adapter);
-                    }
-                }
                 if ((this._kerntakenTableAdapter != null)) {
                     revertConnections.Add(this._kerntakenTableAdapter, this._kerntakenTableAdapter.Connection);
                     this._kerntakenTableAdapter.Connection = ((global::System.Data.SqlServerCe.SqlCeConnection)(workConnection));
@@ -4925,6 +4916,15 @@ FROM            overzicht";
                     if (this._kerntakenTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._kerntakenTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._kerntakenTableAdapter.Adapter);
+                    }
+                }
+                if ((this._examensTableAdapter != null)) {
+                    revertConnections.Add(this._examensTableAdapter, this._examensTableAdapter.Connection);
+                    this._examensTableAdapter.Connection = ((global::System.Data.SqlServerCe.SqlCeConnection)(workConnection));
+                    this._examensTableAdapter.Transaction = ((global::System.Data.SqlServerCe.SqlCeTransaction)(workTransaction));
+                    if (this._examensTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._examensTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._examensTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -4989,13 +4989,13 @@ FROM            overzicht";
                     this._overzichtTableAdapter.Connection = ((global::System.Data.SqlServerCe.SqlCeConnection)(revertConnections[this._overzichtTableAdapter]));
                     this._overzichtTableAdapter.Transaction = null;
                 }
-                if ((this._examensTableAdapter != null)) {
-                    this._examensTableAdapter.Connection = ((global::System.Data.SqlServerCe.SqlCeConnection)(revertConnections[this._examensTableAdapter]));
-                    this._examensTableAdapter.Transaction = null;
-                }
                 if ((this._kerntakenTableAdapter != null)) {
                     this._kerntakenTableAdapter.Connection = ((global::System.Data.SqlServerCe.SqlCeConnection)(revertConnections[this._kerntakenTableAdapter]));
                     this._kerntakenTableAdapter.Transaction = null;
+                }
+                if ((this._examensTableAdapter != null)) {
+                    this._examensTableAdapter.Connection = ((global::System.Data.SqlServerCe.SqlCeConnection)(revertConnections[this._examensTableAdapter]));
+                    this._examensTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];
