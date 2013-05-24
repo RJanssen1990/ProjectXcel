@@ -182,6 +182,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1000, 554);
             this.tabControl1.TabIndex = 2;
+            this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tab1_selecting);
             // 
             // tabPage1
             // 
@@ -443,9 +444,9 @@
             this.Leerroute.AutoSize = true;
             this.Leerroute.Location = new System.Drawing.Point(10, 190);
             this.Leerroute.Name = "Leerroute";
-            this.Leerroute.Size = new System.Drawing.Size(52, 13);
+            this.Leerroute.Size = new System.Drawing.Size(56, 13);
             this.Leerroute.TabIndex = 22;
-            this.Leerroute.Text = "Leerroute";
+            this.Leerroute.Text = "Leerroute*";
             this.toolTips.SetToolTip(this.Leerroute, "Het type leerroute dat gehanteerd wordt bij de opleiding.");
             // 
             // Manager
@@ -453,9 +454,9 @@
             this.Manager.AutoSize = true;
             this.Manager.Location = new System.Drawing.Point(10, 430);
             this.Manager.Name = "Manager";
-            this.Manager.Size = new System.Drawing.Size(49, 13);
+            this.Manager.Size = new System.Drawing.Size(53, 13);
             this.Manager.TabIndex = 23;
-            this.Manager.Text = "Manager";
+            this.Manager.Text = "Manager*";
             this.toolTips.SetToolTip(this.Manager, "De manager van de opleiding.");
             // 
             // Aanspreekpunt
@@ -463,9 +464,9 @@
             this.Aanspreekpunt.AutoSize = true;
             this.Aanspreekpunt.Location = new System.Drawing.Point(10, 400);
             this.Aanspreekpunt.Name = "Aanspreekpunt";
-            this.Aanspreekpunt.Size = new System.Drawing.Size(79, 13);
+            this.Aanspreekpunt.Size = new System.Drawing.Size(83, 13);
             this.Aanspreekpunt.TabIndex = 24;
-            this.Aanspreekpunt.Text = "Aanspreekpunt";
+            this.Aanspreekpunt.Text = "Aanspreekpunt*";
             this.toolTips.SetToolTip(this.Aanspreekpunt, "Het aanspreekpunt van de opleiding.");
             // 
             // ExamenProfiel
@@ -473,9 +474,9 @@
             this.ExamenProfiel.AutoSize = true;
             this.ExamenProfiel.Location = new System.Drawing.Point(10, 310);
             this.ExamenProfiel.Name = "ExamenProfiel";
-            this.ExamenProfiel.Size = new System.Drawing.Size(73, 13);
+            this.ExamenProfiel.Size = new System.Drawing.Size(77, 13);
             this.ExamenProfiel.TabIndex = 25;
-            this.ExamenProfiel.Text = "Examenprofiel";
+            this.ExamenProfiel.Text = "Examenprofiel*";
             this.toolTips.SetToolTip(this.ExamenProfiel, "Het Examenplan van de opleiding.");
             // 
             // Niveau
@@ -483,9 +484,9 @@
             this.Niveau.AutoSize = true;
             this.Niveau.Location = new System.Drawing.Point(10, 160);
             this.Niveau.Name = "Niveau";
-            this.Niveau.Size = new System.Drawing.Size(41, 13);
+            this.Niveau.Size = new System.Drawing.Size(45, 13);
             this.Niveau.TabIndex = 27;
-            this.Niveau.Text = "Niveau";
+            this.Niveau.Text = "Niveau*";
             this.toolTips.SetToolTip(this.Niveau, "Het MBO Niveau van de opleiding.");
             // 
             // KdVersie
@@ -493,9 +494,9 @@
             this.KdVersie.AutoSize = true;
             this.KdVersie.Location = new System.Drawing.Point(10, 280);
             this.KdVersie.Name = "KdVersie";
-            this.KdVersie.Size = new System.Drawing.Size(51, 13);
+            this.KdVersie.Size = new System.Drawing.Size(55, 13);
             this.KdVersie.TabIndex = 28;
-            this.KdVersie.Text = "Kd versie";
+            this.KdVersie.Text = "Kd versie*";
             this.toolTips.SetToolTip(this.KdVersie, "Dit kan afwijken van het cohort.");
             // 
             // Uitstroom
@@ -503,9 +504,9 @@
             this.Uitstroom.AutoSize = true;
             this.Uitstroom.Location = new System.Drawing.Point(10, 100);
             this.Uitstroom.Name = "Uitstroom";
-            this.Uitstroom.Size = new System.Drawing.Size(51, 13);
+            this.Uitstroom.Size = new System.Drawing.Size(55, 13);
             this.Uitstroom.TabIndex = 29;
-            this.Uitstroom.Text = "Uitstroom";
+            this.Uitstroom.Text = "Uitstroom*";
             this.toolTips.SetToolTip(this.Uitstroom, "De benaming van het uitstroomprofiel\r\nvanuit het kwalificatiedossier");
             // 
             // Cohort
@@ -513,9 +514,9 @@
             this.Cohort.AutoSize = true;
             this.Cohort.Location = new System.Drawing.Point(10, 250);
             this.Cohort.Name = "Cohort";
-            this.Cohort.Size = new System.Drawing.Size(38, 13);
+            this.Cohort.Size = new System.Drawing.Size(42, 13);
             this.Cohort.TabIndex = 30;
-            this.Cohort.Text = "Cohort";
+            this.Cohort.Text = "Cohort*";
             this.toolTips.SetToolTip(this.Cohort, "Start wanneer de student is begonnen met de\r\nopleiding (bijv. 2009).");
             // 
             // Kwalificatie
@@ -523,9 +524,9 @@
             this.Kwalificatie.AutoSize = true;
             this.Kwalificatie.Location = new System.Drawing.Point(10, 70);
             this.Kwalificatie.Name = "Kwalificatie";
-            this.Kwalificatie.Size = new System.Drawing.Size(60, 13);
+            this.Kwalificatie.Size = new System.Drawing.Size(64, 13);
             this.Kwalificatie.TabIndex = 31;
-            this.Kwalificatie.Text = "Kwalificatie";
+            this.Kwalificatie.Text = "Kwalificatie*";
             this.toolTips.SetToolTip(this.Kwalificatie, "De officiële benaming van het kwalificatiedossier voor \r\nhet betrefende jaar.");
             // 
             // Kenniscentrum
@@ -533,9 +534,9 @@
             this.Kenniscentrum.AutoSize = true;
             this.Kenniscentrum.Location = new System.Drawing.Point(10, 220);
             this.Kenniscentrum.Name = "Kenniscentrum";
-            this.Kenniscentrum.Size = new System.Drawing.Size(77, 13);
+            this.Kenniscentrum.Size = new System.Drawing.Size(81, 13);
             this.Kenniscentrum.TabIndex = 32;
-            this.Kenniscentrum.Text = "Kenniscentrum";
+            this.Kenniscentrum.Text = "Kenniscentrum*";
             this.toolTips.SetToolTip(this.Kenniscentrum, "Het kenniscentrum waartoe de opleiding behoort.");
             // 
             // OpleidingsNaam
@@ -543,9 +544,9 @@
             this.OpleidingsNaam.AutoSize = true;
             this.OpleidingsNaam.Location = new System.Drawing.Point(10, 130);
             this.OpleidingsNaam.Name = "OpleidingsNaam";
-            this.OpleidingsNaam.Size = new System.Drawing.Size(82, 13);
+            this.OpleidingsNaam.Size = new System.Drawing.Size(86, 13);
             this.OpleidingsNaam.TabIndex = 33;
-            this.OpleidingsNaam.Text = "Opleidingsnaam";
+            this.OpleidingsNaam.Text = "Opleidingsnaam*";
             this.toolTips.SetToolTip(this.OpleidingsNaam, "De opleidingsnaam zoals de naam op school\r\nwordt gehanteerd.");
             // 
             // CreboCode
@@ -553,9 +554,9 @@
             this.CreboCode.AutoSize = true;
             this.CreboCode.Location = new System.Drawing.Point(10, 40);
             this.CreboCode.Name = "CreboCode";
-            this.CreboCode.Size = new System.Drawing.Size(59, 13);
+            this.CreboCode.Size = new System.Drawing.Size(63, 13);
             this.CreboCode.TabIndex = 34;
-            this.CreboCode.Text = "Crebocode";
+            this.CreboCode.Text = "Crebocode*";
             this.toolTips.SetToolTip(this.CreboCode, "De crebocode van de uitstroom zoals vermeld\r\nis in het kwalificatiedossier van he" +
         "t juiste jaar.");
             // 
@@ -564,9 +565,9 @@
             this.PortHouder.AutoSize = true;
             this.PortHouder.Location = new System.Drawing.Point(10, 370);
             this.PortHouder.Name = "PortHouder";
-            this.PortHouder.Size = new System.Drawing.Size(92, 13);
+            this.PortHouder.Size = new System.Drawing.Size(96, 13);
             this.PortHouder.TabIndex = 34;
-            this.PortHouder.Text = "Portefeuillehouder";
+            this.PortHouder.Text = "Portefeuillehouder*";
             this.toolTips.SetToolTip(this.PortHouder, "Degene die de portefeuille van deze opleiding beheert.");
             // 
             // PortHouderBox
@@ -581,9 +582,9 @@
             this.ExamenPlan.AutoSize = true;
             this.ExamenPlan.Location = new System.Drawing.Point(10, 340);
             this.ExamenPlan.Name = "ExamenPlan";
-            this.ExamenPlan.Size = new System.Drawing.Size(69, 13);
+            this.ExamenPlan.Size = new System.Drawing.Size(73, 13);
             this.ExamenPlan.TabIndex = 25;
-            this.ExamenPlan.Text = "Examen Plan";
+            this.ExamenPlan.Text = "Examen Plan*";
             // 
             // ExamenPlanBox
             // 
@@ -1233,7 +1234,7 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
-        }
+        }        
 
         #endregion
 
@@ -1289,7 +1290,7 @@
                 this.Examen[examenAantal].Location = new System.Drawing.Point(15, 50);
                 this.Examen[examenAantal].Name = "Examen";
                 this.Examen[examenAantal].Size = new System.Drawing.Size(45, 13);
-                this.Examen[examenAantal].Text = "Examenvak";
+                this.Examen[examenAantal].Text = "Examenvak*";
                 this.toolTips.SetToolTip(this.Examen[examenAantal], "Het vak waartoe het examen behoort");
                 // 
                 // Examen Box
@@ -1304,7 +1305,7 @@
                 this.ExamenNummer[examenAantal].Location = new System.Drawing.Point(15, 80);
                 this.ExamenNummer[examenAantal].Name = "Examennummer";
                 this.ExamenNummer[examenAantal].Size = new System.Drawing.Size(84, 13);
-                this.ExamenNummer[examenAantal].Text = "Examennummer";
+                this.ExamenNummer[examenAantal].Text = "Examennummer*";
                 toolTips.SetToolTip(this.ExamenNummer[examenAantal], "Het nummer dat tot het examen behoort");
                 //
                 // Examen Nummer Box
@@ -1320,7 +1321,7 @@
                 this.Constructeur[examenAantal].Location = new System.Drawing.Point(15, 110);
                 this.Constructeur[examenAantal].Name = "Constructeur";
                 this.Constructeur[examenAantal].Size = new System.Drawing.Size(84, 13);
-                this.Constructeur[examenAantal].Text = "Constructeur";
+                this.Constructeur[examenAantal].Text = "Constructeur*";
                 toolTips.SetToolTip(this.Constructeur[examenAantal], "De Constructeur van het examen");
                 //
                 // Constructeur Box
@@ -1333,9 +1334,9 @@
                 // 
                 this.PeriodeAfname[examenAantal].AutoSize = true;
                 this.PeriodeAfname[examenAantal].Location = new System.Drawing.Point(15, 140);
-                this.PeriodeAfname[examenAantal].Name = "PeriodeAfname";
+                this.PeriodeAfname[examenAantal].Name = "PeriodeAfname*";
                 this.PeriodeAfname[examenAantal].Size = new System.Drawing.Size(82, 13);
-                this.PeriodeAfname[examenAantal].Text = "Periode Afname";
+                this.PeriodeAfname[examenAantal].Text = "Periode Afname*";
                 this.toolTips.SetToolTip(this.PeriodeAfname[examenAantal], "De periode waarin het examen wordt afgenomen.");
                 // 
                 // Periode Afname Box
@@ -1355,7 +1356,7 @@
                 this.Locatie[examenAantal].Location = new System.Drawing.Point(15, 170);
                 this.Locatie[examenAantal].Name = "Locatie";
                 this.Locatie[examenAantal].Size = new System.Drawing.Size(84, 13);
-                this.Locatie[examenAantal].Text = "Locatie";
+                this.Locatie[examenAantal].Text = "Locatie*";
                 toolTips.SetToolTip(this.Locatie[examenAantal], "De Locatie waar het examen plaats zal vinden");
                 //
                 // Locatie Box
@@ -1370,7 +1371,7 @@
                 this.NaamOpdracht[examenAantal].Location = new System.Drawing.Point(15, 200);
                 this.NaamOpdracht[examenAantal].Name = "NaamOpdracht";
                 this.NaamOpdracht[examenAantal].Size = new System.Drawing.Size(82, 13);
-                this.NaamOpdracht[examenAantal].Text = "Naam Opdracht";
+                this.NaamOpdracht[examenAantal].Text = "Naam Opdracht*";
                 this.toolTips.SetToolTip(this.NaamOpdracht[examenAantal], "De naam van de examenopdracht.");
                 // 
                 // Naam Opdracht Box
@@ -1385,7 +1386,7 @@
                 this.StatusOpdracht[examenAantal].Location = new System.Drawing.Point(15, 230);
                 this.StatusOpdracht[examenAantal].Name = "StatusOpdracht";
                 this.StatusOpdracht[examenAantal].Size = new System.Drawing.Size(84, 13);
-                this.StatusOpdracht[examenAantal].Text = "Status Opdracht";
+                this.StatusOpdracht[examenAantal].Text = "Status Opdracht*";
                 toolTips.SetToolTip(this.StatusOpdracht[examenAantal], "Het status van de examenopdracht.");
                 // 
                 // Status Opdracht Box
@@ -1493,34 +1494,35 @@
                 //
                 if (i == 0)
                 {
-                    this.KerntaakBlok[exAantal, i].Location = new System.Drawing.Point(0, 230);
+                    this.KerntaakBlok[exAantal, i].Location = new System.Drawing.Point(0, 250);
                 }
                 else
                 {
-                    this.KerntaakBlok[exAantal, i].Location = new System.Drawing.Point(0, (230 + (90 * i)));
+                    this.KerntaakBlok[exAantal, i].Location = new System.Drawing.Point(0, (250 + (89 * i)));
                 }
                 this.KerntaakBlok[exAantal, i].Name = "KerntaakBlok";
-                this.KerntaakBlok[exAantal, i].Size = new System.Drawing.Size(360, 120);
+                this.KerntaakBlok[exAantal, i].Size = new System.Drawing.Size(360, 90);
+                this.KerntaakBlok[exAantal, i].BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;                
                 // 
                 // Kerntaken Label
                 // 
                 this.Kerntaken[exAantal, i].AutoSize = true;
-                this.Kerntaken[exAantal, i].Location = new System.Drawing.Point(15, 30);
+                this.Kerntaken[exAantal, i].Location = new System.Drawing.Point(15, 5);
                 this.Kerntaken[exAantal, i].Name = "Kerntaak";
                 this.Kerntaken[exAantal, i].Size = new System.Drawing.Size(56, 13);
-                this.Kerntaken[exAantal, i].Text = "Kerntaak " + (i + 1);
-                this.toolTips.SetToolTip(this.Kerntaken[exAantal, i], "Een kerntaak die vereist is bij dit examen.");
+                this.Kerntaken[exAantal, i].Text = "Naam Kerntaak";
+                this.toolTips.SetToolTip(this.Kerntaken[exAantal, i], "De naam van een kerntaak die vereist is bij dit examen.");
                 // 
                 // Kerntaken Box
                 // 
-                this.KerntakenBox[exAantal, i].Location = new System.Drawing.Point(120, 27);
+                this.KerntakenBox[exAantal, i].Location = new System.Drawing.Point(120, 2);
                 this.KerntakenBox[exAantal, i].Name = "KerntakenBox";
                 this.KerntakenBox[exAantal, i].Size = new System.Drawing.Size(160, 20);
                 // 
                 // Kerntaak Nr Label
                 // 
                 this.KerntaakNr[exAantal, i].AutoSize = true;
-                this.KerntaakNr[exAantal, i].Location = new System.Drawing.Point(15, 60);
+                this.KerntaakNr[exAantal, i].Location = new System.Drawing.Point(15, 35);
                 this.KerntaakNr[exAantal, i].Name = "Kerntaak nr";
                 this.KerntaakNr[exAantal, i].Size = new System.Drawing.Size(56, 13);
                 this.KerntaakNr[exAantal, i].Text = "Kerntaak nr";
@@ -1528,14 +1530,14 @@
                 // 
                 // Kerntaken Nr Box
                 // 
-                this.KerntaakNrBox[exAantal, i].Location = new System.Drawing.Point(120, 57);
+                this.KerntaakNrBox[exAantal, i].Location = new System.Drawing.Point(120, 32);
                 this.KerntaakNrBox[exAantal, i].Name = "KerntakenBox";
                 this.KerntaakNrBox[exAantal, i].Size = new System.Drawing.Size(160, 20);
                 // 
                 // Werkprocessen Label
                 // 
                 this.Werkprocessen[exAantal, i].AutoSize = true;
-                this.Werkprocessen[exAantal, i].Location = new System.Drawing.Point(15, 90);
+                this.Werkprocessen[exAantal, i].Location = new System.Drawing.Point(15, 65);
                 this.Werkprocessen[exAantal, i].Name = "Werkprocessen";
                 this.Werkprocessen[exAantal, i].Size = new System.Drawing.Size(82, 13);
                 this.Werkprocessen[exAantal, i].Text = "Werkprocessen";
@@ -1543,7 +1545,7 @@
                 // 
                 // Werkprocessen Box
                 // 
-                this.WerkprocessenBox[exAantal, i].Location = new System.Drawing.Point(120, 87);
+                this.WerkprocessenBox[exAantal, i].Location = new System.Drawing.Point(120, 62);
                 this.WerkprocessenBox[exAantal, i].Name = "WerkprocessenBox";
                 this.WerkprocessenBox[exAantal, i].Size = new System.Drawing.Size(160, 20);
 

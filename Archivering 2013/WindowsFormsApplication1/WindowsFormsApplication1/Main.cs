@@ -17,7 +17,9 @@ namespace WindowsFormsApplication1
         private int huidigExamen = 0;
         private string[] savedStrings = new string[14];
         private string[] columnNames = { "Crebocode",	"Kwalificatie",	"Uitstroom",	"Opleidingsnaam",	"Niveau",	"Leerroute",	"Kenniscentrum",	"Cohort",	"KD Versie",	"Examenprofiel",	"Examenplan",	"Portefeuillehouder",	"Aanspreekpunt",	"Manager"};
-        
+        private Boolean aanpassing = false;
+
+
         public Main()
         {
             InitializeComponent();
@@ -197,6 +199,7 @@ namespace WindowsFormsApplication1
                 ExamMinButton.Visible = false;
 
                 tabControl1.SelectTab("tabPage1");
+                aanpassing = true;
             }
             else
             {
@@ -222,11 +225,26 @@ namespace WindowsFormsApplication1
             dataGridView1.Rows[rowIndex].Cells[aanspreekpuntDataGridViewTextBoxColumn.Index].Value = AanspreekBox.Text;
             dataGridView1.Rows[rowIndex].Cells[managerDataGridViewTextBoxColumn.Index].Value = ManagerBox.Text;
 
-            /*for (int i = 0; i < examen_ids.Count(); i++)
+            //examen ids
+            int[] examen_ids = new int[10];
+            examen_ids[0] = getInt(dataGridView1.Rows[rowIndex].Cells[examen1DataGridViewTextBoxColumn.Index].Value);
+            examen_ids[1] = getInt(dataGridView1.Rows[rowIndex].Cells[examen2DataGridViewTextBoxColumn.Index].Value);
+            examen_ids[2] = getInt(dataGridView1.Rows[rowIndex].Cells[examen3DataGridViewTextBoxColumn.Index].Value);
+            examen_ids[3] = getInt(dataGridView1.Rows[rowIndex].Cells[examen4DataGridViewTextBoxColumn.Index].Value);
+            examen_ids[4] = getInt(dataGridView1.Rows[rowIndex].Cells[examen5DataGridViewTextBoxColumn.Index].Value);
+            examen_ids[5] = getInt(dataGridView1.Rows[rowIndex].Cells[examen6DataGridViewTextBoxColumn.Index].Value);
+            examen_ids[6] = getInt(dataGridView1.Rows[rowIndex].Cells[examen7DataGridViewTextBoxColumn.Index].Value);
+            examen_ids[7] = getInt(dataGridView1.Rows[rowIndex].Cells[examen8DataGridViewTextBoxColumn.Index].Value);
+            examen_ids[8] = getInt(dataGridView1.Rows[rowIndex].Cells[examen9DataGridViewTextBoxColumn.Index].Value);
+            examen_ids[9] = getInt(dataGridView1.Rows[rowIndex].Cells[examen10DataGridViewTextBoxColumn.Index].Value);
+
+            
+
+            for (int i = 0; i < examen_ids.Count(); i++)
             {
                 foreach (DataGridViewRow examenRow in dataGridView2.Rows)
                 {
-                    if (Convert.ToInt32(r.Cells[examenidDataGridViewTextBoxColumn.Index].Value) == examen_ids[i])
+                    if (Convert.ToInt32(examenRow.Cells[examenidDataGridViewTextBoxColumn.Index].Value) == examen_ids[i])
                     {
                         examenRow.Cells[examenvakDataGridViewTextBoxColumn.Index].Value = ExamenBox[i].Text;
                         examenRow.Cells[examennummerDataGridViewTextBoxColumn.Index].Value = ExamenNummerBox[i].Text;
@@ -235,9 +253,31 @@ namespace WindowsFormsApplication1
                         examenRow.Cells[examenlocatieDataGridViewTextBoxColumn.Index].Value = LocatieBox[i].Text;
                         examenRow.Cells[examennaamopdrachtDataGridViewTextBoxColumn.Index].Value = NaamOpdrachtBox[i].Text;
                         examenRow.Cells[examenstatusopdrachtDataGridViewTextBoxColumn.Index].Value = StatusOpdrachtBox[i].Text;
+
+                        int[] kerntaken_ids = new int[6];
+
+                        kerntaken_ids[0] = getInt(examenRow.Cells[examenkerntaak1DataGridViewTextBoxColumn.Index].Value);
+                        kerntaken_ids[1] = getInt(examenRow.Cells[examenkerntaak2DataGridViewTextBoxColumn.Index].Value);
+                        kerntaken_ids[2] = getInt(examenRow.Cells[examenkerntaak3DataGridViewTextBoxColumn.Index].Value);
+                        kerntaken_ids[3] = getInt(examenRow.Cells[examenkerntaak4DataGridViewTextBoxColumn.Index].Value);
+                        kerntaken_ids[4] = getInt(examenRow.Cells[examenkerntaak5DataGridViewTextBoxColumn.Index].Value);
+                        kerntaken_ids[5] = getInt(examenRow.Cells[examenkerntaak6DataGridViewTextBoxColumn.Index].Value);
+
+                        for (int j = 0; j < kerntaken_ids.Count(); j++)
+                        {
+                            foreach (DataGridViewRow kerntaakRow in dataGridView3.Rows)
+                            {
+                                if(Convert.ToInt32(kerntaakRow.Cells[kerntaakidDataGridViewTextBoxColumn.Index].Value) == kerntaken_ids[j])
+                                {
+                                    kerntaakRow.Cells[kerntaaknaamDataGridViewTextBoxColumn.Index].Value = KerntakenBox[i,j].Text;
+                                    kerntaakRow.Cells[kerntaaknummerDataGridViewTextBoxColumn.Index].Value = KerntaakNrBox[i,j].Text;
+                                    kerntaakRow.Cells[kerntaakwerkprocessenDataGridViewTextBoxColumn.Index].Value = WerkprocessenBox[i,j].Text;
+                                }
+                            }
+                        }
                     }
                 }
-            }*/
+            }
 
             updateDatabase();
 
@@ -247,7 +287,9 @@ namespace WindowsFormsApplication1
             ExamPlusButton.Visible = true;
             ExamMinButton.Visible = true;
             resetExams();
+            clearForm(tabPage1);
             tabControl1.SelectTab("tabPage2");
+            aanpassing = false;
         }
 
         private void buttonOpslaan_Click(object sender, EventArgs e)
@@ -374,23 +416,8 @@ namespace WindowsFormsApplication1
             {
                 tabControl1.SelectTab("tabPage2");
             }
-            else
-            {
-                OpleidingBox.Clear();
-                CreboBox.Clear();
-                KwalificatieBox.Clear();
-                UitstroomBox.Clear();
-                NiveauBox.SelectedIndex = -1;
-                LeerrouteBox.SelectedIndex = -1;
-                KenniscentrumBox.SelectedIndex = -1; KenniscentrumBox.Text = "";
-                CohortBox.Clear();
-                KdVersieBox.Clear();
-                ExamenProfielBox.SelectedIndex = -1; ExamenProfielBox.Text = "";
-                ExamenPlanBox.Clear();
-                PortHouderBox.Clear();
-                AanspreekBox.Clear();
-                ManagerBox.Clear();
-            }
+            // Het form wordt gereset naar lege staat.
+            clearForm(tabPage1);            
             resetExams();
         }
 
@@ -640,5 +667,43 @@ namespace WindowsFormsApplication1
             int.TryParse(value.ToString(), out newValue);
             return newValue;
         }
+
+        private void clearForm(Control control)
+        {
+            foreach (Control c in control.Controls) //Loopt alle controls door die in een formelement zitten.
+            {
+                if (c.GetType() == typeof(TextBox)) //Als het element een textbox is wordt deze leeg gemaakt
+                {
+                    ((TextBox)c).Clear();
+                }
+                if (c.GetType() == typeof(ComboBox)) //Als het element een combobox is wordt deze teruggezet op het lege veld en text leeggehaald mocht dit ingevoerd kunnen worden.
+                {
+                    ((ComboBox)c).SelectedIndex = -1;
+                    if (((ComboBox)c).DropDownStyle == System.Windows.Forms.ComboBoxStyle.DropDown)
+                    {
+                        ((ComboBox)c).Text = "";
+                    }
+                }
+                if (c.HasChildren) // Als een element zelf elementen bevat wordt deze functie nog een keer uitgevoerd voor dat element
+                {
+                    clearForm(c);
+                }
+            }            
+        }
+
+        private void tab1_selecting(object sender, System.Windows.Forms.TabControlCancelEventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 0 && aanpassing == true)
+            {
+                OpslaanButton.Click += new System.EventHandler(buttonOpslaan_Click);
+                OpslaanButton.Click -= new System.EventHandler(aanpassenOpslaan);
+                OpslaanPlusButton.Visible = true;
+                ExamPlusButton.Visible = true;
+                ExamMinButton.Visible = true;
+                resetExams();
+                clearForm(tabPage1);
+                aanpassing = false;
+            }
+        }      
     }
 }
