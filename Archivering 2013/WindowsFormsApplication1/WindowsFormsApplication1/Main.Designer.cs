@@ -33,6 +33,8 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.emptyCheckBox = new System.Windows.Forms.CheckBox();
+            this.InformatieText = new System.Windows.Forms.Label();
             this.PrevExamButton = new System.Windows.Forms.Button();
             this.nextExamButton = new System.Windows.Forms.Button();
             this.ExamPlusButton = new System.Windows.Forms.Button();
@@ -91,6 +93,7 @@
             this.examenkerntaak4DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.examenkerntaak5DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.examenkerntaak6DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.examenOpmerkingenDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.examensBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -148,6 +151,7 @@
             this.kerntakenTableAdapter = new WindowsFormsApplication1.DatabaseDataSetTableAdapters.kerntakenTableAdapter();
             this.overzichtTableAdapter = new WindowsFormsApplication1.DatabaseDataSetTableAdapters.overzichtTableAdapter();
             this.examensTableAdapter = new WindowsFormsApplication1.DatabaseDataSetTableAdapters.examensTableAdapter();
+            this.examenoverzichtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -186,6 +190,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.emptyCheckBox);
+            this.tabPage1.Controls.Add(this.InformatieText);
             this.tabPage1.Controls.Add(this.PrevExamButton);
             this.tabPage1.Controls.Add(this.nextExamButton);
             this.tabPage1.Controls.Add(this.ExamPlusButton);
@@ -228,6 +234,25 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Formulier";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // emptyCheckBox
+            // 
+            this.emptyCheckBox.AutoSize = true;
+            this.emptyCheckBox.Location = new System.Drawing.Point(14, 496);
+            this.emptyCheckBox.Name = "emptyCheckBox";
+            this.emptyCheckBox.Size = new System.Drawing.Size(182, 17);
+            this.emptyCheckBox.TabIndex = 36;
+            this.emptyCheckBox.Text = "Na invoer velden niet leegmaken";
+            this.emptyCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // InformatieText
+            // 
+            this.InformatieText.AutoSize = true;
+            this.InformatieText.Location = new System.Drawing.Point(397, 501);
+            this.InformatieText.Name = "InformatieText";
+            this.InformatieText.Size = new System.Drawing.Size(275, 13);
+            this.InformatieText.TabIndex = 35;
+            this.InformatieText.Text = "Alle velden met een * moeten verplicht ingevuld worden. ";
             // 
             // PrevExamButton
             // 
@@ -679,7 +704,8 @@
             this.examenkerntaak3DataGridViewTextBoxColumn,
             this.examenkerntaak4DataGridViewTextBoxColumn,
             this.examenkerntaak5DataGridViewTextBoxColumn,
-            this.examenkerntaak6DataGridViewTextBoxColumn});
+            this.examenkerntaak6DataGridViewTextBoxColumn,
+            this.examenOpmerkingenDataGridViewTextBoxColumn});
             this.dataGridView2.DataSource = this.examensBindingSource;
             this.dataGridView2.Location = new System.Drawing.Point(518, 28);
             this.dataGridView2.Name = "dataGridView2";
@@ -772,6 +798,12 @@
             this.examenkerntaak6DataGridViewTextBoxColumn.DataPropertyName = "examen_kerntaak6";
             this.examenkerntaak6DataGridViewTextBoxColumn.HeaderText = "examen_kerntaak6";
             this.examenkerntaak6DataGridViewTextBoxColumn.Name = "examenkerntaak6DataGridViewTextBoxColumn";
+            // 
+            // examenOpmerkingenDataGridViewTextBoxColumn
+            // 
+            this.examenOpmerkingenDataGridViewTextBoxColumn.DataPropertyName = "examen_opmerkingen";
+            this.examenOpmerkingenDataGridViewTextBoxColumn.HeaderText = "examen_opmerkingen";
+            this.examenOpmerkingenDataGridViewTextBoxColumn.Name = "examenOpmerkingenDataGridViewTextBoxColumn";
             // 
             // examensBindingSource
             // 
@@ -1164,9 +1196,10 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.toolStripMenuItem2,
-            this.aanpassenToolStripMenuItem});
+            this.aanpassenToolStripMenuItem,
+            this.examenoverzichtToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(174, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(174, 114);
             // 
             // toolStripMenuItem1
             // 
@@ -1200,6 +1233,13 @@
             // examensTableAdapter
             // 
             this.examensTableAdapter.ClearBeforeFill = true;
+            // 
+            // examenoverzichtToolStripMenuItem
+            // 
+            this.examenoverzichtToolStripMenuItem.Name = "examenoverzichtToolStripMenuItem";
+            this.examenoverzichtToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.examenoverzichtToolStripMenuItem.Text = "Examenoverzicht..";
+            this.examenoverzichtToolStripMenuItem.Click += new System.EventHandler(this.examenoverzichtToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -1259,6 +1299,10 @@
                 NaamOpdrachtBox[examenAantal] = new System.Windows.Forms.TextBox();
                 StatusOpdracht[examenAantal] = new System.Windows.Forms.Label();
                 StatusOpdrachtBox[examenAantal] = new System.Windows.Forms.ComboBox();
+                OpmerkingLabel[examenAantal] = new System.Windows.Forms.Label();
+                OpmerkingBox[examenAantal] = new System.Windows.Forms.RichTextBox();
+
+
 
                 // 
                 // Examen Blok
@@ -1392,8 +1436,7 @@
                 // Status Opdracht Box
                 // 
                 this.StatusOpdrachtBox[examenAantal].FormattingEnabled = true;
-                this.StatusOpdrachtBox[examenAantal].Items.AddRange(new object[] {
-            
+                this.StatusOpdrachtBox[examenAantal].Items.AddRange(new object[] {            
                 "Niet aanwezig",
                 "Geconstrueerd",
                 "Gecontroleerd",
@@ -1401,6 +1444,21 @@
                 this.StatusOpdrachtBox[examenAantal].Location = new System.Drawing.Point(120, 227);
                 this.StatusOpdrachtBox[examenAantal].Name = "StatusOpdrachtBox";
                 this.StatusOpdrachtBox[examenAantal].Size = new System.Drawing.Size(160, 21);
+                //
+                // Opmerking label
+                //
+                this.OpmerkingLabel[examenAantal].AutoSize = true;
+                this.OpmerkingLabel[examenAantal].Location = new System.Drawing.Point(15, 260);
+                this.OpmerkingLabel[examenAantal].Name = "OpmerkingLabel";
+                this.OpmerkingLabel[examenAantal].Size = new System.Drawing.Size(84, 13);
+                this.OpmerkingLabel[examenAantal].Text = "Opmerkingen";
+                toolTips.SetToolTip(this.OpmerkingLabel[examenAantal], "Hier kunt u opmerkingen plaatsen die van toepassing zijn op dit examen.");
+                //
+                // Opmerking Textbox
+                //
+                this.OpmerkingBox[examenAantal].Location = new System.Drawing.Point(120, 257);
+                this.OpmerkingBox[examenAantal].Name = "OpmerkingBox";
+                this.OpmerkingBox[examenAantal].Size = new System.Drawing.Size(160, 40);
 
 
                 // De elementen worden toegevoegd aan de userinterface
@@ -1420,6 +1478,8 @@
                 this.ExamenBlok[examenAantal].Controls.Add(this.NaamOpdrachtBox[examenAantal]);
                 this.ExamenBlok[examenAantal].Controls.Add(this.StatusOpdracht[examenAantal]);
                 this.ExamenBlok[examenAantal].Controls.Add(this.StatusOpdrachtBox[examenAantal]);
+                this.ExamenBlok[examenAantal].Controls.Add(this.OpmerkingLabel[examenAantal]);
+                this.ExamenBlok[examenAantal].Controls.Add(this.OpmerkingBox[examenAantal]);
 
                 // Voert de functie uit om kerntaken toe te voegen
                 kerntaakPlus(examenAantal);
@@ -1494,11 +1554,11 @@
                 //
                 if (i == 0)
                 {
-                    this.KerntaakBlok[exAantal, i].Location = new System.Drawing.Point(0, 250);
+                    this.KerntaakBlok[exAantal, i].Location = new System.Drawing.Point(0, 300);
                 }
                 else
                 {
-                    this.KerntaakBlok[exAantal, i].Location = new System.Drawing.Point(0, (250 + (89 * i)));
+                    this.KerntaakBlok[exAantal, i].Location = new System.Drawing.Point(0, (300 + (89 * i)));
                 }
                 this.KerntaakBlok[exAantal, i].Name = "KerntaakBlok";
                 this.KerntaakBlok[exAantal, i].Size = new System.Drawing.Size(360, 90);
@@ -1541,7 +1601,7 @@
                 this.Werkprocessen[exAantal, i].Name = "Werkprocessen";
                 this.Werkprocessen[exAantal, i].Size = new System.Drawing.Size(82, 13);
                 this.Werkprocessen[exAantal, i].Text = "Werkprocessen";
-                this.toolTips.SetToolTip(this.Werkprocessen[exAantal, i], "De werkprocessen die vereist zijn bij dit examen.");
+                this.toolTips.SetToolTip(this.Werkprocessen[exAantal, i], "De werkprocessen die vereist zijn bij dit examen. Gescheiden met een ;");
                 // 
                 // Werkprocessen Box
                 // 
@@ -1559,6 +1619,8 @@
             }
 
         }
+
+        
 
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.TabControl tabControl1;
@@ -1652,6 +1714,10 @@
         private System.Windows.Forms.TextBox[] ConstructeurBox = new System.Windows.Forms.TextBox[10];
         private System.Windows.Forms.TextBox[] LocatieBox = new System.Windows.Forms.TextBox[10];
         private System.Windows.Forms.TextBox[] ExamenNummerBox = new System.Windows.Forms.TextBox[10];
+        private System.Windows.Forms.Label[] OpmerkingLabel = new System.Windows.Forms.Label[10];
+        private System.Windows.Forms.RichTextBox[] OpmerkingBox = new System.Windows.Forms.RichTextBox[10];
+
+
         private DatabaseDataSet databaseDataSet;
         private System.Windows.Forms.BindingSource overzichtBindingSource;
         private DatabaseDataSetTableAdapters.overzichtTableAdapter overzichtTableAdapter;
@@ -1686,6 +1752,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn examen10DataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource examensBindingSource;
         private DatabaseDataSetTableAdapters.examensTableAdapter examensTableAdapter;
+        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn kerntaakidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn kerntaaknaamDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn kerntaaknummerDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn kerntaakwerkprocessenDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label InformatieText;
         private System.Windows.Forms.DataGridViewTextBoxColumn examenidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn examenvakDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn examennummerDataGridViewTextBoxColumn;
@@ -1700,10 +1772,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn examenkerntaak4DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn examenkerntaak5DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn examenkerntaak6DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn kerntaakidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn kerntaaknaamDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn kerntaaknummerDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn kerntaakwerkprocessenDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn examenOpmerkingenDataGridViewTextBoxColumn;
+        private System.Windows.Forms.CheckBox emptyCheckBox;
+        private System.Windows.Forms.ToolStripMenuItem examenoverzichtToolStripMenuItem;
     }
 }

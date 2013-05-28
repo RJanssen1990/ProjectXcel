@@ -78,6 +78,12 @@
     <Compile Include="ExcelStatus.Designer.cs">
       <DependentUpon>ExcelStatus.cs</DependentUpon>
     </Compile>
+    <Compile Include="Examenoverzicht.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Examenoverzicht.Designer.cs">
+      <DependentUpon>Examenoverzicht.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +94,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ExcelStatus.resx">
       <DependentUpon>ExcelStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Examenoverzicht.resx">
+      <DependentUpon>Examenoverzicht.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.nl-NL.resx">
       <DependentUpon>Main.cs</DependentUpon>
