@@ -146,12 +146,12 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.aanpassenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.examenoverzichtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.toolTips = new System.Windows.Forms.ToolTip(this.components);
             this.kerntakenTableAdapter = new WindowsFormsApplication1.DatabaseDataSetTableAdapters.kerntakenTableAdapter();
             this.overzichtTableAdapter = new WindowsFormsApplication1.DatabaseDataSetTableAdapters.overzichtTableAdapter();
             this.examensTableAdapter = new WindowsFormsApplication1.DatabaseDataSetTableAdapters.examensTableAdapter();
-            this.examenoverzichtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -1199,7 +1199,7 @@
             this.aanpassenToolStripMenuItem,
             this.examenoverzichtToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(174, 114);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(174, 92);
             // 
             // toolStripMenuItem1
             // 
@@ -1222,6 +1222,13 @@
             this.aanpassenToolStripMenuItem.Text = "Aanpassen..";
             this.aanpassenToolStripMenuItem.Click += new System.EventHandler(this.aanpassen_Click);
             // 
+            // examenoverzichtToolStripMenuItem
+            // 
+            this.examenoverzichtToolStripMenuItem.Name = "examenoverzichtToolStripMenuItem";
+            this.examenoverzichtToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.examenoverzichtToolStripMenuItem.Text = "Examenoverzicht..";
+            this.examenoverzichtToolStripMenuItem.Click += new System.EventHandler(this.examenoverzichtToolStripMenuItem_Click);
+            // 
             // kerntakenTableAdapter
             // 
             this.kerntakenTableAdapter.ClearBeforeFill = true;
@@ -1233,13 +1240,6 @@
             // examensTableAdapter
             // 
             this.examensTableAdapter.ClearBeforeFill = true;
-            // 
-            // examenoverzichtToolStripMenuItem
-            // 
-            this.examenoverzichtToolStripMenuItem.Name = "examenoverzichtToolStripMenuItem";
-            this.examenoverzichtToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.examenoverzichtToolStripMenuItem.Text = "Examenoverzicht..";
-            this.examenoverzichtToolStripMenuItem.Click += new System.EventHandler(this.examenoverzichtToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -1313,7 +1313,8 @@
                 }
                 else
                 {
-                    this.ExamenBlok[examenAantal].Location = new System.Drawing.Point(this.ExamenPaneel.AutoScrollPosition.X + (350 * examenAantal), this.ExamenPaneel.AutoScrollPosition.Y);
+                    this.ExamenPaneel.AutoScrollPosition = new System.Drawing.Point(0,0);
+                    this.ExamenBlok[examenAantal].Location = new System.Drawing.Point((360 * examenAantal), this.ExamenPaneel.AutoScrollPosition.Y);
                 }
                 this.ExamenBlok[examenAantal].Name = "ExamenBlok";
                 //this.ExamenBlok[examenAantal].Size = new System.Drawing.Size(320, 800);

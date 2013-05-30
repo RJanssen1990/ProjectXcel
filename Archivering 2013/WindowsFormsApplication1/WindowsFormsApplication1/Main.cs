@@ -18,8 +18,7 @@ namespace WindowsFormsApplication1
         private string[] savedStrings = new string[14];
         private string[] columnNames = { "Crebocode", "Kwalificatie", "Uitstroom", "Opleidingsnaam", "Niveau", "Leerroute", "Kenniscentrum", "Cohort", "KD Versie", "Examenprofiel", "Examenplan", "Portefeuillehouder", "Aanspreekpunt", "Manager" };
         private Boolean aanpassing = false;
-
-
+        
         public Main()
         {
             InitializeComponent();
@@ -146,8 +145,7 @@ namespace WindowsFormsApplication1
                     if (examen_ids[i] != 0)
                     {
                         if (i == 1 || i > 1)
-                        {
-                            MessageBox.Show(i.ToString() + " examenAantal: " + examenAantal.ToString());
+                        {                            
                             examenPlus();
                         }
 
@@ -762,7 +760,7 @@ namespace WindowsFormsApplication1
 
         private void examenoverzichtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           Examenoverzicht scherm = new Examenoverzicht(dataGridView1.CurrentRow.Index,opleidingDataGridViewTextBoxColumn.Index);
+           Examenoverzicht scherm = new Examenoverzicht(dataGridView1.CurrentRow.Index,opleidingDataGridViewTextBoxColumn.Index,databaseDataSet);
            scherm.Show();
         }
     }   
