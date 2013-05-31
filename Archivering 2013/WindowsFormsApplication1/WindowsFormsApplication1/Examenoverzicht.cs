@@ -17,7 +17,8 @@ namespace WindowsFormsApplication1
         private DatabaseDataSet data;
         Dictionary<string, int> kerntaken = new Dictionary<string, int>();
         Dictionary<string, int> examens = new Dictionary<string, int>(); 
-
+        string[] gegevens_examen = new string[8];
+        string[] gegevens_kerntaken = new string[3];
 
         public Examenoverzicht(int rowIndex, int opleidingColumnIndex, DatabaseDataSet dc)
         {
@@ -25,15 +26,16 @@ namespace WindowsFormsApplication1
             InitializeComponent();
             this.rowIndex = rowIndex;
             this.opleidingColumnIndex = opleidingColumnIndex;
-            LeesGegevens();
-            
+            LeesGegevens();            
         }
 
         private void LeesGegevens()
         {
             string opleidingsnaam = data.overzicht.Rows[rowIndex][opleidingColumnIndex].ToString();
+            this.Text = "Examenoverzicht " + opleidingsnaam;
 
             int[] examen_ids = new int[10];
+            
 
             TreeNode root = new System.Windows.Forms.TreeNode(opleidingsnaam);
             
@@ -45,6 +47,7 @@ namespace WindowsFormsApplication1
                 {
                     TreeNode examen = new TreeNode("Examen " + (i + 1));
                     int[] kerntaken_ids = new int[6];
+                    
                     
                         foreach(DatabaseDataSet.examensRow r in data.examens.Rows) 
                         {
@@ -69,19 +72,15 @@ namespace WindowsFormsApplication1
                                         kerntaak.Name = "kerntaak";
                                         examen.Nodes.Add(kerntaak);
                                         kerntaken.Add("Kerntaak " + kerntaak_nummers[j],kerntaken_ids[j]);
-                                    }
-                                
+                                    }                                    
+                                }
                             }
                         }
-                    }
                     examen.Name = "examen";
                     root.Nodes.Add(examen);
                     examens.Add("Examen " + (i + 1), examen_ids[i]);
                 }                
-            }            
-
-            
-            
+            } 
 
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             root});
@@ -114,12 +113,35 @@ namespace WindowsFormsApplication1
 
         private void setExamenInfo(int id)
         {
-
+            foreach (DatabaseDataSet.examensRow r in data.examens.Rows)
+            {
+                if (id == r.examen_id)
+                {
+                    gegevens_examen[0] = r.examen_vak;
+                    gegevens_examen[1] = r.examen_nummer;
+                    gegevens_examen[2] = r.examen_constructeur;
+                    gegevens_examen[3] = r.examen_periode_afname;
+                    gegevens_examen[4] = r.examen_locatie;
+                    gegevens_examen[5] = r.examen_naam_opdracht;
+                    gegevens_examen[6] = r.examen_status_opdracht;
+                    gegevens_examen[7] = r.examen_opmerkingen;
+                    VulInfoExamen();
+                }
+            }
         }
 
         private void setKerntaakInfo(int id)
         {
-
+            foreach (DatabaseDataSet.kerntakenRow r in data.kerntaken.Rows)
+            {
+                if (id == r.kerntaak_id)
+                {
+                    gegevens_kerntaken[0] = r.kerntaak_naam;
+                    gegevens_kerntaken[1] = r.kerntaak_nummer;
+                    gegevens_kerntaken[2] = r.kerntaak_werkprocessen;
+                    VulInfoKerntaken();
+                }
+            }
         }
 
         private void Node_DoubleClick(object sender, TreeViewCancelEventArgs e)
