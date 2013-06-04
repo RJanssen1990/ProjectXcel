@@ -59,11 +59,10 @@
             this.ClientSize = new System.Drawing.Size(532, 448);
             this.Controls.Add(this.Infotext);
             this.Controls.Add(this.treeView1);
-            this.Name = "Examenoverzicht ";            
+            this.Name = "Examenoverzicht";            
             this.ResumeLayout(false);
 
             maakElementen();
-
         }      
 
         #endregion

@@ -478,19 +478,19 @@ namespace WindowsFormsApplication1
 
             int row = 1;
             int c = 1;
-            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            for (int i = 1; i < dataGridView1.Columns.Count; i++)
             {
-                if (column.Visible == true)
-                    xlWorkSheet.Cells[1, c] = column.HeaderText;
-                c++;
+                if (dataGridView1.Columns[i].Visible == true)
+                    xlWorkSheet.Cells[1, i] = dataGridView1.Columns[i].HeaderText;
+                
             }
             foreach (DataGridViewRow itemRow in dataGridView1.Rows)
             {
-                for (int column = 0; column < dataGridView1.Columns.Count; column++)
+                for (int column = 1; column < dataGridView1.Columns.Count; column++)
                 {
                     if (itemRow.Cells[column].Visible == true)
                     {
-                        xlWorkSheet.Cells[row + 1, column + 1] = itemRow.Cells[column].Value;
+                        xlWorkSheet.Cells[row + 1, column] = itemRow.Cells[column].Value;
                     }
                 }
                 row++;
