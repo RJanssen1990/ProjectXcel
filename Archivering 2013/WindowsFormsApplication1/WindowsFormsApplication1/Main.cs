@@ -67,8 +67,10 @@ namespace WindowsFormsApplication1
 
         private void showContextMenuStrip(object sender, DataGridViewRowContextMenuStripNeededEventArgs e)
         {
+            int index = dataGridView1.CurrentRow.Index;
             dataGridView1.ClearSelection();
-            dataGridView1.Rows[e.RowIndex].Selected = true;
+            dataGridView1.Rows[index].Selected = true;
+            
             e.ContextMenuStrip = contextMenuStrip1;
         }
 
@@ -102,7 +104,6 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show("Er kan maar één rij worden geselecteerd");
             }
-
         }
 
         private void aanpassen_Click(object sender, EventArgs e)
@@ -762,6 +763,17 @@ namespace WindowsFormsApplication1
         {
            Examenoverzicht scherm = new Examenoverzicht(dataGridView1.CurrentRow.Index,opleidingDataGridViewTextBoxColumn.Index,databaseDataSet);
            scherm.Show();
+        }
+
+        private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            Examenoverzicht scherm = new Examenoverzicht(dataGridView1.CurrentRow.Index, opleidingDataGridViewTextBoxColumn.Index, databaseDataSet);
+            scherm.Show();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }   
 }

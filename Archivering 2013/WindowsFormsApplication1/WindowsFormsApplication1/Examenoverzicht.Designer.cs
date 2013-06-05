@@ -61,8 +61,6 @@
             this.Controls.Add(this.treeView1);
             this.Name = "Examenoverzicht";            
             this.ResumeLayout(false);
-
-            maakElementen();
         }      
 
         #endregion
@@ -80,13 +78,15 @@
                 this.examenLabel[i].Location = new System.Drawing.Point(15, 15 + (i * 30));
                 this.examenLabel[i].Name = "ExamenLabel" + i;
                 this.examenLabel[i].Size = new System.Drawing.Size(82, 13);
+                this.examenLabel[i].Font = new System.Drawing.Font("Microsoft Sans Serif", 11, System.Drawing.FontStyle.Underline);
                 //
                 // Text examen
                 //
                 this.examenInfo[i].AutoSize = true;
-                this.examenInfo[i].Location = new System.Drawing.Point(120, 15 + (i * 30));
+                this.examenInfo[i].Location = new System.Drawing.Point(150, 15 + (i * 30));
                 this.examenInfo[i].Name = "ExamenInfo" + i;
                 this.examenInfo[i].Size = new System.Drawing.Size(82, 13);
+                this.examenInfo[i].Font = new System.Drawing.Font("Microsoft Sans Serif", 11);
 
                 this.Infotext.Controls.Add(this.examenLabel[i]);
                 this.Infotext.Controls.Add(this.examenInfo[i]);
@@ -101,20 +101,36 @@
                     this.kerntaakLabel[i].Location = new System.Drawing.Point(15, 15 + (i * 30));
                     this.kerntaakLabel[i].Name = "KerntaakLabel" + i;
                     this.kerntaakLabel[i].Size = new System.Drawing.Size(82, 13);
+                    this.kerntaakLabel[i].Font = new System.Drawing.Font("Microsoft Sans Serif", 11, System.Drawing.FontStyle.Underline);
                     //
                     // Text kerntaken
                     //
                     this.kerntaakInfo[i].AutoSize = true;
-                    this.kerntaakInfo[i].Location = new System.Drawing.Point(120, 15 + (i * 30));
+                    this.kerntaakInfo[i].Location = new System.Drawing.Point(150, 15 + (i * 30));
                     this.kerntaakInfo[i].Name = "KerntaakInfo" + i;
                     this.kerntaakInfo[i].Size = new System.Drawing.Size(82, 13);
+                    this.kerntaakInfo[i].Font = new System.Drawing.Font("Microsoft Sans Serif", 11);
 
                     this.Infotext.Controls.Add(this.kerntaakLabel[i]);
                     this.Infotext.Controls.Add(this.kerntaakInfo[i]);
                 }
             }
         }
-        
+
+        private void Clear()
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                if (i < 3)
+                {
+                    this.kerntaakLabel[i].Text = "";
+                    this.kerntaakInfo[i].Text = "";
+                }
+                this.examenLabel[i].Text = "";
+                this.examenInfo[i].Text = "";
+            }
+        }
+
         private void VulInfoExamen()
         {
             string[] labels_examen = { "Vak:", "Nummer:", "Constructeur:", "Periode Afname:", "Locatie Afname:", "Naam Opdracht:", "Status Opdracht:", "Opmerkingen:" };

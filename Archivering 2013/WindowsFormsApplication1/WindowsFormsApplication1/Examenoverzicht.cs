@@ -24,6 +24,7 @@ namespace WindowsFormsApplication1
         {
             data = dc;
             InitializeComponent();
+            maakElementen();
             this.rowIndex = rowIndex;
             this.opleidingColumnIndex = opleidingColumnIndex;
             LeesGegevens();            
@@ -108,7 +109,10 @@ namespace WindowsFormsApplication1
                 examens.TryGetValue(e.Node.Text, out id);
                 setExamenInfo(id);
             }
-
+            else
+            {
+                Clear();
+            }
         }
 
         private void setExamenInfo(int id)
@@ -138,7 +142,7 @@ namespace WindowsFormsApplication1
                 {
                     gegevens_kerntaken[0] = r.kerntaak_naam;
                     gegevens_kerntaken[1] = r.kerntaak_nummer;
-                    gegevens_kerntaken[2] = r.kerntaak_werkprocessen;
+                    gegevens_kerntaken[2] = r.kerntaak_werkprocessen.Replace(';', ',');
                     VulInfoKerntaken();
                 }
             }
