@@ -2,6 +2,10 @@
     
     
     public partial class DatabaseDataSet {
+        partial class kerntakenDataTable
+        {
+        }
+    
         partial class examensDataTable
         {
         }

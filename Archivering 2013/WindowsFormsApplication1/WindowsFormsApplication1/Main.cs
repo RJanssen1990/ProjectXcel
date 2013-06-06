@@ -28,6 +28,18 @@ namespace WindowsFormsApplication1
 
         private void Main_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'databaseDataSet.kerntaken' table. You can move, or remove it, as needed.
+            this.kerntakenTableAdapter.Fill(this.databaseDataSet.kerntaken);
+            // TODO: This line of code loads data into the 'databaseDataSet.examens' table. You can move, or remove it, as needed.
+            this.examensTableAdapter.Fill(this.databaseDataSet.examens);
+            // TODO: This line of code loads data into the 'databaseDataSet.overzicht' table. You can move, or remove it, as needed.
+            this.overzichtTableAdapter.Fill(this.databaseDataSet.overzicht);
+            // TODO: This line of code loads data into the 'databaseDataSet.kerntaken' table. You can move, or remove it, as needed.
+            this.kerntakenTableAdapter.Fill(this.databaseDataSet.kerntaken);
+            // TODO: This line of code loads data into the 'databaseDataSet.examens' table. You can move, or remove it, as needed.
+            this.examensTableAdapter.Fill(this.databaseDataSet.examens);
+            // TODO: This line of code loads data into the 'databaseDataSet.overzicht' table. You can move, or remove it, as needed.
+            this.overzichtTableAdapter.Fill(this.databaseDataSet.overzicht);
             this.examensTableAdapter.Fill(this.databaseDataSet.examens);
             this.overzichtTableAdapter.Fill(this.databaseDataSet.overzicht);
             this.kerntakenTableAdapter.Fill(this.databaseDataSet.kerntaken);
@@ -128,69 +140,43 @@ namespace WindowsFormsApplication1
                 AanspreekBox.Text = dataGridView1.Rows[rowIndex].Cells[aanspreekpuntDataGridViewTextBoxColumn.Index].Value.ToString();
                 ManagerBox.Text = dataGridView1.Rows[rowIndex].Cells[managerDataGridViewTextBoxColumn.Index].Value.ToString();
 
-                //examen ids
-                int[] examen_ids = new int[10];
-                examen_ids[0] = getInt(dataGridView1.Rows[rowIndex].Cells[examen1DataGridViewTextBoxColumn.Index].Value);
-                examen_ids[1] = getInt(dataGridView1.Rows[rowIndex].Cells[examen2DataGridViewTextBoxColumn.Index].Value);
-                examen_ids[2] = getInt(dataGridView1.Rows[rowIndex].Cells[examen3DataGridViewTextBoxColumn.Index].Value);
-                examen_ids[3] = getInt(dataGridView1.Rows[rowIndex].Cells[examen4DataGridViewTextBoxColumn.Index].Value);
-                examen_ids[4] = getInt(dataGridView1.Rows[rowIndex].Cells[examen5DataGridViewTextBoxColumn.Index].Value);
-                examen_ids[5] = getInt(dataGridView1.Rows[rowIndex].Cells[examen6DataGridViewTextBoxColumn.Index].Value);
-                examen_ids[6] = getInt(dataGridView1.Rows[rowIndex].Cells[examen7DataGridViewTextBoxColumn.Index].Value);
-                examen_ids[7] = getInt(dataGridView1.Rows[rowIndex].Cells[examen8DataGridViewTextBoxColumn.Index].Value);
-                examen_ids[8] = getInt(dataGridView1.Rows[rowIndex].Cells[examen9DataGridViewTextBoxColumn.Index].Value);
-                examen_ids[9] = getInt(dataGridView1.Rows[rowIndex].Cells[examen10DataGridViewTextBoxColumn.Index].Value);
-
-                for (int i = 0; i < examen_ids.Count(); i++)
-                {
-                    if (examen_ids[i] != 0)
-                    {
-                        if (i == 1 || i > 1)
-                        {                            
-                            examenPlus();
-                        }
-
-                        int[] kerntaken_ids = new int[6];
+                int i = 0;
 
                         foreach (DataGridViewRow examenRow in dataGridView2.Rows)
                         {
-                            if (Convert.ToInt32(examenRow.Cells[examenidDataGridViewTextBoxColumn.Index].Value) == examen_ids[i])
+                            if (Convert.ToInt32(examenRow.Cells[opleidingidDataGridViewTextBoxColumn.Index].Value) == Convert.ToInt32(dataGridView1.CurrentRow.Cells[idDataGridViewTextBoxColumn.Index].Value))
                             {
-                                ExamenBox[i].Text = examenRow.Cells[examenvakDataGridViewTextBoxColumn.Index].Value.ToString();
-                                ExamenNummerBox[i].Text = examenRow.Cells[examennummerDataGridViewTextBoxColumn.Index].Value.ToString();
-                                ConstructeurBox[i].Text = examenRow.Cells[examenconstructeurDataGridViewTextBoxColumn.Index].Value.ToString();
-                                PeriodeAfnameBox[i].Text = examenRow.Cells[examenperiodeafnameDataGridViewTextBoxColumn.Index].Value.ToString();
-                                LocatieBox[i].Text = examenRow.Cells[examenlocatieDataGridViewTextBoxColumn.Index].Value.ToString();
-                                NaamOpdrachtBox[i].Text = examenRow.Cells[examennaamopdrachtDataGridViewTextBoxColumn.Index].Value.ToString();
-                                StatusOpdrachtBox[i].Text = examenRow.Cells[examenstatusopdrachtDataGridViewTextBoxColumn.Index].Value.ToString();
-                                OpmerkingBox[i].Text = examenRow.Cells[examenOpmerkingenDataGridViewTextBoxColumn.Index].Value.ToString();
-
-                                kerntaken_ids[0] = getInt(examenRow.Cells[examenkerntaak1DataGridViewTextBoxColumn.Index].Value);
-                                kerntaken_ids[1] = getInt(examenRow.Cells[examenkerntaak2DataGridViewTextBoxColumn.Index].Value);
-                                kerntaken_ids[2] = getInt(examenRow.Cells[examenkerntaak3DataGridViewTextBoxColumn.Index].Value);
-                                kerntaken_ids[3] = getInt(examenRow.Cells[examenkerntaak4DataGridViewTextBoxColumn.Index].Value);
-                                kerntaken_ids[4] = getInt(examenRow.Cells[examenkerntaak5DataGridViewTextBoxColumn.Index].Value);
-                                kerntaken_ids[5] = getInt(examenRow.Cells[examenkerntaak6DataGridViewTextBoxColumn.Index].Value);
-
-                                for (int j = 0; j < kerntaken_ids.Count(); j++)
+                                if (i >= 1)
                                 {
-                                    if (kerntaken_ids[j] != 0)
+                                    examenPlus();
+                                }
+
+                                ExamenBox[examenAantal - 1].Text = examenRow.Cells[examenvakDataGridViewTextBoxColumn.Index].Value.ToString();
+                                ExamenNummerBox[examenAantal - 1].Text = examenRow.Cells[examennummerDataGridViewTextBoxColumn.Index].Value.ToString();
+                                ConstructeurBox[examenAantal - 1].Text = examenRow.Cells[examenconstructeurDataGridViewTextBoxColumn.Index].Value.ToString();
+                                PeriodeAfnameBox[examenAantal - 1].Text = examenRow.Cells[examenperiodeafnameDataGridViewTextBoxColumn.Index].Value.ToString();
+                                LocatieBox[examenAantal - 1].Text = examenRow.Cells[examenlocatieDataGridViewTextBoxColumn.Index].Value.ToString();
+                                NaamOpdrachtBox[examenAantal - 1].Text = examenRow.Cells[examennaamopdrachtDataGridViewTextBoxColumn.Index].Value.ToString();
+                                StatusOpdrachtBox[examenAantal - 1].Text = examenRow.Cells[examenstatusopdrachtDataGridViewTextBoxColumn.Index].Value.ToString();
+                                OpmerkingBox[examenAantal - 1].Text = examenRow.Cells[examenopmerkingenDataGridViewTextBoxColumn.Index].Value.ToString();
+
+                                i++;
+                                int j = 0;
+
+                                foreach (DataGridViewRow kerntaakRow in dataGridView3.Rows)
+                                {
+                                    if (Convert.ToInt32(kerntaakRow.Cells[ktexamenidDataGridViewTextBoxColumn.Index].Value) == Convert.ToInt32(examenRow.Cells[examenidDataGridViewTextBoxColumn.Index].Value))
                                     {
-                                        foreach (DataGridViewRow kerntaakRow in dataGridView3.Rows)
-                                        {
-                                            if (Convert.ToInt32(kerntaakRow.Cells[kerntaakidDataGridViewTextBoxColumn.Index].Value) == kerntaken_ids[j])
-                                            {
-                                                KerntakenBox[i, j].Text = kerntaakRow.Cells[kerntaaknaamDataGridViewTextBoxColumn.Index].Value.ToString();
-                                                KerntaakNrBox[i, j].Text = kerntaakRow.Cells[kerntaaknummerDataGridViewTextBoxColumn.Index].Value.ToString();
-                                                WerkprocessenBox[i, j].Text = kerntaakRow.Cells[kerntaakwerkprocessenDataGridViewTextBoxColumn.Index].Value.ToString();
-                                            }
-                                        }
+                                        KerntakenBox[examenAantal - 1, j].Text = kerntaakRow.Cells[kerntaaknaamDataGridViewTextBoxColumn.Index].Value.ToString();
+                                        KerntaakNrBox[examenAantal - 1, j].Text = kerntaakRow.Cells[kerntaaknummerDataGridViewTextBoxColumn.Index].Value.ToString();
+                                        WerkprocessenBox[examenAantal - 1, j].Text = kerntaakRow.Cells[kerntaakwerkprocessenDataGridViewTextBoxColumn.Index].Value.ToString();
+                                        j++;
                                     }
                                 }
                             }
                         }
-                    }
-                }
+                    
+                
 
                 OpslaanButton.Click -= new System.EventHandler(buttonOpslaan_Click);
                 OpslaanButton.Click += new System.EventHandler(aanpassenOpslaan);
@@ -230,60 +216,35 @@ namespace WindowsFormsApplication1
             dataGridView1.Rows[rowIndex].Cells[aanspreekpuntDataGridViewTextBoxColumn.Index].Value = AanspreekBox.Text;
             dataGridView1.Rows[rowIndex].Cells[managerDataGridViewTextBoxColumn.Index].Value = ManagerBox.Text;
 
-            //examen ids
-            int[] examen_ids = new int[10];
-            examen_ids[0] = getInt(dataGridView1.Rows[rowIndex].Cells[examen1DataGridViewTextBoxColumn.Index].Value);
-            examen_ids[1] = getInt(dataGridView1.Rows[rowIndex].Cells[examen2DataGridViewTextBoxColumn.Index].Value);
-            examen_ids[2] = getInt(dataGridView1.Rows[rowIndex].Cells[examen3DataGridViewTextBoxColumn.Index].Value);
-            examen_ids[3] = getInt(dataGridView1.Rows[rowIndex].Cells[examen4DataGridViewTextBoxColumn.Index].Value);
-            examen_ids[4] = getInt(dataGridView1.Rows[rowIndex].Cells[examen5DataGridViewTextBoxColumn.Index].Value);
-            examen_ids[5] = getInt(dataGridView1.Rows[rowIndex].Cells[examen6DataGridViewTextBoxColumn.Index].Value);
-            examen_ids[6] = getInt(dataGridView1.Rows[rowIndex].Cells[examen7DataGridViewTextBoxColumn.Index].Value);
-            examen_ids[7] = getInt(dataGridView1.Rows[rowIndex].Cells[examen8DataGridViewTextBoxColumn.Index].Value);
-            examen_ids[8] = getInt(dataGridView1.Rows[rowIndex].Cells[examen9DataGridViewTextBoxColumn.Index].Value);
-            examen_ids[9] = getInt(dataGridView1.Rows[rowIndex].Cells[examen10DataGridViewTextBoxColumn.Index].Value);
-
-
-
-            for (int i = 0; i < examen_ids.Count(); i++)
+            int i = 0;
+            foreach (DataGridViewRow examenRow in dataGridView2.Rows)
             {
-                foreach (DataGridViewRow examenRow in dataGridView2.Rows)
+                if (Convert.ToInt32(examenRow.Cells[opleidingidDataGridViewTextBoxColumn.Index].Value) == Convert.ToInt32(dataGridView1.Rows[rowIndex].Cells[0].Value))
                 {
-                    if (Convert.ToInt32(examenRow.Cells[examenidDataGridViewTextBoxColumn.Index].Value) == examen_ids[i])
+                    examenRow.Cells[examenvakDataGridViewTextBoxColumn.Index].Value = ExamenBox[i].Text;
+                    examenRow.Cells[examennummerDataGridViewTextBoxColumn.Index].Value = ExamenNummerBox[i].Text;
+                    examenRow.Cells[examenconstructeurDataGridViewTextBoxColumn.Index].Value = ConstructeurBox[i].Text;
+                    examenRow.Cells[examenperiodeafnameDataGridViewTextBoxColumn.Index].Value = PeriodeAfnameBox[i].Text;
+                    examenRow.Cells[examenlocatieDataGridViewTextBoxColumn.Index].Value = LocatieBox[i].Text;
+                    examenRow.Cells[examennaamopdrachtDataGridViewTextBoxColumn.Index].Value = NaamOpdrachtBox[i].Text;
+                    examenRow.Cells[examenstatusopdrachtDataGridViewTextBoxColumn.Index].Value = StatusOpdrachtBox[i].Text;
+                    examenRow.Cells[examenopmerkingenDataGridViewTextBoxColumn.Index].Value = OpmerkingBox[i].Text;
+                    
+                    int j = 0;
+                    foreach (DataGridViewRow kerntaakRow in dataGridView3.Rows)
                     {
-                        examenRow.Cells[examenvakDataGridViewTextBoxColumn.Index].Value = ExamenBox[i].Text;
-                        examenRow.Cells[examennummerDataGridViewTextBoxColumn.Index].Value = ExamenNummerBox[i].Text;
-                        examenRow.Cells[examenconstructeurDataGridViewTextBoxColumn.Index].Value = ConstructeurBox[i].Text;
-                        examenRow.Cells[examenperiodeafnameDataGridViewTextBoxColumn.Index].Value = PeriodeAfnameBox[i].Text;
-                        examenRow.Cells[examenlocatieDataGridViewTextBoxColumn.Index].Value = LocatieBox[i].Text;
-                        examenRow.Cells[examennaamopdrachtDataGridViewTextBoxColumn.Index].Value = NaamOpdrachtBox[i].Text;
-                        examenRow.Cells[examenstatusopdrachtDataGridViewTextBoxColumn.Index].Value = StatusOpdrachtBox[i].Text;
-                        examenRow.Cells[examenOpmerkingenDataGridViewTextBoxColumn.Index].Value = OpmerkingBox[i].Text;
-
-                        int[] kerntaken_ids = new int[6];
-
-                        kerntaken_ids[0] = getInt(examenRow.Cells[examenkerntaak1DataGridViewTextBoxColumn.Index].Value);
-                        kerntaken_ids[1] = getInt(examenRow.Cells[examenkerntaak2DataGridViewTextBoxColumn.Index].Value);
-                        kerntaken_ids[2] = getInt(examenRow.Cells[examenkerntaak3DataGridViewTextBoxColumn.Index].Value);
-                        kerntaken_ids[3] = getInt(examenRow.Cells[examenkerntaak4DataGridViewTextBoxColumn.Index].Value);
-                        kerntaken_ids[4] = getInt(examenRow.Cells[examenkerntaak5DataGridViewTextBoxColumn.Index].Value);
-                        kerntaken_ids[5] = getInt(examenRow.Cells[examenkerntaak6DataGridViewTextBoxColumn.Index].Value);
-
-                        for (int j = 0; j < kerntaken_ids.Count(); j++)
+                        if (Convert.ToInt32(kerntaakRow.Cells[ktexamenidDataGridViewTextBoxColumn.Index].Value) == Convert.ToInt32(examenRow.Cells[0].Value))
                         {
-                            foreach (DataGridViewRow kerntaakRow in dataGridView3.Rows)
-                            {
-                                if (Convert.ToInt32(kerntaakRow.Cells[kerntaakidDataGridViewTextBoxColumn.Index].Value) == kerntaken_ids[j])
-                                {
-                                    kerntaakRow.Cells[kerntaaknaamDataGridViewTextBoxColumn.Index].Value = KerntakenBox[i, j].Text;
-                                    kerntaakRow.Cells[kerntaaknummerDataGridViewTextBoxColumn.Index].Value = KerntaakNrBox[i, j].Text;
-                                    kerntaakRow.Cells[kerntaakwerkprocessenDataGridViewTextBoxColumn.Index].Value = WerkprocessenBox[i, j].Text;
-                                }
-                            }
+                            kerntaakRow.Cells[kerntaaknaamDataGridViewTextBoxColumn.Index].Value = KerntakenBox[i, j].Text;
+                            kerntaakRow.Cells[kerntaaknummerDataGridViewTextBoxColumn.Index].Value = KerntaakNrBox[i, j].Text;
+                            kerntaakRow.Cells[kerntaakwerkprocessenDataGridViewTextBoxColumn.Index].Value = WerkprocessenBox[i, j].Text;
+                            j++;
                         }
                     }
+                    i++;
                 }
             }
+            
 
             updateDatabase();
 
@@ -337,10 +298,12 @@ namespace WindowsFormsApplication1
             overzichtRow.aanspreekpunt = aanspreekpunt;
             overzichtRow.manager = manager;
 
-            //examen id's array voor de overzichtRow
-            int[] ids = new int[examenAantal];
-            //kerntaken id's array voor de examenRow
-            int[] ktids = new int[6];
+            //voegt overzicht row toe nadat de examens gemaakt zijn
+            databaseDataSet.overzicht.AddoverzichtRow(overzichtRow);
+
+            updateDatabase();
+
+            this.overzichtTableAdapter.Fill(this.databaseDataSet.overzicht);
 
             //examentabel
             for (int i = 0; i < examenAantal; i++)
@@ -354,38 +317,7 @@ namespace WindowsFormsApplication1
                 examenRow.examen_naam_opdracht = NaamOpdrachtBox[i].Text;
                 examenRow.examen_status_opdracht = StatusOpdrachtBox[i].Text;
                 examenRow.examen_opmerkingen = OpmerkingBox[i].Text;
-
-                for (int j = 0; j < 6; j++)
-                {
-                    DatabaseDataSet.kerntakenRow kerntaakRow = databaseDataSet.kerntaken.NewkerntakenRow();
-                    kerntaakRow.kerntaak_naam = KerntakenBox[i, j].Text;
-                    kerntaakRow.kerntaak_nummer = KerntaakNrBox[i, j].Text;
-                    kerntaakRow.kerntaak_werkprocessen = WerkprocessenBox[i, j].Text;
-
-                    databaseDataSet.kerntaken.AddkerntakenRow(kerntaakRow);
-
-                    //update database etc
-                    updateDatabase();
-                    this.kerntakenTableAdapter.Fill(this.databaseDataSet.kerntaken);
-
-                    //verkrijg de "nieuwe" ids
-                    int ktid = (int)databaseDataSet.kerntaken.Rows[databaseDataSet.kerntaken.Rows.Count - 1][0];
-                    ktids[j] = ktid;
-                }
-
-                //voeg kerntaken ids toe aan de examenRow
-                for (int k = 0; k < ktids.Count(); k++)
-                {
-                    switch (k)
-                    {
-                        case 0: examenRow.examen_kerntaak1 = ktids[k]; break;
-                        case 1: examenRow.examen_kerntaak2 = ktids[k]; break;
-                        case 2: examenRow.examen_kerntaak3 = ktids[k]; break;
-                        case 3: examenRow.examen_kerntaak4 = ktids[k]; break;
-                        case 4: examenRow.examen_kerntaak5 = ktids[k]; break;
-                        case 5: examenRow.examen_kerntaak6 = ktids[k]; break;
-                    }
-                }
+                examenRow.opleiding_id = getInt(databaseDataSet.overzicht.Rows[databaseDataSet.overzicht.Rows.Count - 1][0]);
 
                 databaseDataSet.examens.AddexamensRow(examenRow);
 
@@ -393,36 +325,20 @@ namespace WindowsFormsApplication1
                 updateDatabase();
                 this.examensTableAdapter.Fill(this.databaseDataSet.examens);
 
-                //verkrijg de "nieuwe" ids
-                int id = (int)databaseDataSet.examens.Rows[databaseDataSet.examens.Rows.Count - 1][0];
-                ids[i] = id;
-                //MessageBox.Show(id.ToString());
-            }
-
-            //voeg examen ids toe aan de overzicht row
-            for (int i = 0; i < ids.Count(); i++)
-            {
-                switch (i)
+                for (int j = 0; j < 6; j++)
                 {
-                    case 0: overzichtRow.examen1 = ids[i]; break;
-                    case 1: overzichtRow.examen2 = ids[i]; break;
-                    case 2: overzichtRow.examen3 = ids[i]; break;
-                    case 3: overzichtRow.examen4 = ids[i]; break;
-                    case 4: overzichtRow.examen5 = ids[i]; break;
-                    case 5: overzichtRow.examen6 = ids[i]; break;
-                    case 6: overzichtRow.examen7 = ids[i]; break;
-                    case 7: overzichtRow.examen8 = ids[i]; break;
-                    case 8: overzichtRow.examen9 = ids[i]; break;
-                    case 9: overzichtRow.examen10 = ids[i]; break;
-                }
+                    DatabaseDataSet.kerntakenRow kerntaakRow = databaseDataSet.kerntaken.NewkerntakenRow();
+                    kerntaakRow.kerntaak_naam = KerntakenBox[i, j].Text;
+                    kerntaakRow.kerntaak_nummer = KerntaakNrBox[i, j].Text;
+                    kerntaakRow.kerntaak_werkprocessen = WerkprocessenBox[i, j].Text;
+                    kerntaakRow.examen_id = getInt(databaseDataSet.examens.Rows[databaseDataSet.examens.Rows.Count - 1][0]);
+
+                    databaseDataSet.kerntaken.AddkerntakenRow(kerntaakRow);
+                }                
             }
-
-            //voegt overzicht row toe nadat de examens gemaakt zijn
-            databaseDataSet.overzicht.AddoverzichtRow(overzichtRow);
-
             updateDatabase();
+            this.kerntakenTableAdapter.Fill(this.databaseDataSet.kerntaken);
 
-            this.overzichtTableAdapter.Fill(this.databaseDataSet.overzicht);
 
             if (sender.Equals(OpslaanButton))
             {
@@ -478,7 +394,6 @@ namespace WindowsFormsApplication1
             xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
             int row = 1;
-            int c = 1;
             for (int i = 1; i < dataGridView1.Columns.Count; i++)
             {
                 if (dataGridView1.Columns[i].Visible == true)
@@ -622,55 +537,31 @@ namespace WindowsFormsApplication1
 
         private void deleteExamens(int rowIndex)
         {
-            int[] examen_ids = new int[10];
+            int id = (int)dataGridView1.Rows[rowIndex].Cells[0].Value;
 
-            examen_ids[0] = getInt(dataGridView1.Rows[rowIndex].Cells[examen1DataGridViewTextBoxColumn.Index].Value);
-            examen_ids[1] = getInt(dataGridView1.Rows[rowIndex].Cells[examen2DataGridViewTextBoxColumn.Index].Value);
-            examen_ids[2] = getInt(dataGridView1.Rows[rowIndex].Cells[examen3DataGridViewTextBoxColumn.Index].Value);
-            examen_ids[3] = getInt(dataGridView1.Rows[rowIndex].Cells[examen4DataGridViewTextBoxColumn.Index].Value);
-            examen_ids[4] = getInt(dataGridView1.Rows[rowIndex].Cells[examen5DataGridViewTextBoxColumn.Index].Value);
-            examen_ids[5] = getInt(dataGridView1.Rows[rowIndex].Cells[examen6DataGridViewTextBoxColumn.Index].Value);
-            examen_ids[6] = getInt(dataGridView1.Rows[rowIndex].Cells[examen7DataGridViewTextBoxColumn.Index].Value);
-            examen_ids[7] = getInt(dataGridView1.Rows[rowIndex].Cells[examen8DataGridViewTextBoxColumn.Index].Value);
-            examen_ids[8] = getInt(dataGridView1.Rows[rowIndex].Cells[examen9DataGridViewTextBoxColumn.Index].Value);
-            examen_ids[9] = getInt(dataGridView1.Rows[rowIndex].Cells[examen10DataGridViewTextBoxColumn.Index].Value);
-
-            for (int i = 0; i < examen_ids.Count(); i++)
-            {
-                foreach (DataGridViewRow r in dataGridView2.Rows)
+                for (int i = dataGridView2.Rows.Count - 1; i >= 0; i--)
                 {
-                    //MessageBox.Show(r.Cells[examenidDataGridViewTextBoxColumn.Index].Value.ToString());
-                    if (Convert.ToInt32(r.Cells[examenidDataGridViewTextBoxColumn.Index].Value) == examen_ids[i] && Convert.ToInt32(r.Cells[examenidDataGridViewTextBoxColumn.Index].Value) != 0)
+                   
+                    if (Convert.ToInt32(dataGridView2.Rows[i].Cells[opleidingidDataGridViewTextBoxColumn.Index].Value) == id && Convert.ToInt32(dataGridView2.Rows[i].Cells[opleidingidDataGridViewTextBoxColumn.Index].Value) != 0)
                     {
-                        deleteKerntaken(r.Index);
+                        deleteKerntaken(i);
 
-                        dataGridView2.Rows.RemoveAt(r.Index);
+                        dataGridView2.Rows.RemoveAt(i);
                     }
                 }
-            }
         }
 
         private void deleteKerntaken(int rowIndex)
         {
-            int[] kerntaken_ids = new int[6];
-            kerntaken_ids[0] = getInt(dataGridView2.Rows[rowIndex].Cells[examenkerntaak1DataGridViewTextBoxColumn.Index].Value);
-            kerntaken_ids[1] = getInt(dataGridView2.Rows[rowIndex].Cells[examenkerntaak2DataGridViewTextBoxColumn.Index].Value);
-            kerntaken_ids[2] = getInt(dataGridView2.Rows[rowIndex].Cells[examenkerntaak3DataGridViewTextBoxColumn.Index].Value);
-            kerntaken_ids[3] = getInt(dataGridView2.Rows[rowIndex].Cells[examenkerntaak4DataGridViewTextBoxColumn.Index].Value);
-            kerntaken_ids[4] = getInt(dataGridView2.Rows[rowIndex].Cells[examenkerntaak5DataGridViewTextBoxColumn.Index].Value);
-            kerntaken_ids[5] = getInt(dataGridView2.Rows[rowIndex].Cells[examenkerntaak6DataGridViewTextBoxColumn.Index].Value);
+            int id = (int)dataGridView2.Rows[rowIndex].Cells[0].Value;
 
-            for (int i = 0; i < kerntaken_ids.Count(); i++)
+            for (int i = dataGridView3.Rows.Count - 1; i >= 0; i--)
             {
-                foreach (DataGridViewRow row in dataGridView3.Rows)
+                if(Convert.ToInt32(dataGridView3.Rows[i].Cells[ktexamenidDataGridViewTextBoxColumn.Index].Value) == id && Convert.ToInt32(dataGridView3.Rows[i].Cells[examenidDataGridViewTextBoxColumn.Index].Value) != 0)
                 {
-                    if (Convert.ToInt32(row.Cells[kerntaakidDataGridViewTextBoxColumn.Index].Value) == kerntaken_ids[i] && Convert.ToInt32(row.Cells[examenidDataGridViewTextBoxColumn.Index].Value) != 0)
-                    {
-                        dataGridView3.Rows.RemoveAt(row.Index);
-                    }
+                    databaseDataSet.kerntaken.Rows.RemoveAt(i);
                 }
             }
-
         }
 
         private int getInt(Object value)
