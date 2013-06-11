@@ -47,7 +47,7 @@ namespace WindowsFormsApplication1
             {
                 if (opleiding_id == getInt(data.examens.Rows[i][9]))
                 {
-                    TreeNode examen = new TreeNode("Examen " + data.examens.Rows[i][1].ToString());
+                    TreeNode examen = new TreeNode(data.examens.Rows[i][1].ToString());
                     examen.Name = "examen";
                     examen.Tag = data.examens.Rows[i][0];
                     root.Nodes.Add(examen);
@@ -109,10 +109,10 @@ namespace WindowsFormsApplication1
             {
                 if (id == r.examen_id)
                 {
-                    gegevens_examen[0] = r.examen_vak;
-                    gegevens_examen[1] = r.examen_nummer;
-                    gegevens_examen[2] = r.examen_constructeur;
-                    gegevens_examen[3] = r.examen_periode_afname;
+                    gegevens_examen[0] = r.examen_nummer;
+                    gegevens_examen[1] = r.examen_constructeur;
+                    gegevens_examen[2] = r.examen_start_periode;
+                    gegevens_examen[3] = r.examen_eind_periode;
                     gegevens_examen[4] = r.examen_locatie;
                     gegevens_examen[5] = r.examen_naam_opdracht;
                     gegevens_examen[6] = r.examen_status_opdracht;

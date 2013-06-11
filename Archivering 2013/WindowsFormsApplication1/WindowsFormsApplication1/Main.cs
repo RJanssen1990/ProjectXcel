@@ -14,6 +14,7 @@ namespace WindowsFormsApplication1
     public partial class Main : Form
     {
         private int examenAantal = 0;
+        private int[] kerntaakAantal = new int[10];
         private int huidigExamen = 0;
         private string[] savedStrings = new string[14];
         private string[] columnNames = { "Crebocode", "Kwalificatie", "Uitstroom", "Opleidingsnaam", "Niveau", "Leerroute", "Kenniscentrum", "Cohort", "KD Versie", "Examenprofiel", "Examenplan", "Portefeuillehouder", "Aanspreekpunt", "Manager" };
@@ -134,8 +135,7 @@ namespace WindowsFormsApplication1
                 KenniscentrumBox.Text = dataGridView1.Rows[rowIndex].Cells[kenniscentrumDataGridViewTextBoxColumn.Index].Value.ToString();
                 CohortBox.Text = dataGridView1.Rows[rowIndex].Cells[cohortDataGridViewTextBoxColumn.Index].Value.ToString();
                 KdVersieBox.Text = dataGridView1.Rows[rowIndex].Cells[kdVersieDataGridViewTextBoxColumn.Index].Value.ToString();
-                ExamenProfielBox.Text = dataGridView1.Rows[rowIndex].Cells[examenprofielDataGridViewTextBoxColumn.Index].Value.ToString();
-                ExamenPlanBox.Text = dataGridView1.Rows[rowIndex].Cells[explanDataGridViewTextBoxColumn.Index].Value.ToString();
+                ExamenProfielBox.Text = dataGridView1.Rows[rowIndex].Cells[examenprofielDataGridViewTextBoxColumn.Index].Value.ToString();               
                 PortHouderBox.Text = dataGridView1.Rows[rowIndex].Cells[portefeuillehouderDataGridViewTextBoxColumn.Index].Value.ToString();
                 AanspreekBox.Text = dataGridView1.Rows[rowIndex].Cells[aanspreekpuntDataGridViewTextBoxColumn.Index].Value.ToString();
                 ManagerBox.Text = dataGridView1.Rows[rowIndex].Cells[managerDataGridViewTextBoxColumn.Index].Value.ToString();
@@ -151,8 +151,7 @@ namespace WindowsFormsApplication1
                                     examenPlus();
                                 }
 
-                                ExamenBox[examenAantal - 1].Text = examenRow.Cells[examenvakDataGridViewTextBoxColumn.Index].Value.ToString();
-                                ExamenNummerBox[examenAantal - 1].Text = examenRow.Cells[examennummerDataGridViewTextBoxColumn.Index].Value.ToString();
+                                
                                 ConstructeurBox[examenAantal - 1].Text = examenRow.Cells[examenconstructeurDataGridViewTextBoxColumn.Index].Value.ToString();
                                 PeriodeAfnameBox[examenAantal - 1].Text = examenRow.Cells[examenperiodeafnameDataGridViewTextBoxColumn.Index].Value.ToString();
                                 LocatieBox[examenAantal - 1].Text = examenRow.Cells[examenlocatieDataGridViewTextBoxColumn.Index].Value.ToString();
@@ -211,7 +210,6 @@ namespace WindowsFormsApplication1
             dataGridView1.Rows[rowIndex].Cells[cohortDataGridViewTextBoxColumn.Index].Value = CohortBox.Text;
             dataGridView1.Rows[rowIndex].Cells[kdVersieDataGridViewTextBoxColumn.Index].Value = KdVersieBox.Text;
             dataGridView1.Rows[rowIndex].Cells[examenprofielDataGridViewTextBoxColumn.Index].Value = ExamenProfielBox.Text;
-            dataGridView1.Rows[rowIndex].Cells[explanDataGridViewTextBoxColumn.Index].Value = ExamenPlanBox.Text;
             dataGridView1.Rows[rowIndex].Cells[portefeuillehouderDataGridViewTextBoxColumn.Index].Value = PortHouderBox.Text;
             dataGridView1.Rows[rowIndex].Cells[aanspreekpuntDataGridViewTextBoxColumn.Index].Value = AanspreekBox.Text;
             dataGridView1.Rows[rowIndex].Cells[managerDataGridViewTextBoxColumn.Index].Value = ManagerBox.Text;
@@ -221,8 +219,7 @@ namespace WindowsFormsApplication1
             {
                 if (Convert.ToInt32(examenRow.Cells[opleidingidDataGridViewTextBoxColumn.Index].Value) == Convert.ToInt32(dataGridView1.Rows[rowIndex].Cells[0].Value))
                 {
-                    examenRow.Cells[examenvakDataGridViewTextBoxColumn.Index].Value = ExamenBox[i].Text;
-                    examenRow.Cells[examennummerDataGridViewTextBoxColumn.Index].Value = ExamenNummerBox[i].Text;
+                    examenRow.Cells[examennummerDataGridViewTextBoxColumn.Index].Value = examNR(i);
                     examenRow.Cells[examenconstructeurDataGridViewTextBoxColumn.Index].Value = ConstructeurBox[i].Text;
                     examenRow.Cells[examenperiodeafnameDataGridViewTextBoxColumn.Index].Value = PeriodeAfnameBox[i].Text;
                     examenRow.Cells[examenlocatieDataGridViewTextBoxColumn.Index].Value = LocatieBox[i].Text;
@@ -278,7 +275,6 @@ namespace WindowsFormsApplication1
             String cohort = CohortBox.Text;
             String kdversie = KdVersieBox.Text;
             String examenprofiel = ExamenProfielBox.Text;
-            String examenplan = ExamenPlanBox.Text;
             String portefeuillehouder = PortHouderBox.Text;
             String aanspreekpunt = AanspreekBox.Text;
             String manager = ManagerBox.Text;
@@ -293,7 +289,6 @@ namespace WindowsFormsApplication1
             overzichtRow.cohort = cohort;
             overzichtRow.kd_versie = kdversie;
             overzichtRow.examenprofiel = examenprofiel;
-            overzichtRow.explan = examenplan;
             overzichtRow.portefeuillehouder = portefeuillehouder;
             overzichtRow.aanspreekpunt = aanspreekpunt;
             overzichtRow.manager = manager;
@@ -309,10 +304,11 @@ namespace WindowsFormsApplication1
             for (int i = 0; i < examenAantal; i++)
             {
                 DatabaseDataSet.examensRow examenRow = databaseDataSet.examens.NewexamensRow();
-                examenRow.examen_vak = ExamenBox[i].Text;
-                examenRow.examen_nummer = ExamenNummerBox[i].Text;
+                //examenRow.examen_vak = ExamenTitle[i].Text;
+                examenRow.examen_nummer = examNR(i);
                 examenRow.examen_constructeur = ConstructeurBox[i].Text;
-                examenRow.examen_periode_afname = PeriodeAfnameBox[i].Text;
+                examenRow.examen_start_periode = PeriodeAfnameBox[i].Text;
+                examenRow.examen_eind_periode = ePeriodeAfnameBox[i].Text;
                 examenRow.examen_locatie = LocatieBox[i].Text;
                 examenRow.examen_naam_opdracht = NaamOpdrachtBox[i].Text;
                 examenRow.examen_status_opdracht = StatusOpdrachtBox[i].Text;
@@ -487,6 +483,18 @@ namespace WindowsFormsApplication1
         private void ExamMinButton_Click(object sender, EventArgs e)
         {
             this.examenMin();
+        }
+
+        private void KerntaakPlusButton_Click(object sender, EventArgs e)
+        {
+            int ex = getInt((sender as Button).Tag);            
+            this.kerntaakPlus(ex);
+        }
+
+        private void KerntaakMinButton_Click(object sender, EventArgs e)
+        {
+            int ex = getInt((sender as Button).Tag);
+            this.kerntaakMin(ex);
         }
 
         private void resetExams()
@@ -665,6 +673,35 @@ namespace WindowsFormsApplication1
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private string examNR(int i)
+        {
+            string nummer;
+
+            string crebo = CreboBox.Text;
+            string cohort = CohortBox.Text;
+
+            string kerntaken = "KT";
+            
+            for (int j = 0; j < 6; j++)
+            {
+                if (KerntaakNrBox[i, j].Text != "")
+                {
+                    kerntaken += KerntaakNrBox[i, j].Text;
+                    kerntaken += "(";
+                    if (WerkprocessenBox[i, j].Text != "")
+                    {
+                        kerntaken += WerkprocessenBox[i, j].Text.Replace(";", ",");
+                    }
+                    kerntaken += ")";
+                }
+                
+            }
+
+            nummer = crebo + "_" + cohort + "_" + kerntaken;
+            
+            return nummer;
         }
     }   
 }

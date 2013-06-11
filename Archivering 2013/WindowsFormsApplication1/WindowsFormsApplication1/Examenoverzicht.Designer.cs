@@ -133,7 +133,7 @@
 
         private void VulInfoExamen()
         {
-            string[] labels_examen = { "Vak:", "Nummer:", "Constructeur:", "Periode Afname:", "Locatie Afname:", "Naam Opdracht:", "Status Opdracht:", "Opmerkingen:" };
+            string[] labels_examen = { "Nummer:", "Constructeur:", "Start Periode Afname:","Einde Periode Afname:", "Locatie Afname:", "Naam Opdracht:", "Status Opdracht:", "Opmerkingen:" };
 
             
             for (int i = 0; i < 8; i++)
