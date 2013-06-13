@@ -125,7 +125,7 @@ namespace WindowsFormsApplication1
 
         private void aanpassen_Click(object sender, EventArgs e)
         {
-            resetExams();
+            clearForm(tabPage1);
 
             if (dataGridView1.SelectedRows.Count == 1)
             {
@@ -263,8 +263,6 @@ namespace WindowsFormsApplication1
             OpslaanPlusButton.Visible = true;
             ExamPlusButton.Visible = true;
             ExamMinButton.Visible = true;
-            resetKerntaken();
-            resetExams();
             clearForm(tabPage1);
             tabControl1.SelectTab("tabPage2");
             aanpassing = false;
@@ -356,8 +354,6 @@ namespace WindowsFormsApplication1
             }
             // Het form wordt gereset naar lege staat.
             clearForm(tabPage1);
-            resetKerntaken();
-            resetExams();
         }
 
         private void exporteren_Click(object sender, EventArgs e)
@@ -388,86 +384,201 @@ namespace WindowsFormsApplication1
 
         public void SaveExcel(string Path)
         {
-            //open e
-            ExcelStatus es = new ExcelStatus();
-            es.progressBar1.Maximum = dataGridView1.Rows.Count;
-            es.progressBar1.Minimum = 0;
-            es.Show();
-
-            Excel.Application xlApp;
-            Excel.Workbook xlWorkBook;
-            Excel.Worksheet xlWorkSheet;
-            object misValue = System.Reflection.Missing.Value;
-
-            xlApp = new Excel.Application();
-            xlWorkBook = xlApp.Workbooks.Add(misValue);
-
-            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-
-            int row = 1;
-            for (int i = 1; i < dataGridView1.Columns.Count; i++)
+            try
             {
-                if (dataGridView1.Columns[i].Visible == true)
-                    xlWorkSheet.Cells[1, i] = dataGridView1.Columns[i].HeaderText;
-                
-            }
-            foreach (DataGridViewRow itemRow in dataGridView1.Rows)
-            {
-                for (int column = 1; column < dataGridView1.Columns.Count; column++)
+                //open een ExcelStatus form(progress bar)
+                ExcelStatus es = new ExcelStatus();
+                es.progressBar1.Maximum = dataGridView1.Rows.Count;
+                es.progressBar1.Minimum = 0;
+                es.Show();
+
+                Excel.Application xlApp;
+                Excel.Workbook xlWorkBook;
+                Excel.Worksheet workSheetOpleidingen;
+                Excel.Worksheet workSheetExamens;
+                object misValue = System.Reflection.Missing.Value;
+
+                xlApp = new Excel.Application();
+                xlWorkBook = xlApp.Workbooks.Add(misValue);
+                xlWorkBook.Worksheets.get_Item(3).Delete(); //verwijderd "Blad3"
+
+                workSheetOpleidingen = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+                workSheetOpleidingen.Name = "Opleidingen";
+                workSheetExamens = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(2);
+                workSheetExamens.Name = "Examens";
+
+                //Excel.Range[] fromHyperlink = new Excel.Range[dataGridView1.Rows.Count];
+
+                /* OPLEIDINGEN WORKSHEET */
+                //voeg de opleiding kolommen toe
+                int row = 1;
+                for (int i = 1; i < dataGridView1.Columns.Count; i++)
                 {
-                    if (itemRow.Cells[column].Visible == true)
+                    if (dataGridView1.Columns[i].Visible == true)
                     {
-                        xlWorkSheet.Cells[row + 1, column] = itemRow.Cells[column].Value;
+                        workSheetOpleidingen.Cells[1, i] = dataGridView1.Columns[i].HeaderText;
                     }
                 }
                 row++;
-                es.progressBar1.Value++;
-            }
-            xlWorkSheet.Cells.Columns.AutoFit();
-
-            Excel.Range usedRange = xlWorkSheet.UsedRange;
-            Excel.Range rows = usedRange.Rows;
-
-            for (int i = 0; i < dataGridView1.RowCount; i++)
-            {
-                //Excel.Range firstCell = r.Cells[1];
-                //string firstCellValue = firstCell.Value as string;
-                if (dataGridView1.Rows[i].Cells[gecontroleerdDataGridViewTextBoxColumn.Index].Value != null && dataGridView1.Rows[i].Cells[gecontroleerdDataGridViewTextBoxColumn.Index].Value.Equals(1))
+                //nu wordt elke opleiding toegevoegd
+                foreach (DataGridViewRow itemRow in dataGridView1.Rows)
                 {
-                    rows[i + 2].Interior.Color = Color.YellowGreen;
+                    for (int column = 1; column < dataGridView1.Columns.Count; column++)
+                    {
+                        if (itemRow.Cells[column].Visible == true)
+                        {
+                            workSheetOpleidingen.Cells[row, column] = itemRow.Cells[column].Value;
+                            //hyperlink op crebo
+                            if (column == 1)
+                            {
+                                Excel.Range cell = (Excel.Range)workSheetOpleidingen.Cells[row, column];
+                                workSheetOpleidingen.Hyperlinks.Add(cell, string.Empty, "Examens!A2", "Spring naar de examens van deze opleiding.", string.Empty);
+                            }
+                        }
+
+                    }
+                    row++;
+                    es.progressBar1.Value++;
                 }
-                else
+                //autofit alle cellen
+                workSheetOpleidingen.Cells.Columns.AutoFit();
+
+                //pak de gebruikte velden en vervolgens de gebruike rows
+                Excel.Range usedRange = workSheetOpleidingen.UsedRange;
+                Excel.Range rows = usedRange.Rows;
+
+                //opmaak van de cellen
+                for (int i = 0; i < dataGridView1.RowCount; i++)
                 {
-                    rows[i + 2].Interior.Color = Color.Tomato;
+                    if (dataGridView1.Rows[i].Cells[gecontroleerdDataGridViewTextBoxColumn.Index].Value != null && dataGridView1.Rows[i].Cells[gecontroleerdDataGridViewTextBoxColumn.Index].Value.Equals(1))
+                    {
+                        rows[i + 2].Interior.Color = Color.YellowGreen;
+                    }
+                    else
+                    {
+                        rows[i + 2].Interior.Color = Color.Tomato;
+                    }
+                    rows.Borders.LineStyle = BorderStyle.FixedSingle;
+                    rows.Borders.Weight = 2;
                 }
-            }
 
-            try
+                /* EXAMENS WORKSHEET */
+                //kolommen
+                String[] kolommen = { "Crebo", "Opleiding", "Cohort" };
+                for (int i = 1; i <= kolommen.Length; i++)
+                {
+                    workSheetExamens.Cells[1, i] = kolommen[i - 1];
+                }
+
+                int r = 2; // 2 omdat 1 de kolommen zijn
+                int c = 1;
+                int hyperlink = 1;
+                //examens
+                foreach (DataGridViewRow overzichtRow in dataGridView1.Rows)
+                {
+                    for (int i = 1; i < dataGridView1.Columns.Count; i++)
+                    {
+                        //voeg alleen het crebo,opleiding en cohort toe.
+                        if (overzichtRow.Cells[i].OwningColumn.Index == creboDataGridViewTextBoxColumn.Index ||
+                            overzichtRow.Cells[i].OwningColumn.Index == opleidingDataGridViewTextBoxColumn.Index ||
+                            overzichtRow.Cells[i].OwningColumn.Index == cohortDataGridViewTextBoxColumn.Index)
+                        {
+                            workSheetExamens.Cells[r, c] = overzichtRow.Cells[i].Value;
+                            workSheetExamens.Cells[r, c].Interior.Color = Color.YellowGreen;
+
+                            //hyperlink target
+                            if (i == 1)
+                            {
+                                workSheetOpleidingen.Hyperlinks.get_Item(hyperlink).SubAddress = "Examens!" + workSheetExamens.Cells[r, c].Address;
+                                hyperlink++;
+                            }
+
+                            c++;
+                        }
+                    }
+                    r++;
+
+                    c = 1;
+                    //nu moeten de examens een voor een toegevoegd worden
+                    foreach (DatabaseDataSet.examensRow examenRow in databaseDataSet.examens)
+                    {
+                        int opleiding_id = (int)overzichtRow.Cells[idDataGridViewTextBoxColumn.Index].Value;
+                        if (examenRow.opleiding_id == opleiding_id)
+                        {
+                            //voeg examen toe
+                            workSheetExamens.Cells[r, c] = examenRow.examen_vak;
+                            workSheetExamens.Cells[r, c].Interior.Color = Color.LightBlue;                        
+
+                            c++; // voor de kerntaken
+
+                            int examen_id = examenRow.examen_id;
+                            foreach (DatabaseDataSet.kerntakenRow kerntaakRow in databaseDataSet.kerntaken)
+                            {
+                                //voeg kerntaak toe
+                                if (kerntaakRow.examen_id == examen_id)
+                                {
+                                    workSheetExamens.Cells[r, c] = "KT: " + kerntaakRow.kerntaak_naam + " " + kerntaakRow.kerntaak_nummer;
+                                    workSheetExamens.Cells[r, c].Interior.Color = Color.LightPink;
+
+                                    if (kerntaakRow.kerntaak_werkprocessen != "")
+                                    {
+                                        String[] werkprocessen = kerntaakRow.kerntaak_werkprocessen.Split(';');
+                                        //werkprocessen
+                                        c++; // voor de wp
+
+                                        foreach (String wp in werkprocessen)
+                                        {
+                                            if (!wp.Equals(" ") || !wp.Equals(""))
+                                            {
+                                                workSheetExamens.Cells[r, c] = "WP: " + wp;
+                                                workSheetExamens.Cells[r, c].Interior.Color = Color.LightGray;
+                                                r++;
+                                            }
+                                        }
+                                    }
+                                }
+                                c = 2;// voor de volgende kerntaak
+                            }
+                            c = 1; // voor een nieuw examen
+                            r++;
+                        }
+                    }
+                }
+
+                //autofit alle cellen
+                workSheetExamens.Cells.Columns.AutoFit();
+
+                try
+                {
+                    xlWorkBook.SaveAs(Path, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                }
+                catch
+                {
+                    MessageBox.Show("Worksheet kon niet worden opgeslagen.");
+                }
+                finally
+                {
+                    xlWorkBook.Close(true, misValue, misValue);
+                    xlApp.Quit();
+                }
+
+                es.Hide();
+                es.Close();
+                es.Dispose();
+
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(workSheetOpleidingen);
+                workSheetOpleidingen = null;
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWorkBook);
+                xlWorkBook = null;
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(xlApp);
+                xlApp = null;
+
+                GC.Collect();
+            }
+            catch (Exception e)
             {
-                xlWorkBook.SaveAs(Path, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                MessageBox.Show(e.ToString());
             }
-            catch
-            {
-                MessageBox.Show("Worksheet kon niet worden opgeslagen.");
-            }
-            finally
-            {
-                xlWorkBook.Close(true, misValue, misValue);
-                xlApp.Quit();
-            }
-
-            es.Hide();
-            es.Close();
-            es.Dispose();
-
-            System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWorkSheet);
-            xlWorkSheet = null;
-            System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWorkBook);
-            xlWorkBook = null;
-            System.Runtime.InteropServices.Marshal.ReleaseComObject(xlApp);
-            xlApp = null;
-
-            GC.Collect();
         }
 
         private void rowRemovedHandler(object sender, DataGridViewRowsRemovedEventArgs e)
@@ -502,7 +613,7 @@ namespace WindowsFormsApplication1
 
         private void KerntaakPlusButton_Click(object sender, EventArgs e)
         {
-            int ex = getInt((sender as Button).Tag);            
+            int ex = getInt((sender as Button).Tag);
             this.kerntaakPlus(ex);
         }
 
@@ -612,7 +723,6 @@ namespace WindowsFormsApplication1
             if (emptyCheckBox.Checked == true)
                 return;
 
-
             foreach (Control c in control.Controls) //Loopt alle controls door die in een formelement zitten.
             {
                 if (c.GetType() == typeof(TextBox)) //Als het element een textbox is wordt deze leeg gemaakt
@@ -637,6 +747,8 @@ namespace WindowsFormsApplication1
                     clearForm(c);
                 }
             }
+            resetKerntaken();
+            resetExams();
         }
 
         private void tab1_selecting(object sender, System.Windows.Forms.TabControlCancelEventArgs e)
@@ -648,8 +760,6 @@ namespace WindowsFormsApplication1
                 OpslaanPlusButton.Visible = true;
                 ExamPlusButton.Visible = true;
                 ExamMinButton.Visible = true;
-                resetKerntaken();
-                resetExams();
                 clearForm(tabPage1);
                 aanpassing = false;
             }

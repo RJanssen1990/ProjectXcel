@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Examenoverzicht));
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.Infotext = new System.Windows.Forms.Panel();
             this.SuspendLayout();
@@ -57,6 +58,7 @@
             this.ClientSize = new System.Drawing.Size(739, 448);
             this.Controls.Add(this.Infotext);
             this.Controls.Add(this.treeView1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Examenoverzicht";
             this.ResumeLayout(false);
 
