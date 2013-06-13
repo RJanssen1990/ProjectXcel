@@ -29,6 +29,10 @@ namespace WindowsFormsApplication1
 
         private void Main_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'databaseDataSet.examens' table. You can move, or remove it, as needed.
+            this.examensTableAdapter.Fill(this.databaseDataSet.examens);
+            // TODO: This line of code loads data into the 'databaseDataSet.examens' table. You can move, or remove it, as needed.
+            this.examensTableAdapter.Fill(this.databaseDataSet.examens);
             // TODO: This line of code loads data into the 'databaseDataSet.kerntaken' table. You can move, or remove it, as needed.
             this.kerntakenTableAdapter.Fill(this.databaseDataSet.kerntaken);
             // TODO: This line of code loads data into the 'databaseDataSet.examens' table. You can move, or remove it, as needed.
@@ -153,11 +157,13 @@ namespace WindowsFormsApplication1
 
                                 
                                 ConstructeurBox[examenAantal - 1].Text = examenRow.Cells[examenconstructeurDataGridViewTextBoxColumn.Index].Value.ToString();
-                                PeriodeAfnameBox[examenAantal - 1].Text = examenRow.Cells[examenperiodeafnameDataGridViewTextBoxColumn.Index].Value.ToString();
+                                PeriodeAfnameBox[examenAantal - 1].Text = examenRow.Cells[examenstartperiodeDataGridViewTextBoxColumn.Index].Value.ToString();
+                                ePeriodeAfnameBox[examenAantal - 1].Text = examenRow.Cells[exameneindperiodeDataGridViewTextBoxColumn.Index].Value.ToString();
                                 LocatieBox[examenAantal - 1].Text = examenRow.Cells[examenlocatieDataGridViewTextBoxColumn.Index].Value.ToString();
                                 NaamOpdrachtBox[examenAantal - 1].Text = examenRow.Cells[examennaamopdrachtDataGridViewTextBoxColumn.Index].Value.ToString();
                                 StatusOpdrachtBox[examenAantal - 1].Text = examenRow.Cells[examenstatusopdrachtDataGridViewTextBoxColumn.Index].Value.ToString();
-                                OpmerkingBox[examenAantal - 1].Text = examenRow.Cells[examenopmerkingenDataGridViewTextBoxColumn.Index].Value.ToString();
+                                BeoordelingBox[examenAantal - 1].Text = examenRow.Cells[examenbeoordelingDataGridViewTextBoxColumn.Index].Value.ToString();
+                                OpmerkingBox[examenAantal - 1].Text = examenRow.Cells[examenopmerkingDataGridViewTextBoxColumn.Index].Value.ToString();
 
                                 i++;
                                 int j = 0;
@@ -166,6 +172,11 @@ namespace WindowsFormsApplication1
                                 {
                                     if (Convert.ToInt32(kerntaakRow.Cells[ktexamenidDataGridViewTextBoxColumn.Index].Value) == Convert.ToInt32(examenRow.Cells[examenidDataGridViewTextBoxColumn.Index].Value))
                                     {
+                                        if (j >= 1)
+                                        {
+                                            kerntaakPlus(examenAantal - 1);
+                                        }
+
                                         KerntakenBox[examenAantal - 1, j].Text = kerntaakRow.Cells[kerntaaknaamDataGridViewTextBoxColumn.Index].Value.ToString();
                                         KerntaakNrBox[examenAantal - 1, j].Text = kerntaakRow.Cells[kerntaaknummerDataGridViewTextBoxColumn.Index].Value.ToString();
                                         WerkprocessenBox[examenAantal - 1, j].Text = kerntaakRow.Cells[kerntaakwerkprocessenDataGridViewTextBoxColumn.Index].Value.ToString();
@@ -221,11 +232,13 @@ namespace WindowsFormsApplication1
                 {
                     examenRow.Cells[examennummerDataGridViewTextBoxColumn.Index].Value = examNR(i);
                     examenRow.Cells[examenconstructeurDataGridViewTextBoxColumn.Index].Value = ConstructeurBox[i].Text;
-                    examenRow.Cells[examenperiodeafnameDataGridViewTextBoxColumn.Index].Value = PeriodeAfnameBox[i].Text;
+                    examenRow.Cells[examenstartperiodeDataGridViewTextBoxColumn.Index].Value = PeriodeAfnameBox[i].Text;
+                    examenRow.Cells[exameneindperiodeDataGridViewTextBoxColumn.Index].Value = ePeriodeAfnameBox[i].Text;
                     examenRow.Cells[examenlocatieDataGridViewTextBoxColumn.Index].Value = LocatieBox[i].Text;
                     examenRow.Cells[examennaamopdrachtDataGridViewTextBoxColumn.Index].Value = NaamOpdrachtBox[i].Text;
                     examenRow.Cells[examenstatusopdrachtDataGridViewTextBoxColumn.Index].Value = StatusOpdrachtBox[i].Text;
-                    examenRow.Cells[examenopmerkingenDataGridViewTextBoxColumn.Index].Value = OpmerkingBox[i].Text;
+                    examenRow.Cells[examenbeoordelingDataGridViewTextBoxColumn.Index].Value = BeoordelingBox[i].Text;
+                    examenRow.Cells[examenopmerkingDataGridViewTextBoxColumn.Index].Value = OpmerkingBox[i].Text;
                     
                     int j = 0;
                     foreach (DataGridViewRow kerntaakRow in dataGridView3.Rows)
@@ -250,6 +263,7 @@ namespace WindowsFormsApplication1
             OpslaanPlusButton.Visible = true;
             ExamPlusButton.Visible = true;
             ExamMinButton.Visible = true;
+            resetKerntaken();
             resetExams();
             clearForm(tabPage1);
             tabControl1.SelectTab("tabPage2");
@@ -304,7 +318,7 @@ namespace WindowsFormsApplication1
             for (int i = 0; i < examenAantal; i++)
             {
                 DatabaseDataSet.examensRow examenRow = databaseDataSet.examens.NewexamensRow();
-                //examenRow.examen_vak = ExamenTitle[i].Text;
+                examenRow.examen_vak = ExamenTitle[i].Text;
                 examenRow.examen_nummer = examNR(i);
                 examenRow.examen_constructeur = ConstructeurBox[i].Text;
                 examenRow.examen_start_periode = PeriodeAfnameBox[i].Text;
@@ -312,7 +326,8 @@ namespace WindowsFormsApplication1
                 examenRow.examen_locatie = LocatieBox[i].Text;
                 examenRow.examen_naam_opdracht = NaamOpdrachtBox[i].Text;
                 examenRow.examen_status_opdracht = StatusOpdrachtBox[i].Text;
-                examenRow.examen_opmerkingen = OpmerkingBox[i].Text;
+                examenRow.examen_beoordeling = BeoordelingBox[i].Text;
+                examenRow.examen_opmerking = OpmerkingBox[i].Text;
                 examenRow.opleiding_id = getInt(databaseDataSet.overzicht.Rows[databaseDataSet.overzicht.Rows.Count - 1][0]);
 
                 databaseDataSet.examens.AddexamensRow(examenRow);
@@ -321,7 +336,7 @@ namespace WindowsFormsApplication1
                 updateDatabase();
                 this.examensTableAdapter.Fill(this.databaseDataSet.examens);
 
-                for (int j = 0; j < 6; j++)
+                for (int j = 0; j < kerntaakAantal[i]; j++)
                 {
                     DatabaseDataSet.kerntakenRow kerntaakRow = databaseDataSet.kerntaken.NewkerntakenRow();
                     kerntaakRow.kerntaak_naam = KerntakenBox[i, j].Text;
@@ -334,14 +349,14 @@ namespace WindowsFormsApplication1
             }
             updateDatabase();
             this.kerntakenTableAdapter.Fill(this.databaseDataSet.kerntaken);
-
-
+            
             if (sender.Equals(OpslaanButton))
             {
                 tabControl1.SelectTab("tabPage2");
             }
             // Het form wordt gereset naar lege staat.
             clearForm(tabPage1);
+            resetKerntaken();
             resetExams();
         }
 
@@ -503,7 +518,20 @@ namespace WindowsFormsApplication1
             for (int i = 0; i < aantal; i++)
             {
                 this.examenMin();
+            }            
+        }
+
+        private void resetKerntaken()
+        {
+            for (int i = 0; i < kerntaakAantal.Length; i++)
+            {
+                int aantal = kerntaakAantal[i];
+                for (int j = 0; j < aantal; j++)
+                {
+                    this.kerntaakMin(i);
+                }
             }
+
         }
 
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
@@ -599,6 +627,11 @@ namespace WindowsFormsApplication1
                         ((ComboBox)c).Text = "";
                     }
                 }
+                else if (c.GetType() == typeof(RichTextBox))
+                {
+                    ((RichTextBox)c).Clear();
+                }
+
                 if (c.HasChildren) // Als een element zelf elementen bevat wordt deze functie nog een keer uitgevoerd voor dat element
                 {
                     clearForm(c);
@@ -615,6 +648,7 @@ namespace WindowsFormsApplication1
                 OpslaanPlusButton.Visible = true;
                 ExamPlusButton.Visible = true;
                 ExamMinButton.Visible = true;
+                resetKerntaken();
                 resetExams();
                 clearForm(tabPage1);
                 aanpassing = false;
@@ -652,6 +686,17 @@ namespace WindowsFormsApplication1
                         return false;
                     }
                 }
+                for (int j = 0; j < kerntaakAantal[i]; j++)
+                {
+                    foreach (Control c in KerntaakBlok[i, j].Controls)
+                    {
+                        if (c.GetType() == typeof(TextBox) && ((TextBox)c).Text == "")
+                        {
+                            MessageBox.Show("U heeft niet alle verplichte velden ingevuld. Het formulier is niet opgeslagen.\nControleer alle kerntaakvelden.");
+                            return false;
+                        }
+                    }
+                }
             }
 
 
@@ -684,7 +729,7 @@ namespace WindowsFormsApplication1
 
             string kerntaken = "KT";
             
-            for (int j = 0; j < 6; j++)
+            for (int j = 0; j < kerntaakAantal[i]; j++)
             {
                 if (KerntaakNrBox[i, j].Text != "")
                 {

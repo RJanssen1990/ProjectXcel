@@ -15,7 +15,8 @@ namespace WindowsFormsApplication1
         int rowIndex;
         int opleidingColumnIndex;
         private DatabaseDataSet data;
-        string[] gegevens_examen = new string[8];
+        string[] gegevens_opleiding = new string[4];
+        string[] gegevens_examen = new string[9];
         string[] gegevens_kerntaken = new string[3];
 
         public Examenoverzicht(int rowIndex, int opleidingColumnIndex, DatabaseDataSet dc)
@@ -36,16 +37,15 @@ namespace WindowsFormsApplication1
             int opleiding_id;
 
             TreeNode root = new System.Windows.Forms.TreeNode(opleidingsnaam);
-
             opleiding_id = getInt(data.overzicht.Rows[rowIndex][0]);
-
+            root.Name = "opleiding";
+            root.Tag = opleiding_id;
 
             int examen_id;
 
-
             for (int i = 0; i < data.examens.Rows.Count; i++)
             {
-                if (opleiding_id == getInt(data.examens.Rows[i][9]))
+                if (opleiding_id == getInt(data.examens.Rows[i][11]))
                 {
                     TreeNode examen = new TreeNode(data.examens.Rows[i][1].ToString());
                     examen.Name = "examen";
@@ -71,6 +71,7 @@ namespace WindowsFormsApplication1
                         }
                     }
                 }
+                setOpleidingInfo(opleiding_id);
             }
 
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
@@ -97,12 +98,32 @@ namespace WindowsFormsApplication1
                 int id = (int)e.Node.Tag;
                 setExamenInfo(id);
             }
+            else if (e.Node.Name == "opleiding")
+            {
+                int id = (int)e.Node.Tag;
+                setOpleidingInfo(id);
+            }
             else
             {
                 Clear();
             }
         }
 
+        private void setOpleidingInfo(int id)
+        {
+            foreach (DatabaseDataSet.overzichtRow r in data.overzicht.Rows)
+            {
+                if (id == r.id)
+                {
+                    gegevens_opleiding[0] = r.crebo;
+                    gegevens_opleiding[1] = r.cohort;
+                    gegevens_opleiding[2] = r.niveau;
+                    gegevens_opleiding[3] = r.kenniscentrum;
+                    VulInfoOpleiding();
+                }
+            }
+        }
+        
         private void setExamenInfo(int id)
         {
             foreach (DatabaseDataSet.examensRow r in data.examens.Rows)
@@ -116,7 +137,8 @@ namespace WindowsFormsApplication1
                     gegevens_examen[4] = r.examen_locatie;
                     gegevens_examen[5] = r.examen_naam_opdracht;
                     gegevens_examen[6] = r.examen_status_opdracht;
-                    gegevens_examen[7] = r.examen_opmerkingen;
+                    gegevens_examen[7] = r.examen_beoordeling;
+                    gegevens_examen[8] = r.examen_opmerking;
                     VulInfoExamen();
                 }
             }
