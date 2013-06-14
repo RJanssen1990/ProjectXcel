@@ -190,7 +190,7 @@
 
         private void VulInfoKerntaken()
         {
-            string[] labels_kerntaak = {"Kerntaak Titel:","Kerntaak Nummer:","Werkprocessen:" };
+            string[] labels_kerntaak = {"Naam Opdracht:","Naam Kerntaak:","Werkprocessen:" };
 
             Clear();
             

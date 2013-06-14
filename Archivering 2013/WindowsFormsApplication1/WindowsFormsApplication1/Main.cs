@@ -517,7 +517,7 @@ namespace WindowsFormsApplication1
                                 //voeg kerntaak toe
                                 if (kerntaakRow.examen_id == examen_id)
                                 {
-                                    workSheetExamens.Cells[r, c] = "KT: " + kerntaakRow.kerntaak_naam + " " + kerntaakRow.kerntaak_nummer;
+                                    workSheetExamens.Cells[r, c] = "KT " + kerntaakRow.kerntaak_nummer + ": " + kerntaakRow.kerntaak_naam;
                                     workSheetExamens.Cells[r, c].Interior.Color = Color.LightPink;
 
                                     if (kerntaakRow.kerntaak_werkprocessen != "")

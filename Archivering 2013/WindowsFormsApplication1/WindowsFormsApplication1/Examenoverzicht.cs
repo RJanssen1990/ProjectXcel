@@ -32,7 +32,8 @@ namespace WindowsFormsApplication1
         private void LeesGegevens()
         {
             string opleidingsnaam = data.overzicht.Rows[rowIndex][opleidingColumnIndex].ToString();
-            this.Text = "Examenoverzicht " + opleidingsnaam;
+            string uitstroom = data.overzicht.Rows[rowIndex][3].ToString();
+            this.Text = "Examenoverzicht " + uitstroom;
 
             int opleiding_id;
 
@@ -150,8 +151,14 @@ namespace WindowsFormsApplication1
             {
                 if (id == r.kerntaak_id)
                 {
-                    gegevens_kerntaken[0] = r.kerntaak_naam;
-                    gegevens_kerntaken[1] = r.kerntaak_nummer;
+                    foreach(DatabaseDataSet.examensRow row in data.examens.Rows)
+                    {
+                        if(r.examen_id == row.examen_id)
+                        {
+                            gegevens_kerntaken[0] = row.examen_naam_opdracht;
+                        }
+                    }     
+                    gegevens_kerntaken[1] = r.kerntaak_naam;
                     gegevens_kerntaken[2] = r.kerntaak_werkprocessen.Replace(';', ',');
                     VulInfoKerntaken();
                 }

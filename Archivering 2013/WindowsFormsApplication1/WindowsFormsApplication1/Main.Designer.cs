@@ -1157,7 +1157,7 @@
                 StatusOpdracht[examenAantal] = new System.Windows.Forms.Label();
                 StatusOpdrachtBox[examenAantal] = new System.Windows.Forms.ComboBox();
                 BeoordelingLabel[examenAantal] = new System.Windows.Forms.Label();
-                BeoordelingBox[examenAantal] = new System.Windows.Forms.TextBox();                
+                BeoordelingBox[examenAantal] = new System.Windows.Forms.ComboBox();                
                 OpmerkingLabel[examenAantal] = new System.Windows.Forms.Label();
                 OpmerkingBox[examenAantal] = new System.Windows.Forms.RichTextBox();
                 KtToevoegen[examenAantal] = new System.Windows.Forms.Button();
@@ -1297,16 +1297,23 @@
                 this.StatusOpdrachtBox[examenAantal].Size = new System.Drawing.Size(160, 21);
                 //
                 // Beoordeling Label
-                //
+                //                
                 this.BeoordelingLabel[examenAantal].AutoSize = true;
                 this.BeoordelingLabel[examenAantal].Location = new System.Drawing.Point(15, 230);
                 this.BeoordelingLabel[examenAantal].Name = "Locatie";
                 this.BeoordelingLabel[examenAantal].Size = new System.Drawing.Size(84, 13);
                 this.BeoordelingLabel[examenAantal].Text = "Beoordelingsschaal*";
-                toolTips.SetToolTip(this.BeoordelingLabel[examenAantal], "De manier waarop het examen beoordeelt zal worden. (Cijfers, O/V/G etc.)");
+                toolTips.SetToolTip(this.BeoordelingLabel[examenAantal], "De manier waarop het examen beoordeelt zal worden.");
                 //
                 // Beoordeling Box
                 //
+                this.BeoordelingBox[examenAantal].FormattingEnabled = true;
+                this.BeoordelingBox[examenAantal].Items.AddRange(new object[] {            
+                "O-V-G",
+                "0-10",
+                "F1-F2-F3",
+                "A1-A2-B1-B2-C1-C2"});
+                this.BeoordelingBox[examenAantal].DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
                 this.BeoordelingBox[examenAantal].Location = new System.Drawing.Point(120, 227);
                 this.BeoordelingBox[examenAantal].Name = "Beoordeling";
                 this.BeoordelingBox[examenAantal].Size = new System.Drawing.Size(160, 20);
@@ -1595,7 +1602,7 @@
         private System.Windows.Forms.Label[] PeriodeAfname = new System.Windows.Forms.Label[10];
         private System.Windows.Forms.Label[] ePeriodeAfname = new System.Windows.Forms.Label[10];
         private System.Windows.Forms.Label[] BeoordelingLabel = new System.Windows.Forms.Label[10];
-        private System.Windows.Forms.TextBox[] BeoordelingBox = new System.Windows.Forms.TextBox[10];
+        private System.Windows.Forms.ComboBox[] BeoordelingBox = new System.Windows.Forms.ComboBox[10];
         private System.Windows.Forms.Panel[,] KerntaakBlok = new System.Windows.Forms.Panel[10, 10];
         private System.Windows.Forms.Label[,] Werkprocessen = new System.Windows.Forms.Label[10, 10];
         private System.Windows.Forms.Label[,] KerntaakNr = new System.Windows.Forms.Label[10, 10];
