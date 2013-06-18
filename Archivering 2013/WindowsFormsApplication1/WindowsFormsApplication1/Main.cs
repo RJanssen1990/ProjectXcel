@@ -847,18 +847,25 @@ namespace WindowsFormsApplication1
 
         private void gegevensImporterenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog fileDialog = new OpenFileDialog();
-            fileDialog.Title = "Selecteer een bestand om te importeren";
-            fileDialog.Filter = "Database gegevens|*.xml";
-            if (fileDialog.ShowDialog() == DialogResult.OK)
+            try
             {
-                FileStream myFileStream = new FileStream(fileDialog.FileName, FileMode.Open);
-                System.Xml.XmlTextReader myXmlReader = new System.Xml.XmlTextReader(myFileStream);
-                databaseDataSet.Clear();
-                databaseDataSet.ReadXml(myXmlReader);
-                myXmlReader.Close();
+                OpenFileDialog fileDialog = new OpenFileDialog();
+                fileDialog.Title = "Selecteer een bestand om te importeren";
+                fileDialog.Filter = "Database gegevens|*.xml";
+                if (fileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    FileStream myFileStream = new FileStream(fileDialog.FileName, FileMode.Open);
+                    System.Xml.XmlTextReader myXmlReader = new System.Xml.XmlTextReader(myFileStream);
+                    databaseDataSet.Clear();
+                    databaseDataSet.ReadXml(myXmlReader);
+                    myXmlReader.Close();
 
-                updateDatabase();
+                    updateDatabase();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
