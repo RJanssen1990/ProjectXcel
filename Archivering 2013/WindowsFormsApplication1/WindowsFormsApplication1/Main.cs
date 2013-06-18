@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace WindowsFormsApplication1
@@ -30,23 +31,8 @@ namespace WindowsFormsApplication1
         private void Main_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'databaseDataSet.examens' table. You can move, or remove it, as needed.
-            this.examensTableAdapter.Fill(this.databaseDataSet.examens);
-            // TODO: This line of code loads data into the 'databaseDataSet.examens' table. You can move, or remove it, as needed.
-            this.examensTableAdapter.Fill(this.databaseDataSet.examens);
-            // TODO: This line of code loads data into the 'databaseDataSet.kerntaken' table. You can move, or remove it, as needed.
-            this.kerntakenTableAdapter.Fill(this.databaseDataSet.kerntaken);
-            // TODO: This line of code loads data into the 'databaseDataSet.examens' table. You can move, or remove it, as needed.
-            this.examensTableAdapter.Fill(this.databaseDataSet.examens);
-            // TODO: This line of code loads data into the 'databaseDataSet.overzicht' table. You can move, or remove it, as needed.
-            this.overzichtTableAdapter.Fill(this.databaseDataSet.overzicht);
-            // TODO: This line of code loads data into the 'databaseDataSet.kerntaken' table. You can move, or remove it, as needed.
-            this.kerntakenTableAdapter.Fill(this.databaseDataSet.kerntaken);
-            // TODO: This line of code loads data into the 'databaseDataSet.examens' table. You can move, or remove it, as needed.
-            this.examensTableAdapter.Fill(this.databaseDataSet.examens);
-            // TODO: This line of code loads data into the 'databaseDataSet.overzicht' table. You can move, or remove it, as needed.
             this.overzichtTableAdapter.Fill(this.databaseDataSet.overzicht);
             this.examensTableAdapter.Fill(this.databaseDataSet.examens);
-            this.overzichtTableAdapter.Fill(this.databaseDataSet.overzicht);
             this.kerntakenTableAdapter.Fill(this.databaseDataSet.kerntaken);
 
         }
@@ -857,6 +843,44 @@ namespace WindowsFormsApplication1
             nummer = crebo + "_" + cohort + "_" + kerntaken;
             
             return nummer;
+        }
+
+        private void gegevensImporterenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.Title = "Selecteer een bestand om te importeren";
+            fileDialog.Filter = "Database gegevens|*.xml";
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                FileStream myFileStream = new FileStream(fileDialog.FileName, FileMode.Open);
+                System.Xml.XmlTextReader myXmlReader = new System.Xml.XmlTextReader(myFileStream);
+                databaseDataSet.Clear();
+                databaseDataSet.ReadXml(myXmlReader);
+                myXmlReader.Close();
+
+                updateDatabase();
+            }
+        }
+
+        private void gegevensExporterenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SaveFileDialog saveDialog = new SaveFileDialog();
+                saveDialog.Filter = "Database gegevens|*.xml";
+                saveDialog.FileName = "Database gegevens.xml";
+                if (saveDialog.ShowDialog() == DialogResult.OK)
+                {
+                    FileStream myFileStream = new FileStream(saveDialog.FileName, FileMode.Create);
+                    System.Xml.XmlTextWriter myXmlWriter = new System.Xml.XmlTextWriter(myFileStream, System.Text.Encoding.Unicode);
+                    databaseDataSet.WriteXml(myXmlWriter);
+                    myXmlWriter.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }   
 }

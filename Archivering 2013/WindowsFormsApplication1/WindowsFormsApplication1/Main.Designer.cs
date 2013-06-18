@@ -92,6 +92,21 @@
             this.opleidingidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.examensBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.creboDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kwalificatieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uitstroomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.opleidingDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.niveauDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.leerrouteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kenniscentrumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cohortDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kdVersieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.examenprofielDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.portefeuillehouderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aanspreekpuntDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.managerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gecontroleerdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.overzichtBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -120,21 +135,9 @@
             this.overzichtTableAdapter = new WindowsFormsApplication1.DatabaseDataSetTableAdapters.overzichtTableAdapter();
             this.kerntakenTableAdapter = new WindowsFormsApplication1.DatabaseDataSetTableAdapters.kerntakenTableAdapter();
             this.examensTableAdapter = new WindowsFormsApplication1.DatabaseDataSetTableAdapters.examensTableAdapter();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.creboDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kwalificatieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uitstroomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.opleidingDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.niveauDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.leerrouteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kenniscentrumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cohortDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kdVersieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.examenprofielDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.portefeuillehouderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.aanspreekpuntDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.managerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gecontroleerdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bestandToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.gegevensImporterenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gegevensExporterenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -797,6 +800,98 @@
             this.dataGridView1.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.rowRemovedHandler);
             this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
             // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "#";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // creboDataGridViewTextBoxColumn
+            // 
+            this.creboDataGridViewTextBoxColumn.DataPropertyName = "crebo";
+            this.creboDataGridViewTextBoxColumn.HeaderText = "Crebo";
+            this.creboDataGridViewTextBoxColumn.Name = "creboDataGridViewTextBoxColumn";
+            // 
+            // kwalificatieDataGridViewTextBoxColumn
+            // 
+            this.kwalificatieDataGridViewTextBoxColumn.DataPropertyName = "kwalificatie";
+            this.kwalificatieDataGridViewTextBoxColumn.HeaderText = "Kwalificatie";
+            this.kwalificatieDataGridViewTextBoxColumn.Name = "kwalificatieDataGridViewTextBoxColumn";
+            // 
+            // uitstroomDataGridViewTextBoxColumn
+            // 
+            this.uitstroomDataGridViewTextBoxColumn.DataPropertyName = "uitstroom";
+            this.uitstroomDataGridViewTextBoxColumn.HeaderText = "Uitstroom";
+            this.uitstroomDataGridViewTextBoxColumn.Name = "uitstroomDataGridViewTextBoxColumn";
+            // 
+            // opleidingDataGridViewTextBoxColumn
+            // 
+            this.opleidingDataGridViewTextBoxColumn.DataPropertyName = "opleiding";
+            this.opleidingDataGridViewTextBoxColumn.HeaderText = "Opleiding";
+            this.opleidingDataGridViewTextBoxColumn.Name = "opleidingDataGridViewTextBoxColumn";
+            // 
+            // niveauDataGridViewTextBoxColumn
+            // 
+            this.niveauDataGridViewTextBoxColumn.DataPropertyName = "niveau";
+            this.niveauDataGridViewTextBoxColumn.HeaderText = "Niveau";
+            this.niveauDataGridViewTextBoxColumn.Name = "niveauDataGridViewTextBoxColumn";
+            // 
+            // leerrouteDataGridViewTextBoxColumn
+            // 
+            this.leerrouteDataGridViewTextBoxColumn.DataPropertyName = "leerroute";
+            this.leerrouteDataGridViewTextBoxColumn.HeaderText = "Leerroute";
+            this.leerrouteDataGridViewTextBoxColumn.Name = "leerrouteDataGridViewTextBoxColumn";
+            // 
+            // kenniscentrumDataGridViewTextBoxColumn
+            // 
+            this.kenniscentrumDataGridViewTextBoxColumn.DataPropertyName = "kenniscentrum";
+            this.kenniscentrumDataGridViewTextBoxColumn.HeaderText = "Kenniscentrum";
+            this.kenniscentrumDataGridViewTextBoxColumn.Name = "kenniscentrumDataGridViewTextBoxColumn";
+            // 
+            // cohortDataGridViewTextBoxColumn
+            // 
+            this.cohortDataGridViewTextBoxColumn.DataPropertyName = "cohort";
+            this.cohortDataGridViewTextBoxColumn.HeaderText = "Cohort";
+            this.cohortDataGridViewTextBoxColumn.Name = "cohortDataGridViewTextBoxColumn";
+            // 
+            // kdVersieDataGridViewTextBoxColumn
+            // 
+            this.kdVersieDataGridViewTextBoxColumn.DataPropertyName = "kd versie";
+            this.kdVersieDataGridViewTextBoxColumn.HeaderText = "KD Versie";
+            this.kdVersieDataGridViewTextBoxColumn.Name = "kdVersieDataGridViewTextBoxColumn";
+            // 
+            // examenprofielDataGridViewTextBoxColumn
+            // 
+            this.examenprofielDataGridViewTextBoxColumn.DataPropertyName = "examenprofiel";
+            this.examenprofielDataGridViewTextBoxColumn.HeaderText = "Examenprofiel";
+            this.examenprofielDataGridViewTextBoxColumn.Name = "examenprofielDataGridViewTextBoxColumn";
+            // 
+            // portefeuillehouderDataGridViewTextBoxColumn
+            // 
+            this.portefeuillehouderDataGridViewTextBoxColumn.DataPropertyName = "portefeuillehouder";
+            this.portefeuillehouderDataGridViewTextBoxColumn.HeaderText = "Portefeuillehouder";
+            this.portefeuillehouderDataGridViewTextBoxColumn.Name = "portefeuillehouderDataGridViewTextBoxColumn";
+            // 
+            // aanspreekpuntDataGridViewTextBoxColumn
+            // 
+            this.aanspreekpuntDataGridViewTextBoxColumn.DataPropertyName = "aanspreekpunt";
+            this.aanspreekpuntDataGridViewTextBoxColumn.HeaderText = "Aanspreekpunt";
+            this.aanspreekpuntDataGridViewTextBoxColumn.Name = "aanspreekpuntDataGridViewTextBoxColumn";
+            // 
+            // managerDataGridViewTextBoxColumn
+            // 
+            this.managerDataGridViewTextBoxColumn.DataPropertyName = "manager";
+            this.managerDataGridViewTextBoxColumn.HeaderText = "Manager";
+            this.managerDataGridViewTextBoxColumn.Name = "managerDataGridViewTextBoxColumn";
+            // 
+            // gecontroleerdDataGridViewTextBoxColumn
+            // 
+            this.gecontroleerdDataGridViewTextBoxColumn.DataPropertyName = "gecontroleerd";
+            this.gecontroleerdDataGridViewTextBoxColumn.HeaderText = "Gecontroleerd";
+            this.gecontroleerdDataGridViewTextBoxColumn.Name = "gecontroleerdDataGridViewTextBoxColumn";
+            this.gecontroleerdDataGridViewTextBoxColumn.Visible = false;
+            // 
             // overzichtBindingSource
             // 
             this.overzichtBindingSource.DataMember = "overzicht";
@@ -923,6 +1018,7 @@
             // bestandToolStripMenuItem
             // 
             this.bestandToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bestandToolStripMenuItem1,
             this.exporterenToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.bestandToolStripMenuItem.Name = "bestandToolStripMenuItem";
@@ -932,14 +1028,14 @@
             // exporterenToolStripMenuItem
             // 
             this.exporterenToolStripMenuItem.Name = "exporterenToolStripMenuItem";
-            this.exporterenToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.exporterenToolStripMenuItem.Text = "Exporteren als..";
+            this.exporterenToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.exporterenToolStripMenuItem.Text = "Exporteren naar Excel..";
             this.exporterenToolStripMenuItem.Click += new System.EventHandler(this.exporteren_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.exitToolStripMenuItem.Text = "Afsluiten";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -1007,97 +1103,28 @@
             // 
             this.examensTableAdapter.ClearBeforeFill = true;
             // 
-            // idDataGridViewTextBoxColumn
+            // bestandToolStripMenuItem1
             // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "#";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.bestandToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gegevensImporterenToolStripMenuItem,
+            this.gegevensExporterenToolStripMenuItem});
+            this.bestandToolStripMenuItem1.Name = "bestandToolStripMenuItem1";
+            this.bestandToolStripMenuItem1.Size = new System.Drawing.Size(191, 22);
+            this.bestandToolStripMenuItem1.Text = "Bestand";
             // 
-            // creboDataGridViewTextBoxColumn
+            // gegevensImporterenToolStripMenuItem
             // 
-            this.creboDataGridViewTextBoxColumn.DataPropertyName = "crebo";
-            this.creboDataGridViewTextBoxColumn.HeaderText = "Crebo";
-            this.creboDataGridViewTextBoxColumn.Name = "creboDataGridViewTextBoxColumn";
+            this.gegevensImporterenToolStripMenuItem.Name = "gegevensImporterenToolStripMenuItem";
+            this.gegevensImporterenToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.gegevensImporterenToolStripMenuItem.Text = "Gegevens importeren..";
+            this.gegevensImporterenToolStripMenuItem.Click += new System.EventHandler(this.gegevensImporterenToolStripMenuItem_Click);
             // 
-            // kwalificatieDataGridViewTextBoxColumn
+            // gegevensExporterenToolStripMenuItem
             // 
-            this.kwalificatieDataGridViewTextBoxColumn.DataPropertyName = "kwalificatie";
-            this.kwalificatieDataGridViewTextBoxColumn.HeaderText = "Kwalificatie";
-            this.kwalificatieDataGridViewTextBoxColumn.Name = "kwalificatieDataGridViewTextBoxColumn";
-            // 
-            // uitstroomDataGridViewTextBoxColumn
-            // 
-            this.uitstroomDataGridViewTextBoxColumn.DataPropertyName = "uitstroom";
-            this.uitstroomDataGridViewTextBoxColumn.HeaderText = "Uitstroom";
-            this.uitstroomDataGridViewTextBoxColumn.Name = "uitstroomDataGridViewTextBoxColumn";
-            // 
-            // opleidingDataGridViewTextBoxColumn
-            // 
-            this.opleidingDataGridViewTextBoxColumn.DataPropertyName = "opleiding";
-            this.opleidingDataGridViewTextBoxColumn.HeaderText = "Opleiding";
-            this.opleidingDataGridViewTextBoxColumn.Name = "opleidingDataGridViewTextBoxColumn";
-            // 
-            // niveauDataGridViewTextBoxColumn
-            // 
-            this.niveauDataGridViewTextBoxColumn.DataPropertyName = "niveau";
-            this.niveauDataGridViewTextBoxColumn.HeaderText = "Niveau";
-            this.niveauDataGridViewTextBoxColumn.Name = "niveauDataGridViewTextBoxColumn";
-            // 
-            // leerrouteDataGridViewTextBoxColumn
-            // 
-            this.leerrouteDataGridViewTextBoxColumn.DataPropertyName = "leerroute";
-            this.leerrouteDataGridViewTextBoxColumn.HeaderText = "Leerroute";
-            this.leerrouteDataGridViewTextBoxColumn.Name = "leerrouteDataGridViewTextBoxColumn";
-            // 
-            // kenniscentrumDataGridViewTextBoxColumn
-            // 
-            this.kenniscentrumDataGridViewTextBoxColumn.DataPropertyName = "kenniscentrum";
-            this.kenniscentrumDataGridViewTextBoxColumn.HeaderText = "Kenniscentrum";
-            this.kenniscentrumDataGridViewTextBoxColumn.Name = "kenniscentrumDataGridViewTextBoxColumn";
-            // 
-            // cohortDataGridViewTextBoxColumn
-            // 
-            this.cohortDataGridViewTextBoxColumn.DataPropertyName = "cohort";
-            this.cohortDataGridViewTextBoxColumn.HeaderText = "Cohort";
-            this.cohortDataGridViewTextBoxColumn.Name = "cohortDataGridViewTextBoxColumn";
-            // 
-            // kdVersieDataGridViewTextBoxColumn
-            // 
-            this.kdVersieDataGridViewTextBoxColumn.DataPropertyName = "kd versie";
-            this.kdVersieDataGridViewTextBoxColumn.HeaderText = "KD Versie";
-            this.kdVersieDataGridViewTextBoxColumn.Name = "kdVersieDataGridViewTextBoxColumn";
-            // 
-            // examenprofielDataGridViewTextBoxColumn
-            // 
-            this.examenprofielDataGridViewTextBoxColumn.DataPropertyName = "examenprofiel";
-            this.examenprofielDataGridViewTextBoxColumn.HeaderText = "Examenprofiel";
-            this.examenprofielDataGridViewTextBoxColumn.Name = "examenprofielDataGridViewTextBoxColumn";
-            // 
-            // portefeuillehouderDataGridViewTextBoxColumn
-            // 
-            this.portefeuillehouderDataGridViewTextBoxColumn.DataPropertyName = "portefeuillehouder";
-            this.portefeuillehouderDataGridViewTextBoxColumn.HeaderText = "Portefeuillehouder";
-            this.portefeuillehouderDataGridViewTextBoxColumn.Name = "portefeuillehouderDataGridViewTextBoxColumn";
-            // 
-            // aanspreekpuntDataGridViewTextBoxColumn
-            // 
-            this.aanspreekpuntDataGridViewTextBoxColumn.DataPropertyName = "aanspreekpunt";
-            this.aanspreekpuntDataGridViewTextBoxColumn.HeaderText = "Aanspreekpunt";
-            this.aanspreekpuntDataGridViewTextBoxColumn.Name = "aanspreekpuntDataGridViewTextBoxColumn";
-            // 
-            // managerDataGridViewTextBoxColumn
-            // 
-            this.managerDataGridViewTextBoxColumn.DataPropertyName = "manager";
-            this.managerDataGridViewTextBoxColumn.HeaderText = "Manager";
-            this.managerDataGridViewTextBoxColumn.Name = "managerDataGridViewTextBoxColumn";
-            // 
-            // gecontroleerdDataGridViewTextBoxColumn
-            // 
-            this.gecontroleerdDataGridViewTextBoxColumn.DataPropertyName = "gecontroleerd";
-            this.gecontroleerdDataGridViewTextBoxColumn.HeaderText = "Gecontroleerd";
-            this.gecontroleerdDataGridViewTextBoxColumn.Name = "gecontroleerdDataGridViewTextBoxColumn";
-            this.gecontroleerdDataGridViewTextBoxColumn.Visible = false;
+            this.gegevensExporterenToolStripMenuItem.Name = "gegevensExporterenToolStripMenuItem";
+            this.gegevensExporterenToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.gegevensExporterenToolStripMenuItem.Text = "Gegevens exporteren..";
+            this.gegevensExporterenToolStripMenuItem.Click += new System.EventHandler(this.gegevensExporterenToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -1669,5 +1696,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn aanspreekpuntDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn managerDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn gecontroleerdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripMenuItem bestandToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem gegevensImporterenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gegevensExporterenToolStripMenuItem;
     }
 }
