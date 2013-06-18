@@ -23,7 +23,10 @@ namespace WindowsFormsApplication1
         
         public Main()
         {
+            // Maakt de elementen voor de user interface aan.
             InitializeComponent();
+            
+            // Maakt de elementen voor een examen in het formulier aan.
             examenPlus();
         }
 
@@ -109,13 +112,17 @@ namespace WindowsFormsApplication1
             }
         }
 
+        // Zet alle gegevens van een rij in het formulier, zodat deze aangepast kan worden.
         private void aanpassen_Click(object sender, EventArgs e)
         {
+            // Zorgt ervoor dat het formulier leeg is
             clearForm(tabPage1);
+            
 
-            if (dataGridView1.SelectedRows.Count == 1)
-            {
-                int rowIndex = dataGridView1.CurrentCell.RowIndex;
+            if (dataGridView1.SelectedRows.Count == 1) // Controleerd of er maar een opleiding geselecteerd is in de tabel.
+            {                
+                int rowIndex = dataGridView1.CurrentCell.RowIndex; // Slaat rowIndex van de geselecteerde row op in een int.
+                // Haalt alle gegevens van de geselecteerde rij uit de tabel en zet ze in het formulier.
                 OpleidingBox.Text = dataGridView1.Rows[rowIndex].Cells[opleidingDataGridViewTextBoxColumn.Index].Value.ToString();
                 CreboBox.Text = dataGridView1.Rows[rowIndex].Cells[creboDataGridViewTextBoxColumn.Index].Value.ToString();
                 KwalificatieBox.Text = dataGridView1.Rows[rowIndex].Cells[kwalificatieDataGridViewTextBoxColumn.Index].Value.ToString();
@@ -130,18 +137,20 @@ namespace WindowsFormsApplication1
                 AanspreekBox.Text = dataGridView1.Rows[rowIndex].Cells[aanspreekpuntDataGridViewTextBoxColumn.Index].Value.ToString();
                 ManagerBox.Text = dataGridView1.Rows[rowIndex].Cells[managerDataGridViewTextBoxColumn.Index].Value.ToString();
 
-                int i = 0;
+                int i = 0; // i houdt bij, bij hoeveel examens er door worden gelopen.
 
-                        foreach (DataGridViewRow examenRow in dataGridView2.Rows)
+                        foreach (DataGridViewRow examenRow in dataGridView2.Rows) // Loopt alle examens in de tabel door.
                         {
-                            if (Convert.ToInt32(examenRow.Cells[opleidingidDataGridViewTextBoxColumn.Index].Value) == Convert.ToInt32(dataGridView1.CurrentRow.Cells[idDataGridViewTextBoxColumn.Index].Value))
-                            {
-                                if (i >= 1)
-                                {
-                                    examenPlus();
-                                }
 
+                            // Controleerd of het id van de opleiding overeenkomt met de id die bij het examen is ingevuld.
+                            if (Convert.ToInt32(examenRow.Cells[opleidingidDataGridViewTextBoxColumn.Index].Value) == Convert.ToInt32(dataGridView1.CurrentRow.Cells[idDataGridViewTextBoxColumn.Index].Value)) 
+                            {
+                                if (i >= 1) // kijkt of deze loop minstens een keer door is gelopen.
+                                {
+                                    examenPlus(); //Voegt examenelementen toe aan het formulier
+                                }
                                 
+                                // Haalt de gegevens van de examens uit de tabel en zet deze in het formulier
                                 ConstructeurBox[examenAantal - 1].Text = examenRow.Cells[examenconstructeurDataGridViewTextBoxColumn.Index].Value.ToString();
                                 PeriodeAfnameBox[examenAantal - 1].Text = examenRow.Cells[examenstartperiodeDataGridViewTextBoxColumn.Index].Value.ToString();
                                 ePeriodeAfnameBox[examenAantal - 1].Text = examenRow.Cells[exameneindperiodeDataGridViewTextBoxColumn.Index].Value.ToString();
@@ -152,17 +161,20 @@ namespace WindowsFormsApplication1
                                 OpmerkingBox[examenAantal - 1].Text = examenRow.Cells[examenopmerkingDataGridViewTextBoxColumn.Index].Value.ToString();
 
                                 i++;
-                                int j = 0;
+                                int j = 0; // j houdt bij, bij hoeveel kerntaken er door worden gelopen.
 
+                                // Loopt alle kerntaken door in de tabel.
                                 foreach (DataGridViewRow kerntaakRow in dataGridView3.Rows)
                                 {
+                                    // Controleerd of het id van de examen overeenkomt met de id die bij de kerntaak is ingevuld.
                                     if (Convert.ToInt32(kerntaakRow.Cells[ktexamenidDataGridViewTextBoxColumn.Index].Value) == Convert.ToInt32(examenRow.Cells[examenidDataGridViewTextBoxColumn.Index].Value))
                                     {
-                                        if (j >= 1)
+                                        if (j >= 1) // controleerd of deze loop minstens een keer is doorlopen.
                                         {
-                                            kerntaakPlus(examenAantal - 1);
+                                            kerntaakPlus(examenAantal - 1); // voegt de elementen voor kerntaken toe aan de betreffende examen elementen.
                                         }
 
+                                        // Haalt de gegevens van de kerntaken uit de tabel en zet deze in het formulier
                                         KerntakenBox[examenAantal - 1, j].Text = kerntaakRow.Cells[kerntaaknaamDataGridViewTextBoxColumn.Index].Value.ToString();
                                         KerntaakNrBox[examenAantal - 1, j].Text = kerntaakRow.Cells[kerntaaknummerDataGridViewTextBoxColumn.Index].Value.ToString();
                                         WerkprocessenBox[examenAantal - 1, j].Text = kerntaakRow.Cells[kerntaakwerkprocessenDataGridViewTextBoxColumn.Index].Value.ToString();
@@ -173,30 +185,36 @@ namespace WindowsFormsApplication1
                         }
                     
                 
-
+                // Verandert de functie van de Opslaan knop
                 OpslaanButton.Click -= new System.EventHandler(buttonOpslaan_Click);
                 OpslaanButton.Click += new System.EventHandler(aanpassenOpslaan);
+
+                // Maakt enkele knoppen onzichtbaar
                 OpslaanPlusButton.Visible = false;
                 ExamPlusButton.Visible = false;
                 ExamMinButton.Visible = false;
 
+                // Verplaatst naar de eerste tab. (Het formulier)
                 tabControl1.SelectTab("tabPage1");
+                // Geeft aan dat er een aanpassing gemaakt wordt
                 aanpassing = true;
             }
-            else
+            else // Geeft een error als er meer dan een opleiding is geselecteerd.
             {
                 MessageBox.Show("Er kan maar één rij worden geselecteerd");
             }
         }
 
+        // Slaat de aanpassingen via het formulier op in de database.
         private void aanpassenOpslaan(object sender, EventArgs e)
         {
-            if (!validateForm())
+            if (!validateForm()) // Controleerd of alle velden van het formulier zijn ingevuld. En stopt de functie als dit niet het geval is.
             {
                 return;
             }
-            
-            int rowIndex = dataGridView1.CurrentCell.RowIndex;
+
+            int rowIndex = dataGridView1.CurrentCell.RowIndex; // Slaat rowIndex van de geselecteerde row op in een int.
+            // Haalt de gegevens op uit het formulier en slaat deze op in de tabel
             dataGridView1.Rows[rowIndex].Cells[opleidingDataGridViewTextBoxColumn.Index].Value = OpleidingBox.Text;
             dataGridView1.Rows[rowIndex].Cells[creboDataGridViewTextBoxColumn.Index].Value = CreboBox.Text;
             dataGridView1.Rows[rowIndex].Cells[kwalificatieDataGridViewTextBoxColumn.Index].Value = KwalificatieBox.Text;
@@ -211,24 +229,27 @@ namespace WindowsFormsApplication1
             dataGridView1.Rows[rowIndex].Cells[aanspreekpuntDataGridViewTextBoxColumn.Index].Value = AanspreekBox.Text;
             dataGridView1.Rows[rowIndex].Cells[managerDataGridViewTextBoxColumn.Index].Value = ManagerBox.Text;
 
-            int i = 0;
-            foreach (DataGridViewRow examenRow in dataGridView2.Rows)
+            int i = 0; // i houdt bij, bij hoeveel examens er door worden gelopen.
+            foreach (DataGridViewRow examenRow in dataGridView2.Rows) // Loopt alle examens uit de tabel door
             {
+                // Controleerd of het id van de opleiding overeenkomt met de id die bij het examen is ingevuld.
                 if (Convert.ToInt32(examenRow.Cells[opleidingidDataGridViewTextBoxColumn.Index].Value) == Convert.ToInt32(dataGridView1.Rows[rowIndex].Cells[0].Value))
                 {
+                    // Slaat de gegevens van het formulier op in de tabel.
                     examenRow.Cells[examennummerDataGridViewTextBoxColumn.Index].Value = examNR(i);
                     examenRow.Cells[examenconstructeurDataGridViewTextBoxColumn.Index].Value = ConstructeurBox[i].Text;
                     examenRow.Cells[examenstartperiodeDataGridViewTextBoxColumn.Index].Value = PeriodeAfnameBox[i].Text;
                     examenRow.Cells[exameneindperiodeDataGridViewTextBoxColumn.Index].Value = ePeriodeAfnameBox[i].Text;
-                    examenRow.Cells[examenlocatieDataGridViewTextBoxColumn.Index].Value = LocatieBox[i].Text;
+                    examenRow.Cells[examenlocatieDataGridViewTextBoxColumn.Index].Value = LocatieBox[i].Text; 
                     examenRow.Cells[examennaamopdrachtDataGridViewTextBoxColumn.Index].Value = NaamOpdrachtBox[i].Text;
                     examenRow.Cells[examenstatusopdrachtDataGridViewTextBoxColumn.Index].Value = StatusOpdrachtBox[i].Text;
                     examenRow.Cells[examenbeoordelingDataGridViewTextBoxColumn.Index].Value = BeoordelingBox[i].Text;
                     examenRow.Cells[examenopmerkingDataGridViewTextBoxColumn.Index].Value = OpmerkingBox[i].Text;
-                    
-                    int j = 0;
-                    foreach (DataGridViewRow kerntaakRow in dataGridView3.Rows)
+
+                    int j = 0; // j houdt bij, bij hoeveel kerntaken er door worden gelopen.
+                    foreach (DataGridViewRow kerntaakRow in dataGridView3.Rows) // Loopt alle kerntaken van de tabel door.
                     {
+                        // Controleerd of het id van de examen overeenkomt met de id die bij de kerntaak is ingevuld.
                         if (Convert.ToInt32(kerntaakRow.Cells[ktexamenidDataGridViewTextBoxColumn.Index].Value) == Convert.ToInt32(examenRow.Cells[0].Value))
                         {
                             kerntaakRow.Cells[kerntaaknaamDataGridViewTextBoxColumn.Index].Value = KerntakenBox[i, j].Text;
@@ -241,67 +262,66 @@ namespace WindowsFormsApplication1
                 }
             }
             
-
+            // De database wordt bijgewerkt.
             updateDatabase();
 
+            // Verandert de functie van de opslaan knop
             OpslaanButton.Click += new System.EventHandler(buttonOpslaan_Click);
             OpslaanButton.Click -= new System.EventHandler(aanpassenOpslaan);
+            
+            // Maakt enkele knoppen weer zichtbaar
             OpslaanPlusButton.Visible = true;
             ExamPlusButton.Visible = true;
             ExamMinButton.Visible = true;
+            
+            // Maakt het formulier leeg
             clearForm(tabPage1);
+
+            // Opent het tweede tabblad (het opleiding overzicht)
             tabControl1.SelectTab("tabPage2");
+            // Geeft aan dat er geen aanpassing meer gemaakt wordt.
             aanpassing = false;
         }
 
+        // Slaat de nieuwe gegevens van het formulier op in de database
         private void buttonOpslaan_Click(object sender, EventArgs e)
         {
-            if (!validateForm())
+            if (!validateForm()) // Controleerd of alle velden van het formulier zijn ingevuld. En stopt de functie als dit niet het geval is.
             {
                 return;
             }
 
             //overzicht tabel
-            DatabaseDataSet.overzichtRow overzichtRow = databaseDataSet.overzicht.NewoverzichtRow();
-            String opleiding = OpleidingBox.Text;
-            String crebo = CreboBox.Text;
-            String kwalificatie = KwalificatieBox.Text;
-            String uitstroom = UitstroomBox.Text;
-            String niveau = NiveauBox.Text;
-            String leerroute = LeerrouteBox.Text;
-            String kenniscentrum = KenniscentrumBox.Text;
-            String cohort = CohortBox.Text;
-            String kdversie = KdVersieBox.Text;
-            String examenprofiel = ExamenProfielBox.Text;
-            String portefeuillehouder = PortHouderBox.Text;
-            String aanspreekpunt = AanspreekBox.Text;
-            String manager = ManagerBox.Text;
-
-            overzichtRow.opleiding = opleiding;
-            overzichtRow.crebo = crebo;
-            overzichtRow.kwalificatie = kwalificatie;
-            overzichtRow.uitstroom = uitstroom;
-            overzichtRow.niveau = niveau;
-            overzichtRow.leerroute = leerroute;
-            overzichtRow.kenniscentrum = kenniscentrum;
-            overzichtRow.cohort = cohort;
-            overzichtRow.kd_versie = kdversie;
-            overzichtRow.examenprofiel = examenprofiel;
-            overzichtRow.portefeuillehouder = portefeuillehouder;
-            overzichtRow.aanspreekpunt = aanspreekpunt;
-            overzichtRow.manager = manager;
+            DatabaseDataSet.overzichtRow overzichtRow = databaseDataSet.overzicht.NewoverzichtRow(); // Maakt een nieuwe rij aan bij de opleidingen.
+            // Haalt de gegevens op uit het formulier en slaat ze op in de nieuwe row
+            overzichtRow.opleiding = OpleidingBox.Text;
+            overzichtRow.crebo = CreboBox.Text;
+            overzichtRow.kwalificatie = KwalificatieBox.Text;
+            overzichtRow.uitstroom = UitstroomBox.Text;
+            overzichtRow.niveau = NiveauBox.Text;
+            overzichtRow.leerroute = LeerrouteBox.Text;
+            overzichtRow.kenniscentrum = KenniscentrumBox.Text;
+            overzichtRow.cohort = CohortBox.Text;
+            overzichtRow.kd_versie = KdVersieBox.Text;
+            overzichtRow.examenprofiel = ExamenProfielBox.Text;
+            overzichtRow.portefeuillehouder = PortHouderBox.Text;
+            overzichtRow.aanspreekpunt = AanspreekBox.Text;
+            overzichtRow.manager = ManagerBox.Text;
 
             //voegt overzicht row toe nadat de examens gemaakt zijn
             databaseDataSet.overzicht.AddoverzichtRow(overzichtRow);
 
+            // Werkt de database bij
             updateDatabase();
-
+            
+            // Vult de tabel met de gegevens uit de database.
             this.overzichtTableAdapter.Fill(this.databaseDataSet.overzicht);
 
             //examentabel
-            for (int i = 0; i < examenAantal; i++)
+            for (int i = 0; i < examenAantal; i++) // Loopt enkele keren, gebaseerd op het aantal examen elementen dat toegevoegd is.
             {
-                DatabaseDataSet.examensRow examenRow = databaseDataSet.examens.NewexamensRow();
+                DatabaseDataSet.examensRow examenRow = databaseDataSet.examens.NewexamensRow(); // Maakt een nieuwe rij aan bij de examens.
+                // Haalt de gegevens uit het formulier en slaat deze op in de rij.
                 examenRow.examen_vak = ExamenTitle[i].Text;
                 examenRow.examen_nummer = examNR(i);
                 examenRow.examen_constructeur = ConstructeurBox[i].Text;
@@ -312,32 +332,44 @@ namespace WindowsFormsApplication1
                 examenRow.examen_status_opdracht = StatusOpdrachtBox[i].Text;
                 examenRow.examen_beoordeling = BeoordelingBox[i].Text;
                 examenRow.examen_opmerking = OpmerkingBox[i].Text;
-                examenRow.opleiding_id = getInt(databaseDataSet.overzicht.Rows[databaseDataSet.overzicht.Rows.Count - 1][0]);
+                // Haalt de id van de laatst toegevoegde opleiding op en slaat deze op in de examen tabel.
+                examenRow.opleiding_id = getInt(databaseDataSet.overzicht.Rows[databaseDataSet.overzicht.Rows.Count - 1][0]); 
 
+                // Voegt de nieuwe rij toe aan de database
                 databaseDataSet.examens.AddexamensRow(examenRow);
 
-                //update database etc
+                // Werkt de database bij
                 updateDatabase();
+
+                // Vult de tabel met de gegevens uit de database.
                 this.examensTableAdapter.Fill(this.databaseDataSet.examens);
 
-                for (int j = 0; j < kerntaakAantal[i]; j++)
+                for (int j = 0; j < kerntaakAantal[i]; j++) // Loopt enkele keren, gebaseerd op het aantal kerntaak elementen dat is aangemaakt.
                 {
-                    DatabaseDataSet.kerntakenRow kerntaakRow = databaseDataSet.kerntaken.NewkerntakenRow();
+                    DatabaseDataSet.kerntakenRow kerntaakRow = databaseDataSet.kerntaken.NewkerntakenRow(); // Maakt een nieuwe rij aan bij de kerntaken
+                    // Slaat de gegevens uit de tabel op in de rij.
                     kerntaakRow.kerntaak_naam = KerntakenBox[i, j].Text;
                     kerntaakRow.kerntaak_nummer = KerntaakNrBox[i, j].Text;
                     kerntaakRow.kerntaak_werkprocessen = WerkprocessenBox[i, j].Text;
+                    // Haalt de id van de laatst toegevoegde examen op en slaat deze op in de kerntaak tabel.
                     kerntaakRow.examen_id = getInt(databaseDataSet.examens.Rows[databaseDataSet.examens.Rows.Count - 1][0]);
-
+                    
+                    // Voegt de nieuwe rij toe aan de database
                     databaseDataSet.kerntaken.AddkerntakenRow(kerntaakRow);
                 }                
             }
+
+            // werkt de database bij
             updateDatabase();
+
+            // Vult de tabel met de gegevens uit de database.
             this.kerntakenTableAdapter.Fill(this.databaseDataSet.kerntaken);
             
-            if (sender.Equals(OpslaanButton))
+            if (sender.Equals(OpslaanButton)) // Kijkt via welke knop deze functie is aangeroepen
             {
-                tabControl1.SelectTab("tabPage2");
+                tabControl1.SelectTab("tabPage2"); // Opent het tweede tabblad (Opleiding overzicht)
             }
+            
             // Het form wordt gereset naar lege staat.
             clearForm(tabPage1);
         }
@@ -658,7 +690,7 @@ namespace WindowsFormsApplication1
             updateDatabase();
         }
 
-        //zorgt ervoor dat de "DELETE" knop niet werkt..
+        // Zorgt ervoor dat de "DELETE" toets niet werkt in de tabel
         private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Delete)
