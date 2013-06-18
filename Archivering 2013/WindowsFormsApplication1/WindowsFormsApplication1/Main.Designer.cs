@@ -1460,7 +1460,7 @@
             }
         }
 
-        // deze functie zorgt ervoor dat er 6 kerntaak-invulvelden aan een examen wordt toegevoegd
+        // deze functie zorgt ervoor dat er 10 kerntaak-invulvelden aan een examen wordt toegevoegd
         private void kerntaakPlus(int exAantal)
         {
             if(kerntaakAantal[exAantal] < 10)
