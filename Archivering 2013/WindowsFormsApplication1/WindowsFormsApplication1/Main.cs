@@ -68,11 +68,13 @@ namespace WindowsFormsApplication1
 
         private void updateDatabase_Change(object sender, DataGridViewCellEventArgs e)
         {
+            //wanneer er een cel veranderd update de database
             updateDatabase();
         }
 
         private void showContextMenuStrip(object sender, DataGridViewRowContextMenuStripNeededEventArgs e)
         {
+            //als de gebruiker met de rechtermuisknop op een row klikt moet er een context menustrip komen.
             int index = dataGridView1.CurrentRow.Index;
             dataGridView1.ClearSelection();
             dataGridView1.Rows[index].Selected = true;
@@ -82,6 +84,7 @@ namespace WindowsFormsApplication1
 
         private void gecontroleerd_Click(object sender, EventArgs e)
         {
+            //update de value 'gecontroleerd' naar 0 of 1 in de database
             if (dataGridView1.SelectedRows.Count == 1)
             {
                 int rowIndex = dataGridView1.CurrentCell.RowIndex;
@@ -98,6 +101,7 @@ namespace WindowsFormsApplication1
 
         private void niet_Gecontroleerd_Click(object sender, EventArgs e)
         {
+            //update de value 'gecontroleerd' naar 0 of 1 in de database
             if (dataGridView1.SelectedRows.Count == 1)
             {
                 int rowIndex = dataGridView1.CurrentCell.RowIndex;
@@ -139,50 +143,50 @@ namespace WindowsFormsApplication1
 
                 int i = 0; // i houdt bij, bij hoeveel examens er door worden gelopen.
 
-                        foreach (DataGridViewRow examenRow in dataGridView2.Rows) // Loopt alle examens in de tabel door.
+                foreach (DataGridViewRow examenRow in dataGridView2.Rows) // Loopt alle examens in de tabel door.
+                {
+
+                    // Controleerd of het id van de opleiding overeenkomt met de id die bij het examen is ingevuld.
+                    if (Convert.ToInt32(examenRow.Cells[opleidingidDataGridViewTextBoxColumn.Index].Value) == Convert.ToInt32(dataGridView1.CurrentRow.Cells[idDataGridViewTextBoxColumn.Index].Value))
+                    {
+                        if (i >= 1) // kijkt of deze loop minstens een keer door is gelopen.
                         {
+                            examenPlus(); //Voegt examenelementen toe aan het formulier
+                        }
 
-                            // Controleerd of het id van de opleiding overeenkomt met de id die bij het examen is ingevuld.
-                            if (Convert.ToInt32(examenRow.Cells[opleidingidDataGridViewTextBoxColumn.Index].Value) == Convert.ToInt32(dataGridView1.CurrentRow.Cells[idDataGridViewTextBoxColumn.Index].Value)) 
+                        // Haalt de gegevens van de examens uit de tabel en zet deze in het formulier
+                        ConstructeurBox[examenAantal - 1].Text = examenRow.Cells[examenconstructeurDataGridViewTextBoxColumn.Index].Value.ToString();
+                        PeriodeAfnameBox[examenAantal - 1].Text = examenRow.Cells[examenstartperiodeDataGridViewTextBoxColumn.Index].Value.ToString();
+                        ePeriodeAfnameBox[examenAantal - 1].Text = examenRow.Cells[exameneindperiodeDataGridViewTextBoxColumn.Index].Value.ToString();
+                        LocatieBox[examenAantal - 1].Text = examenRow.Cells[examenlocatieDataGridViewTextBoxColumn.Index].Value.ToString();
+                        NaamOpdrachtBox[examenAantal - 1].Text = examenRow.Cells[examennaamopdrachtDataGridViewTextBoxColumn.Index].Value.ToString();
+                        StatusOpdrachtBox[examenAantal - 1].Text = examenRow.Cells[examenstatusopdrachtDataGridViewTextBoxColumn.Index].Value.ToString();
+                        BeoordelingBox[examenAantal - 1].Text = examenRow.Cells[examenbeoordelingDataGridViewTextBoxColumn.Index].Value.ToString();
+                        OpmerkingBox[examenAantal - 1].Text = examenRow.Cells[examenopmerkingDataGridViewTextBoxColumn.Index].Value.ToString();
+
+                        i++;
+                        int j = 0; // j houdt bij, bij hoeveel kerntaken er door worden gelopen.
+
+                        // Loopt alle kerntaken door in de tabel.
+                        foreach (DataGridViewRow kerntaakRow in dataGridView3.Rows)
+                        {
+                            // Controleerd of het id van de examen overeenkomt met de id die bij de kerntaak is ingevuld.
+                            if (Convert.ToInt32(kerntaakRow.Cells[ktexamenidDataGridViewTextBoxColumn.Index].Value) == Convert.ToInt32(examenRow.Cells[examenidDataGridViewTextBoxColumn.Index].Value))
                             {
-                                if (i >= 1) // kijkt of deze loop minstens een keer door is gelopen.
+                                if (j >= 1) // controleerd of deze loop minstens een keer is doorlopen.
                                 {
-                                    examenPlus(); //Voegt examenelementen toe aan het formulier
+                                    kerntaakPlus(examenAantal - 1); // voegt de elementen voor kerntaken toe aan de betreffende examen elementen.
                                 }
-                                
-                                // Haalt de gegevens van de examens uit de tabel en zet deze in het formulier
-                                ConstructeurBox[examenAantal - 1].Text = examenRow.Cells[examenconstructeurDataGridViewTextBoxColumn.Index].Value.ToString();
-                                PeriodeAfnameBox[examenAantal - 1].Text = examenRow.Cells[examenstartperiodeDataGridViewTextBoxColumn.Index].Value.ToString();
-                                ePeriodeAfnameBox[examenAantal - 1].Text = examenRow.Cells[exameneindperiodeDataGridViewTextBoxColumn.Index].Value.ToString();
-                                LocatieBox[examenAantal - 1].Text = examenRow.Cells[examenlocatieDataGridViewTextBoxColumn.Index].Value.ToString();
-                                NaamOpdrachtBox[examenAantal - 1].Text = examenRow.Cells[examennaamopdrachtDataGridViewTextBoxColumn.Index].Value.ToString();
-                                StatusOpdrachtBox[examenAantal - 1].Text = examenRow.Cells[examenstatusopdrachtDataGridViewTextBoxColumn.Index].Value.ToString();
-                                BeoordelingBox[examenAantal - 1].Text = examenRow.Cells[examenbeoordelingDataGridViewTextBoxColumn.Index].Value.ToString();
-                                OpmerkingBox[examenAantal - 1].Text = examenRow.Cells[examenopmerkingDataGridViewTextBoxColumn.Index].Value.ToString();
 
-                                i++;
-                                int j = 0; // j houdt bij, bij hoeveel kerntaken er door worden gelopen.
-
-                                // Loopt alle kerntaken door in de tabel.
-                                foreach (DataGridViewRow kerntaakRow in dataGridView3.Rows)
-                                {
-                                    // Controleerd of het id van de examen overeenkomt met de id die bij de kerntaak is ingevuld.
-                                    if (Convert.ToInt32(kerntaakRow.Cells[ktexamenidDataGridViewTextBoxColumn.Index].Value) == Convert.ToInt32(examenRow.Cells[examenidDataGridViewTextBoxColumn.Index].Value))
-                                    {
-                                        if (j >= 1) // controleerd of deze loop minstens een keer is doorlopen.
-                                        {
-                                            kerntaakPlus(examenAantal - 1); // voegt de elementen voor kerntaken toe aan de betreffende examen elementen.
-                                        }
-
-                                        // Haalt de gegevens van de kerntaken uit de tabel en zet deze in het formulier
-                                        KerntakenBox[examenAantal - 1, j].Text = kerntaakRow.Cells[kerntaaknaamDataGridViewTextBoxColumn.Index].Value.ToString();
-                                        KerntaakNrBox[examenAantal - 1, j].Text = kerntaakRow.Cells[kerntaaknummerDataGridViewTextBoxColumn.Index].Value.ToString();
-                                        WerkprocessenBox[examenAantal - 1, j].Text = kerntaakRow.Cells[kerntaakwerkprocessenDataGridViewTextBoxColumn.Index].Value.ToString();
-                                        j++;
-                                    }
-                                }
+                                // Haalt de gegevens van de kerntaken uit de tabel en zet deze in het formulier
+                                KerntakenBox[examenAantal - 1, j].Text = kerntaakRow.Cells[kerntaaknaamDataGridViewTextBoxColumn.Index].Value.ToString();
+                                KerntaakNrBox[examenAantal - 1, j].Text = kerntaakRow.Cells[kerntaaknummerDataGridViewTextBoxColumn.Index].Value.ToString();
+                                WerkprocessenBox[examenAantal - 1, j].Text = kerntaakRow.Cells[kerntaakwerkprocessenDataGridViewTextBoxColumn.Index].Value.ToString();
+                                j++;
                             }
                         }
+                    }
+                }
                     
                 
                 // Verandert de functie van de Opslaan knop
@@ -376,6 +380,7 @@ namespace WindowsFormsApplication1
 
         private void exporteren_Click(object sender, EventArgs e)
         {
+            //wanneer er op exporteen geklikt wordt gaan we een Excel map opslaan.
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "Excel Worksheets|*.xls";
             sfd.ShowDialog();
@@ -385,11 +390,14 @@ namespace WindowsFormsApplication1
 
         private void updateDatabase()
         {
+            //deze functie wordt uitgevoerd wanneer er een een database update plaats moet vinden.
             try
             {
+                //zet alle bindingsources op EndEdit zodat alle laatste aanpassingen worden opgeslagen.
                 this.overzichtBindingSource.EndEdit();
                 this.examensBindingSource.EndEdit();
                 this.kerntakenBindingSource.EndEdit();
+                //vervolgens gaan we d.m.v. de TableAdapters de database updaten.
                 this.overzichtTableAdapter.Update(this.databaseDataSet.overzicht);
                 this.examensTableAdapter.Update(this.databaseDataSet.examens);
                 this.kerntakenTableAdapter.Update(this.databaseDataSet.kerntaken);
@@ -410,10 +418,11 @@ namespace WindowsFormsApplication1
                 es.progressBar1.Minimum = 0;
                 es.Show();
 
+                //benodigde variablen voor de Excel map
                 Excel.Application xlApp;
                 Excel.Workbook xlWorkBook;
-                Excel.Worksheet workSheetOpleidingen;
-                Excel.Worksheet workSheetExamens;
+                Excel.Worksheet workSheetOpleidingen; //sheet opleidingen
+                Excel.Worksheet workSheetExamens;     //sheet examens
                 object misValue = System.Reflection.Missing.Value;
 
                 xlApp = new Excel.Application();
@@ -425,8 +434,6 @@ namespace WindowsFormsApplication1
                 workSheetExamens = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(2);
                 workSheetExamens.Name = "Examens";
 
-                //Excel.Range[] fromHyperlink = new Excel.Range[dataGridView1.Rows.Count];
-
                 /* OPLEIDINGEN WORKSHEET */
                 //voeg de opleiding kolommen toe
                 int row = 1;
@@ -434,10 +441,12 @@ namespace WindowsFormsApplication1
                 {
                     if (dataGridView1.Columns[i].Visible == true)
                     {
+                        //pak de headertext van de datagridview als kolom namen.
                         workSheetOpleidingen.Cells[1, i] = dataGridView1.Columns[i].HeaderText;
                     }
                 }
-                row++;
+                row++; //row++ omdat de 'data' op de volgende row moet komen te staan.
+
                 //nu wordt elke opleiding toegevoegd
                 foreach (DataGridViewRow itemRow in dataGridView1.Rows)
                 {
@@ -446,7 +455,7 @@ namespace WindowsFormsApplication1
                         if (itemRow.Cells[column].Visible == true)
                         {
                             workSheetOpleidingen.Cells[row, column] = itemRow.Cells[column].Value;
-                            //hyperlink op crebo
+                            //wanneer de column 1 is oftewel 'Crebo' zet daar een hyperlink neer. Deze hyperlink verwijst nog nergens naartoe omdat we dat nog niet weten.
                             if (column == 1)
                             {
                                 Excel.Range cell = (Excel.Range)workSheetOpleidingen.Cells[row, column];
@@ -504,7 +513,7 @@ namespace WindowsFormsApplication1
                             workSheetExamens.Cells[r, c] = overzichtRow.Cells[i].Value;
                             workSheetExamens.Cells[r, c].Interior.Color = Color.YellowGreen;
 
-                            //hyperlink target
+                            //hyperlink target address toevoegen
                             if (i == 1)
                             {
                                 workSheetOpleidingen.Hyperlinks.get_Item(hyperlink).SubAddress = "Examens!" + workSheetExamens.Cells[r, c].Address;
@@ -576,37 +585,34 @@ namespace WindowsFormsApplication1
                 }
                 finally
                 {
+                    //ruim alles op
                     xlWorkBook.Close(true, misValue, misValue);
                     xlApp.Quit();
+
+                    es.Hide();
+                    es.Close();
+                    es.Dispose();
+
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(workSheetOpleidingen);
+                    workSheetOpleidingen = null;
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWorkBook);
+                    xlWorkBook = null;
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(xlApp);
+                    xlApp = null;
+
+                    GC.Collect();
                 }
-
-                es.Hide();
-                es.Close();
-                es.Dispose();
-
-                System.Runtime.InteropServices.Marshal.ReleaseComObject(workSheetOpleidingen);
-                workSheetOpleidingen = null;
-                System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWorkBook);
-                xlWorkBook = null;
-                System.Runtime.InteropServices.Marshal.ReleaseComObject(xlApp);
-                xlApp = null;
-
-                GC.Collect();
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString());
+                MessageBox.Show(e.Message);
             }
         }
 
         private void rowRemovedHandler(object sender, DataGridViewRowsRemovedEventArgs e)
         {
+            //wanneer een row verwijderd wordt update de database
             updateDatabase();
-        }
-
-        private void bindingNavigator1_RefreshItems(object sender, EventArgs e)
-        {
-
         }
 
         // Het event dat hoort bij de PrevExamButton
@@ -852,19 +858,21 @@ namespace WindowsFormsApplication1
             return true;
         }
 
-
+        //Open het Examenoverzicht form en geef bepaalde variabelen mee.
         private void examenoverzichtToolStripMenuItem_Click(object sender, EventArgs e)
         {
            Examenoverzicht scherm = new Examenoverzicht(dataGridView1.CurrentRow.Index,opleidingDataGridViewTextBoxColumn.Index,databaseDataSet);
            scherm.Show();
         }
 
+        //Open het Examenoverzicht form en geef bepaalde variabelen mee.
         private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             Examenoverzicht scherm = new Examenoverzicht(dataGridView1.CurrentRow.Index, opleidingDataGridViewTextBoxColumn.Index, databaseDataSet);
             scherm.Show();
         }
 
+        //Sluit de applicatie wanneer er op "Afsluiten" geklikt wordt.
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -903,21 +911,30 @@ namespace WindowsFormsApplication1
             return nummer;
         }
 
+        //Deze functie importeert een '.xml' bestandje die database gegevens heeft.
         private void gegevensImporterenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
+                //Open een dialog om een bestand te kiezen voor het importeren
                 OpenFileDialog fileDialog = new OpenFileDialog();
                 fileDialog.Title = "Selecteer een bestand om te importeren";
                 fileDialog.Filter = "Database gegevens|*.xml";
+
+                //als er op OK geklikt wordt in het dialog dan gaan we wat doen
                 if (fileDialog.ShowDialog() == DialogResult.OK)
                 {
+                    //open een FileStream op het bestand en een XMLTextReader                   
                     FileStream myFileStream = new FileStream(fileDialog.FileName, FileMode.Open);
                     System.Xml.XmlTextReader myXmlReader = new System.Xml.XmlTextReader(myFileStream);
+                    
+                    //leeg de bestaande dataset
                     databaseDataSet.Clear();
+                    //lees vervolgens het XML bestandje in het dataset
                     databaseDataSet.ReadXml(myXmlReader);
                     myXmlReader.Close();
 
+                    //update de database
                     updateDatabase();
                 }
             }
@@ -927,17 +944,24 @@ namespace WindowsFormsApplication1
             }
         }
 
+        //Deze functie exporteert een '.xml' bestandje die de database gegevens heeft.
         private void gegevensExporterenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
+                //Open een SaveFileDialog om te bepalen waar het XML bestandje wordt opgeslagen
                 SaveFileDialog saveDialog = new SaveFileDialog();
                 saveDialog.Filter = "Database gegevens|*.xml";
                 saveDialog.FileName = "Database gegevens.xml";
+
+                //als er OK geklikt wordt gaan we wat doen
                 if (saveDialog.ShowDialog() == DialogResult.OK)
                 {
+                    //open een FileStream voor het bestand en een XMLTextWriter
                     FileStream myFileStream = new FileStream(saveDialog.FileName, FileMode.Create);
                     System.Xml.XmlTextWriter myXmlWriter = new System.Xml.XmlTextWriter(myFileStream, System.Text.Encoding.Unicode);
+                    
+                    //schrijf de gegevens naar het bestand
                     databaseDataSet.WriteXml(myXmlWriter);
                     myXmlWriter.Close();
                 }
