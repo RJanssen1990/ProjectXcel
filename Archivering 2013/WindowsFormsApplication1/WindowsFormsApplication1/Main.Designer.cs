@@ -1164,6 +1164,7 @@
 
         #endregion
 
+        // Deze functie maakt de elementen voor het invoeren van een examen aan en voegt deze toe aan de UI
         private void examenPlus()
         {
             if (examenAantal < 10)
@@ -1205,7 +1206,6 @@
                     this.ExamenBlok[examenAantal].Location = new System.Drawing.Point((360 * examenAantal), this.ExamenPaneel.AutoScrollPosition.Y);
                 }
                 this.ExamenBlok[examenAantal].Name = "ExamenBlok";
-                //this.ExamenBlok[examenAantal].Size = new System.Drawing.Size(320, 800);
                 this.ExamenBlok[examenAantal].AutoSize = true;
                 // 
                 // Examen Titel
@@ -1410,7 +1410,7 @@
 
                 //Scrollt naar het nieuw gemaakte examen
                 this.ExamenPaneel.ScrollControlIntoView(this.ExamenBlok[examenAantal]);
-                if (examenAantal == 1)
+                if (examenAantal >= 1) // Als er meer dan een examen beschikbaar is verschijnen de next en previous knop op de ui.
                 {
                     this.nextExamButton.Visible = true;
                     this.nextExamButton.Enabled = true;
@@ -1418,19 +1418,19 @@
                     this.PrevExamButton.Enabled = true;
                 }
                 huidigExamen = examenAantal;
-                examenAantal++;
+                examenAantal++; // Geeft aan dat er een examen is toegevoegd.
             }
         }
 
-        // Met deze knop kan een examen verwijderen van de ui
+        // Met deze knop kan een examen worden verwijderd van de ui.
         private void examenMin()
         {
-            if (examenAantal > 1)
+            if (examenAantal > 1) // Zorgt ervoor dat er 1 examen blijft staan.
             {
-                this.ExamenPaneel.Controls.Remove(ExamenBlok[examenAantal - 1]);
-                examenAantal--;
-                this.ExamenPaneel.ScrollControlIntoView(this.ExamenBlok[examenAantal - 1]);
-                if (examenAantal == 1)
+                this.ExamenPaneel.Controls.Remove(ExamenBlok[examenAantal - 1]); // Verwijdert de parent van de UI
+                examenAantal--; // Geeft aan dat er een examen verwijdert.
+                this.ExamenPaneel.ScrollControlIntoView(this.ExamenBlok[examenAantal - 1]); // Scrollt naar het laatste examen.
+                if (examenAantal == 1) // Als er maar een examen beschikbaar is verdwijnen de next en previous knop van de ui.
                 {
                     this.nextExamButton.Visible = false;
                     this.nextExamButton.Enabled = false;
@@ -1460,7 +1460,7 @@
             }
         }
 
-        // deze functie zorgt ervoor dat er 10 kerntaak-invulvelden aan een examen wordt toegevoegd
+        // deze functie zorgt ervoor dat er dynamisch kerntaak-invulvelden aan een examen wordt toegevoegd
         private void kerntaakPlus(int exAantal)
         {
             if(kerntaakAantal[exAantal] < 10)
@@ -1541,17 +1541,18 @@
                 this.KerntaakBlok[exAantal, kerntaakAantal[exAantal]].Controls.Add(this.Werkprocessen[exAantal, kerntaakAantal[exAantal]]);
                 this.KerntaakBlok[exAantal, kerntaakAantal[exAantal]].Controls.Add(this.WerkprocessenBox[exAantal, kerntaakAantal[exAantal]]);
 
-                kerntaakAantal[exAantal]++;
+                kerntaakAantal[exAantal]++; // Laat zien dat er meer kerntaken zijn bij een examen
             }
 
         }
 
+        // Met deze functie kunnen kerntaken dynamisch verwijdert worden van een examen.
         private void kerntaakMin(int exAantal)
         {
-            if (kerntaakAantal[exAantal] > 1)
+            if (kerntaakAantal[exAantal] > 1) // Zorgt dat er een kerntaak. blijft staan
             {
                 this.ExamenBlok[exAantal].Controls.Remove(this.KerntaakBlok[exAantal,kerntaakAantal[exAantal] -1]);
-                kerntaakAantal[exAantal]--;
+                kerntaakAantal[exAantal]--; // Laat zien dat er minder kerntaken zijn bij een examen.
             }
         }
 
@@ -1584,71 +1585,6 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
-
-        // Vanaf hier het form van tab 1
-        private System.Windows.Forms.Label CreboCode;
-        private System.Windows.Forms.Label OpleidingsNaam;
-        private System.Windows.Forms.Label Kwalificatie;
-        private System.Windows.Forms.Label Uitstroom;
-        private System.Windows.Forms.Label Niveau;
-        private System.Windows.Forms.Label Leerroute;
-        private System.Windows.Forms.Label Kenniscentrum;
-        private System.Windows.Forms.Label Cohort;
-        private System.Windows.Forms.Label KdVersie;
-        private System.Windows.Forms.Label ExamenProfiel;
-        private System.Windows.Forms.Label Aanspreekpunt;
-        private System.Windows.Forms.Label Manager;
-        private System.Windows.Forms.Label PortHouder;    
-        private System.Windows.Forms.TextBox PortHouderBox;
-        private System.Windows.Forms.TextBox CreboBox;
-        private System.Windows.Forms.TextBox OpleidingBox;
-        private System.Windows.Forms.TextBox KwalificatieBox;
-        private System.Windows.Forms.TextBox UitstroomBox;
-        private System.Windows.Forms.TextBox CohortBox;
-        private System.Windows.Forms.TextBox KdVersieBox;
-        private System.Windows.Forms.TextBox AanspreekBox;
-        private System.Windows.Forms.TextBox ManagerBox;
-        private System.Windows.Forms.ComboBox NiveauBox;
-        private System.Windows.Forms.ComboBox LeerrouteBox;
-        private System.Windows.Forms.ComboBox KenniscentrumBox;
-        private System.Windows.Forms.ComboBox ExamenProfielBox;
-        private System.Windows.Forms.Button OpslaanButton;
-        private System.Windows.Forms.Button OpslaanPlusButton;
-        private System.Windows.Forms.ToolTip toolTips;
-        private System.Windows.Forms.Button ExamMinButton;
-        private System.Windows.Forms.Button ExamPlusButton;
-        private System.Windows.Forms.Panel ExamenPaneel;
-        private System.Windows.Forms.Button nextExamButton;
-        private System.Windows.Forms.Button PrevExamButton;
-
-        // Hier worden arrays aangemaakt die nodig zijn om dynamysche elementen in op te slaan
-        private System.Windows.Forms.Panel[] ExamenBlok = new System.Windows.Forms.Panel[10];
-        private System.Windows.Forms.Label[] ExamenTitle = new System.Windows.Forms.Label[10];
-        private System.Windows.Forms.Label[] StatusOpdracht = new System.Windows.Forms.Label[10];
-        private System.Windows.Forms.Label[] NaamOpdracht = new System.Windows.Forms.Label[10];
-        private System.Windows.Forms.Label[] PeriodeAfname = new System.Windows.Forms.Label[10];
-        private System.Windows.Forms.Label[] ePeriodeAfname = new System.Windows.Forms.Label[10];
-        private System.Windows.Forms.Label[] BeoordelingLabel = new System.Windows.Forms.Label[10];
-        private System.Windows.Forms.ComboBox[] BeoordelingBox = new System.Windows.Forms.ComboBox[10];
-        private System.Windows.Forms.Panel[,] KerntaakBlok = new System.Windows.Forms.Panel[10, 10];
-        private System.Windows.Forms.Label[,] Werkprocessen = new System.Windows.Forms.Label[10, 10];
-        private System.Windows.Forms.Label[,] KerntaakNr = new System.Windows.Forms.Label[10, 10];
-        private System.Windows.Forms.Label[,] Kerntaken = new System.Windows.Forms.Label[10, 10];
-        private System.Windows.Forms.Label[] Constructeur = new System.Windows.Forms.Label[10];
-        private System.Windows.Forms.Label[] Locatie = new System.Windows.Forms.Label[10];
-        private System.Windows.Forms.ComboBox[] StatusOpdrachtBox = new System.Windows.Forms.ComboBox[10];
-        private System.Windows.Forms.ComboBox[] PeriodeAfnameBox = new System.Windows.Forms.ComboBox[10];
-        private System.Windows.Forms.ComboBox[] ePeriodeAfnameBox = new System.Windows.Forms.ComboBox[10];
-        private System.Windows.Forms.TextBox[] NaamOpdrachtBox = new System.Windows.Forms.TextBox[10];
-        private System.Windows.Forms.TextBox[,] WerkprocessenBox = new System.Windows.Forms.TextBox[10, 10];
-        private System.Windows.Forms.TextBox[,] KerntaakNrBox = new System.Windows.Forms.TextBox[10, 10];
-        private System.Windows.Forms.TextBox[,] KerntakenBox = new System.Windows.Forms.TextBox[10, 10];
-        private System.Windows.Forms.TextBox[] ConstructeurBox = new System.Windows.Forms.TextBox[10];
-        private System.Windows.Forms.TextBox[] LocatieBox = new System.Windows.Forms.TextBox[10];
-        private System.Windows.Forms.Label[] OpmerkingLabel = new System.Windows.Forms.Label[10];
-        private System.Windows.Forms.RichTextBox[] OpmerkingBox = new System.Windows.Forms.RichTextBox[10];
-        private System.Windows.Forms.Button[] KtToevoegen = new System.Windows.Forms.Button[10];
-        private System.Windows.Forms.Button[] KtVerwijderen = new System.Windows.Forms.Button[10];
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.Label InformatieText;
@@ -1699,5 +1635,72 @@
         private System.Windows.Forms.ToolStripMenuItem bestandToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem gegevensImporterenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gegevensExporterenToolStripMenuItem;
+
+        // Vanaf hier het form van tab 1
+        private System.Windows.Forms.Label CreboCode;
+        private System.Windows.Forms.Label OpleidingsNaam;
+        private System.Windows.Forms.Label Kwalificatie;
+        private System.Windows.Forms.Label Uitstroom;
+        private System.Windows.Forms.Label Niveau;
+        private System.Windows.Forms.Label Leerroute;
+        private System.Windows.Forms.Label Kenniscentrum;
+        private System.Windows.Forms.Label Cohort;
+        private System.Windows.Forms.Label KdVersie;
+        private System.Windows.Forms.Label ExamenProfiel;
+        private System.Windows.Forms.Label Aanspreekpunt;
+        private System.Windows.Forms.Label Manager;
+        private System.Windows.Forms.Label PortHouder;    
+        private System.Windows.Forms.TextBox PortHouderBox;
+        private System.Windows.Forms.TextBox CreboBox;
+        private System.Windows.Forms.TextBox OpleidingBox;
+        private System.Windows.Forms.TextBox KwalificatieBox;
+        private System.Windows.Forms.TextBox UitstroomBox;
+        private System.Windows.Forms.TextBox CohortBox;
+        private System.Windows.Forms.TextBox KdVersieBox;
+        private System.Windows.Forms.TextBox AanspreekBox;
+        private System.Windows.Forms.TextBox ManagerBox;
+        private System.Windows.Forms.ComboBox NiveauBox;
+        private System.Windows.Forms.ComboBox LeerrouteBox;
+        private System.Windows.Forms.ComboBox KenniscentrumBox;
+        private System.Windows.Forms.ComboBox ExamenProfielBox;
+        private System.Windows.Forms.Button OpslaanButton;
+        private System.Windows.Forms.Button OpslaanPlusButton;
+        private System.Windows.Forms.ToolTip toolTips;
+        private System.Windows.Forms.Button ExamMinButton;
+        private System.Windows.Forms.Button ExamPlusButton;
+        private System.Windows.Forms.Panel ExamenPaneel;
+        private System.Windows.Forms.Button nextExamButton;
+        private System.Windows.Forms.Button PrevExamButton;
+
+
+        // Hier worden arrays aangemaakt die nodig zijn om dynamysche elementen in op te slaan
+        private System.Windows.Forms.Panel[] ExamenBlok = new System.Windows.Forms.Panel[10];
+        private System.Windows.Forms.Label[] ExamenTitle = new System.Windows.Forms.Label[10];
+        private System.Windows.Forms.Label[] StatusOpdracht = new System.Windows.Forms.Label[10];
+        private System.Windows.Forms.Label[] NaamOpdracht = new System.Windows.Forms.Label[10];
+        private System.Windows.Forms.Label[] PeriodeAfname = new System.Windows.Forms.Label[10];
+        private System.Windows.Forms.Label[] ePeriodeAfname = new System.Windows.Forms.Label[10];
+        private System.Windows.Forms.Label[] BeoordelingLabel = new System.Windows.Forms.Label[10];
+        private System.Windows.Forms.ComboBox[] BeoordelingBox = new System.Windows.Forms.ComboBox[10];
+        private System.Windows.Forms.Panel[,] KerntaakBlok = new System.Windows.Forms.Panel[10, 10];
+        private System.Windows.Forms.Label[,] Werkprocessen = new System.Windows.Forms.Label[10, 10];
+        private System.Windows.Forms.Label[,] KerntaakNr = new System.Windows.Forms.Label[10, 10];
+        private System.Windows.Forms.Label[,] Kerntaken = new System.Windows.Forms.Label[10, 10];
+        private System.Windows.Forms.Label[] Constructeur = new System.Windows.Forms.Label[10];
+        private System.Windows.Forms.Label[] Locatie = new System.Windows.Forms.Label[10];
+        private System.Windows.Forms.ComboBox[] StatusOpdrachtBox = new System.Windows.Forms.ComboBox[10];
+        private System.Windows.Forms.ComboBox[] PeriodeAfnameBox = new System.Windows.Forms.ComboBox[10];
+        private System.Windows.Forms.ComboBox[] ePeriodeAfnameBox = new System.Windows.Forms.ComboBox[10];
+        private System.Windows.Forms.TextBox[] NaamOpdrachtBox = new System.Windows.Forms.TextBox[10];
+        private System.Windows.Forms.TextBox[,] WerkprocessenBox = new System.Windows.Forms.TextBox[10, 10];
+        private System.Windows.Forms.TextBox[,] KerntaakNrBox = new System.Windows.Forms.TextBox[10, 10];
+        private System.Windows.Forms.TextBox[,] KerntakenBox = new System.Windows.Forms.TextBox[10, 10];
+        private System.Windows.Forms.TextBox[] ConstructeurBox = new System.Windows.Forms.TextBox[10];
+        private System.Windows.Forms.TextBox[] LocatieBox = new System.Windows.Forms.TextBox[10];
+        private System.Windows.Forms.Label[] OpmerkingLabel = new System.Windows.Forms.Label[10];
+        private System.Windows.Forms.RichTextBox[] OpmerkingBox = new System.Windows.Forms.RichTextBox[10];
+        private System.Windows.Forms.Button[] KtToevoegen = new System.Windows.Forms.Button[10];
+        private System.Windows.Forms.Button[] KtVerwijderen = new System.Windows.Forms.Button[10];
+      
     }
 }

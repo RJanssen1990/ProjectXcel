@@ -66,10 +66,12 @@
 
         #endregion
 
+        // Maakt alle elementen in de UI aan die nodig zijn om de gegevens van een treenode te weergeven.
         private void maakElementen()
         {
             for (int i = 0; i < gegevens_examen.Length; i++)
             {
+                // Maakt alle labels aan die nodig zijn om de info van een examen te weergeven.
                 examenLabel[i] = new System.Windows.Forms.Label();
                 examenInfo[i] = new System.Windows.Forms.Label();
                 //
@@ -93,6 +95,7 @@
                 this.Infotext.Controls.Add(this.examenInfo[i]);
                 if (i < gegevens_kerntaken.Length)
                 {
+                    // Maakt alle labels aan die nodig zijn om de info van een kerntaken te weergeven.
                     this.kerntaakLabel[i] = new System.Windows.Forms.Label();
                     this.kerntaakInfo[i] = new System.Windows.Forms.Label();
                     //
@@ -116,7 +119,8 @@
                     this.Infotext.Controls.Add(this.kerntaakInfo[i]);
                 }
                 if (i < gegevens_opleiding.Length)
-                {
+                {   
+                    // Maakt alle labels aan die nodig zijn om de info van een opleiding te weergeven.
                     this.opleidingLabel[i] = new System.Windows.Forms.Label();
                     this.opleidingInfo[i] = new System.Windows.Forms.Label();
                     //
@@ -143,6 +147,7 @@
             }
         }
 
+        // Maakt alle labels leeg die informatie weergeven
         private void Clear()
         {
             for (int i = 0; i < gegevens_examen.Length; i++)
@@ -162,6 +167,7 @@
             }
         }
 
+        // Vult de elementen voor een opleiding met de gegevens uit de database
         private void VulInfoOpleiding()
         {
             string[] labels_opleiding = { "Crebo:","Cohort:","Niveau:","Kenniscentrum:" };
@@ -174,7 +180,8 @@
                 this.opleidingInfo[i].Text = gegevens_opleiding[i];
             }
         }
-        
+
+        // Vult de elementen voor een Examen met de gegevens uit de database
         private void VulInfoExamen()
         {
             string[] labels_examen = { "Nummer:", "Constructeur:", "Start Periode","Einde Periode", "Locatie Afname:", "Naam Opdracht:", "Status Opdracht:","Beoordelingsschaal:", "Opmerkingen:" };
@@ -188,6 +195,7 @@
             }
         }
 
+        // Vult de elementen voor een kerntaak met de gegevens uit de database
         private void VulInfoKerntaken()
         {
             string[] labels_kerntaak = {"Naam Opdracht:","Naam Kerntaak:","Werkprocessen:" };

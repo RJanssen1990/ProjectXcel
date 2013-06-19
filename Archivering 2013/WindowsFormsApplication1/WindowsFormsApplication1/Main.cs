@@ -609,38 +609,45 @@ namespace WindowsFormsApplication1
 
         }
 
+        // Het event dat hoort bij de PrevExamButton
         private void PrevExamButton_Click(object sender, EventArgs e)
         {
             this.PrevExam();
         }
 
+        // Het event dat hoort bij de nextExamButton
         private void nextExamButton_Click(object sender, EventArgs e)
         {
             this.NextExam();
         }
 
+        // Het event dat hoort bij de ExamPlusButton
         private void ExamPlusButton_Click(object sender, EventArgs e)
         {
             this.examenPlus();
         }
 
+        // Het event dat hoort bij de ExamMinButton
         private void ExamMinButton_Click(object sender, EventArgs e)
         {
             this.examenMin();
         }
 
+        // Het event dat hoort bij de KerntaakPlusButton
         private void KerntaakPlusButton_Click(object sender, EventArgs e)
         {
             int ex = getInt((sender as Button).Tag);
             this.kerntaakPlus(ex);
         }
 
+        // Het event dat hoort bij de KerntaakMinButton
         private void KerntaakMinButton_Click(object sender, EventArgs e)
         {
             int ex = getInt((sender as Button).Tag);
             this.kerntaakMin(ex);
         }
 
+        // Deze functie zorgt ervoor dat alle examens van de UI worden, behalve 1, en alle variabelen daarvan worden gereset.
         private void resetExams()
         {
             int aantal = examenAantal;
@@ -650,6 +657,7 @@ namespace WindowsFormsApplication1
             }            
         }
 
+        // Deze functie zorgt ervoor dat alle kerntaken van de UI worden verwijderd, behalve 1 en alle variabelen daarvan worden gereset.
         private void resetKerntaken()
         {
             for (int i = 0; i < kerntaakAantal.Length; i++)
@@ -700,6 +708,7 @@ namespace WindowsFormsApplication1
             }
         }
 
+        // Zorgt ervoor dat alle examens, die gekoppeld zijn aan een opleiding die wordt verwijdert, worden verwijdert.
         private void deleteExamens(int rowIndex)
         {
             int id = (int)dataGridView1.Rows[rowIndex].Cells[0].Value;
@@ -716,6 +725,7 @@ namespace WindowsFormsApplication1
                 }
         }
 
+        // Zorgt ervoor dat alle kerntaken, die gekoppeld zijn aan een examen die wordt verwijdert, worden verwijdert.
         private void deleteKerntaken(int rowIndex)
         {
             int id = (int)dataGridView2.Rows[rowIndex].Cells[0].Value;
@@ -729,6 +739,7 @@ namespace WindowsFormsApplication1
             }
         }
 
+        // Dit probeert een object om te zetten naar een int
         private int getInt(Object value)
         {
             int newValue;
@@ -736,9 +747,10 @@ namespace WindowsFormsApplication1
             return newValue;
         }
 
+        // Deze functie haalt het hele formulier leeg en brengt het naar originele staat.
         private void clearForm(Control control)
         {
-            if (emptyCheckBox.Checked == true)
+            if (emptyCheckBox.Checked == true) // Kijkt of de checkbox is gecheckt, als dat het geval is wordt deze functie niet uitgevoerd.
                 return;
 
             foreach (Control c in control.Controls) //Loopt alle controls door die in een formelement zitten.
@@ -755,70 +767,79 @@ namespace WindowsFormsApplication1
                         ((ComboBox)c).Text = "";
                     }
                 }
-                else if (c.GetType() == typeof(RichTextBox))
+                else if (c.GetType() == typeof(RichTextBox)) // Als het element een RichTextbox is wordt deze leeg gemaakt
                 {
                     ((RichTextBox)c).Clear();
                 }
 
                 if (c.HasChildren) // Als een element zelf elementen bevat wordt deze functie nog een keer uitgevoerd voor dat element
                 {
-                    clearForm(c);
+                    clearForm(c); 
                 }
             }
             resetKerntaken();
             resetExams();
         }
 
+        // Kijkt of de eerste tab nog steeds gebruikt moet worden voor aanpassen, of hij gaat terug naar originele staat.
         private void tab1_selecting(object sender, System.Windows.Forms.TabControlCancelEventArgs e)
         {
             if (tabControl1.SelectedIndex == 0 && aanpassing == true)
-            {
+            {   
+                // De functie vaan de OpslaanButton gaat weer terug naar originele staat
                 OpslaanButton.Click += new System.EventHandler(buttonOpslaan_Click);
                 OpslaanButton.Click -= new System.EventHandler(aanpassenOpslaan);
+                
+                // Enkele knoppen worden weer zichtbaar.
                 OpslaanPlusButton.Visible = true;
                 ExamPlusButton.Visible = true;
                 ExamMinButton.Visible = true;
+
+                // Zet het formulier terug naar originele staat
                 clearForm(tabPage1);
+
+                // Geeft aan dat er geen aanpassing meer wordt gemaakt.
                 aanpassing = false;
             }
         }
 
+        // Deze functie kijkt of alle velden ingevuld zijn, voordat de gegevens worden opgeslagen.
         private Boolean validateForm()
         {
             foreach (Control c in tabPage1.Controls)
             {
-                if (c.GetType() == typeof(TextBox) && ((TextBox)c).Text == "") //Als het element een textbox is wordt deze leeg gemaakt
+                if (c.GetType() == typeof(TextBox) && ((TextBox)c).Text == "") //Als het element een textbox is en leeg is wordt er een melding gegeven.
                 {
                     MessageBox.Show("U heeft niet alle verplichte velden ingevuld. Het formulier is niet opgeslagen.\nControleer alle velden.");
                     return false;
                 }
-                else if (c.GetType() == typeof(ComboBox) && ((ComboBox)c).Text == "")
+                else if (c.GetType() == typeof(ComboBox) && ((ComboBox)c).Text == "") //Als het element een ComboBox is en leeg is wordt er een melding gegeven.
                 {
                     MessageBox.Show("U heeft niet alle verplichte velden ingevuld. Het formulier is niet opgeslagen.\nControleer alle velden.");
                     return false;
                 }
             }
 
-            for (int i = 0; i < examenAantal; i++)
+            for (int i = 0; i < examenAantal; i++) // Alle examen elementen worden doorlopen.
             {
                 foreach (Control c in ExamenBlok[i].Controls)
                 {
-                    if (c.GetType() == typeof(TextBox) && ((TextBox)c).Text == "") //Als het element een textbox is wordt deze leeg gemaakt
+                    if (c.GetType() == typeof(TextBox) && ((TextBox)c).Text == "") //Als het element een textbox is en leeg is wordt er een melding gegeven.
                     {
                         MessageBox.Show("U heeft niet alle verplichte velden ingevuld. Het formulier is niet opgeslagen.\nControleer alle examenvelden.");
                         return false;
                     }
-                    else if (c.GetType() == typeof(ComboBox) && ((ComboBox)c).Text == "")
+                    else if (c.GetType() == typeof(ComboBox) && ((ComboBox)c).Text == "") //Als het element een ComboBox is en leeg is wordt er een melding gegeven.
                     {
                         MessageBox.Show("U heeft niet alle verplichte velden ingevuld. Het formulier is niet opgeslagen.\nControleer alle examenvelden.");
                         return false;
                     }
                 }
-                for (int j = 0; j < kerntaakAantal[i]; j++)
+                for (int j = 0; j < kerntaakAantal[i]; j++) // Alle kerntaak elementen worden doorlopen.
                 {
                     foreach (Control c in KerntaakBlok[i, j].Controls)
                     {
-                        if (c.GetType() == typeof(TextBox) && ((TextBox)c).Text == "")
+                        if (c.GetType() == typeof(TextBox) && ((TextBox)c).Text == "") //Als het element een textbox is en leeg is wordt er een melding gegeven.
                         {
                             MessageBox.Show("U heeft niet alle verplichte velden ingevuld. Het formulier is niet opgeslagen.\nControleer alle kerntaakvelden.");
                             return false;
@@ -830,6 +851,7 @@ namespace WindowsFormsApplication1
 
             return true;
         }
+
 
         private void examenoverzichtToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -848,6 +870,7 @@ namespace WindowsFormsApplication1
             Application.Exit();
         }
 
+        // De functie neemt enkele gegevens van het formulier en maakt hiermee een examennummer
         private string examNR(int i)
         {
             string nummer;
@@ -857,10 +880,12 @@ namespace WindowsFormsApplication1
 
             string kerntaken = "KT";
             
+            // Loopt het aantal kerntaken bij het examen door.
             for (int j = 0; j < kerntaakAantal[i]; j++)
             {
-                if (KerntaakNrBox[i, j].Text != "")
+                if (KerntaakNrBox[i, j].Text != "") // Kijkt of de gegevens wel ingevoerd zijn
                 {
+
                     kerntaken += KerntaakNrBox[i, j].Text;
                     kerntaken += "(";
                     if (WerkprocessenBox[i, j].Text != "")
@@ -872,6 +897,7 @@ namespace WindowsFormsApplication1
                 
             }
 
+            // De uiteindelijke string is een combinatie van deze gegevens. VB: 44226_2013_KT1(3,4)3(2,5)
             nummer = crebo + "_" + cohort + "_" + kerntaken;
             
             return nummer;
