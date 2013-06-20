@@ -428,6 +428,7 @@ namespace WindowsFormsApplication1
                 xlApp = new Excel.Application();
                 xlWorkBook = xlApp.Workbooks.Add(misValue);
                 xlWorkBook.Worksheets.get_Item(3).Delete(); //verwijderd "Blad3"
+                xlWorkBook.Application.DisplayAlerts = false;
 
                 workSheetOpleidingen = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
                 workSheetOpleidingen.Name = "Opleidingen";
@@ -459,7 +460,7 @@ namespace WindowsFormsApplication1
                             if (column == 1)
                             {
                                 Excel.Range cell = (Excel.Range)workSheetOpleidingen.Cells[row, column];
-                                workSheetOpleidingen.Hyperlinks.Add(cell, string.Empty, "Examens!A2", "Spring naar de examens van deze opleiding.", string.Empty);
+                                workSheetOpleidingen.Hyperlinks.Add(cell, string.Empty, "Examens!A2", "Spring naar de examens van deze opleiding.", itemRow.Cells[column].Value.ToString());
                             }
                         }
 

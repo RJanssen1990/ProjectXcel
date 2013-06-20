@@ -5,13 +5,12 @@
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{A8B69B5A-F861-4F67-A925-95324F5F6FB7}
+AppId={{32FE47E1-F6F0-4F04-8993-8DED7EC1FDC5}
 AppName=Archivering
 AppVersion=1.0
 ;AppVerName=Archivering 1.0
 DefaultDirName={pf}\Archivering
 DefaultGroupName=Archivering
-OutputDir=C:\Users\Jeffrey\Documents\GitHub\ProjectXcel\Archivering 2013\WindowsFormsApplication1\Setup installatie
 OutputBaseFilename=setup
 Compression=lzma
 SolidCompression=yes
