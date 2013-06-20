@@ -5,12 +5,12 @@
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{32FE47E1-F6F0-4F04-8993-8DED7EC1FDC5}
-AppName=Archivering
+AppId={{BAE09E0F-C0B7-4345-BE89-610B778A704E}
+AppName=Arrchivering
 AppVersion=1.0
-;AppVerName=Archivering 1.0
-DefaultDirName={pf}\Archivering
-DefaultGroupName=Archivering
+;AppVerName=Arrchivering 1.0
+DefaultDirName={pf}\Arrchivering
+DefaultGroupName=Arrchivering
 OutputBaseFilename=setup
 Compression=lzma
 SolidCompression=yes
@@ -27,9 +27,9 @@ Source: "C:\Users\Jeffrey\Documents\GitHub\ProjectXcel\Archivering 2013\WindowsF
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
-Name: "{group}\Archivering"; Filename: "{app}\Archivering.exe"
-Name: "{commondesktop}\Archivering"; Filename: "{app}\Archivering.exe"; Tasks: desktopicon
+Name: "{group}\Arrchivering"; Filename: "{app}\Archivering.exe"
+Name: "{commondesktop}\Arrchivering"; Filename: "{app}\Archivering.exe"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\Archivering.exe"; Description: "{cm:LaunchProgram,Archivering}"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\Archivering.exe"; Description: "{cm:LaunchProgram,Arrchivering}"; Flags: nowait postinstall skipifsilent
 

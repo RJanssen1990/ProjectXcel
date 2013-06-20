@@ -121,6 +121,9 @@
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.bestandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bestandToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.gegevensImporterenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gegevensExporterenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exporterenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -135,9 +138,6 @@
             this.overzichtTableAdapter = new WindowsFormsApplication1.DatabaseDataSetTableAdapters.overzichtTableAdapter();
             this.kerntakenTableAdapter = new WindowsFormsApplication1.DatabaseDataSetTableAdapters.kerntakenTableAdapter();
             this.examensTableAdapter = new WindowsFormsApplication1.DatabaseDataSetTableAdapters.examensTableAdapter();
-            this.bestandToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.gegevensImporterenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gegevensExporterenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -1024,6 +1024,29 @@
             this.bestandToolStripMenuItem.Size = new System.Drawing.Size(61, 24);
             this.bestandToolStripMenuItem.Text = "Bestand";
             // 
+            // bestandToolStripMenuItem1
+            // 
+            this.bestandToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gegevensImporterenToolStripMenuItem,
+            this.gegevensExporterenToolStripMenuItem});
+            this.bestandToolStripMenuItem1.Name = "bestandToolStripMenuItem1";
+            this.bestandToolStripMenuItem1.Size = new System.Drawing.Size(191, 22);
+            this.bestandToolStripMenuItem1.Text = "Bestand";
+            // 
+            // gegevensImporterenToolStripMenuItem
+            // 
+            this.gegevensImporterenToolStripMenuItem.Name = "gegevensImporterenToolStripMenuItem";
+            this.gegevensImporterenToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.gegevensImporterenToolStripMenuItem.Text = "Gegevens importeren..";
+            this.gegevensImporterenToolStripMenuItem.Click += new System.EventHandler(this.gegevensImporterenToolStripMenuItem_Click);
+            // 
+            // gegevensExporterenToolStripMenuItem
+            // 
+            this.gegevensExporterenToolStripMenuItem.Name = "gegevensExporterenToolStripMenuItem";
+            this.gegevensExporterenToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.gegevensExporterenToolStripMenuItem.Text = "Gegevens exporteren..";
+            this.gegevensExporterenToolStripMenuItem.Click += new System.EventHandler(this.gegevensExporterenToolStripMenuItem_Click);
+            // 
             // exporterenToolStripMenuItem
             // 
             this.exporterenToolStripMenuItem.Name = "exporterenToolStripMenuItem";
@@ -1102,29 +1125,6 @@
             // 
             this.examensTableAdapter.ClearBeforeFill = true;
             // 
-            // bestandToolStripMenuItem1
-            // 
-            this.bestandToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.gegevensImporterenToolStripMenuItem,
-            this.gegevensExporterenToolStripMenuItem});
-            this.bestandToolStripMenuItem1.Name = "bestandToolStripMenuItem1";
-            this.bestandToolStripMenuItem1.Size = new System.Drawing.Size(191, 22);
-            this.bestandToolStripMenuItem1.Text = "Bestand";
-            // 
-            // gegevensImporterenToolStripMenuItem
-            // 
-            this.gegevensImporterenToolStripMenuItem.Name = "gegevensImporterenToolStripMenuItem";
-            this.gegevensImporterenToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.gegevensImporterenToolStripMenuItem.Text = "Gegevens importeren..";
-            this.gegevensImporterenToolStripMenuItem.Click += new System.EventHandler(this.gegevensImporterenToolStripMenuItem_Click);
-            // 
-            // gegevensExporterenToolStripMenuItem
-            // 
-            this.gegevensExporterenToolStripMenuItem.Name = "gegevensExporterenToolStripMenuItem";
-            this.gegevensExporterenToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.gegevensExporterenToolStripMenuItem.Text = "Gegevens exporteren..";
-            this.gegevensExporterenToolStripMenuItem.Click += new System.EventHandler(this.gegevensExporterenToolStripMenuItem_Click);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1136,6 +1136,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cohort Archivering 2013";
             this.Load += new System.EventHandler(this.Main_Load);
             this.tabControl1.ResumeLayout(false);
