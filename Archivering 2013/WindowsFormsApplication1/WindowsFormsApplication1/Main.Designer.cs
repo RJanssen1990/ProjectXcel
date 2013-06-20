@@ -126,8 +126,6 @@
             this.gegevensExporterenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exporterenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.handleidingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -1005,8 +1003,7 @@
             // 
             this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(0);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bestandToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.bestandToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(0);
@@ -1031,7 +1028,7 @@
             this.gegevensExporterenToolStripMenuItem});
             this.bestandToolStripMenuItem1.Name = "bestandToolStripMenuItem1";
             this.bestandToolStripMenuItem1.Size = new System.Drawing.Size(191, 22);
-            this.bestandToolStripMenuItem1.Text = "Bestand";
+            this.bestandToolStripMenuItem1.Text = "Database";
             // 
             // gegevensImporterenToolStripMenuItem
             // 
@@ -1060,20 +1057,6 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.exitToolStripMenuItem.Text = "Afsluiten";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.handleidingToolStripMenuItem});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
-            this.helpToolStripMenuItem.Text = "Help";
-            // 
-            // handleidingToolStripMenuItem
-            // 
-            this.handleidingToolStripMenuItem.Name = "handleidingToolStripMenuItem";
-            this.handleidingToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.handleidingToolStripMenuItem.Text = "Handleiding";
             // 
             // contextMenuStrip1
             // 
@@ -1494,7 +1477,7 @@
                 this.Kerntaken[exAantal, kerntaakAantal[exAantal]].Location = new System.Drawing.Point(15, 5);
                 this.Kerntaken[exAantal, kerntaakAantal[exAantal]].Name = "Kerntaak";
                 this.Kerntaken[exAantal, kerntaakAantal[exAantal]].Size = new System.Drawing.Size(56, 13);
-                this.Kerntaken[exAantal, kerntaakAantal[exAantal]].Text = "Naam Kerntaak";
+                this.Kerntaken[exAantal, kerntaakAantal[exAantal]].Text = "Naam Kerntaak*";
                 this.toolTips.SetToolTip(this.Kerntaken[exAantal, kerntaakAantal[exAantal]], "De naam van een kerntaak die vereist is bij dit examen.");
                 // 
                 // Kerntaken Box
@@ -1509,7 +1492,7 @@
                 this.KerntaakNr[exAantal, kerntaakAantal[exAantal]].Location = new System.Drawing.Point(15, 35);
                 this.KerntaakNr[exAantal, kerntaakAantal[exAantal]].Name = "Kerntaak nr";
                 this.KerntaakNr[exAantal, kerntaakAantal[exAantal]].Size = new System.Drawing.Size(56, 13);
-                this.KerntaakNr[exAantal, kerntaakAantal[exAantal]].Text = "Kerntaak nr";
+                this.KerntaakNr[exAantal, kerntaakAantal[exAantal]].Text = "Kerntaak nr*";
                 this.toolTips.SetToolTip(this.KerntaakNr[exAantal, kerntaakAantal[exAantal]], "Het nummer van de kerntaak.");
                 // 
                 // Kerntaken Nr Box
@@ -1524,7 +1507,7 @@
                 this.Werkprocessen[exAantal, kerntaakAantal[exAantal]].Location = new System.Drawing.Point(15, 65);
                 this.Werkprocessen[exAantal, kerntaakAantal[exAantal]].Name = "Werkprocessen";
                 this.Werkprocessen[exAantal, kerntaakAantal[exAantal]].Size = new System.Drawing.Size(82, 13);
-                this.Werkprocessen[exAantal, kerntaakAantal[exAantal]].Text = "Werkprocessen";
+                this.Werkprocessen[exAantal, kerntaakAantal[exAantal]].Text = "Werkprocessen*";
                 this.toolTips.SetToolTip(this.Werkprocessen[exAantal, kerntaakAantal[exAantal]], "De werkprocessen die vereist zijn bij dit examen. Voorbeeld opmaak 2;3;4");
                 // 
                 // Werkprocessen Box
@@ -1566,8 +1549,6 @@
         private System.Windows.Forms.ToolStripMenuItem bestandToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exporterenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem handleidingToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
