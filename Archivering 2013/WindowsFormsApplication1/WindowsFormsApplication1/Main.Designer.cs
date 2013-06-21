@@ -1189,7 +1189,7 @@
                     this.ExamenBlok[examenAantal].Location = new System.Drawing.Point((360 * examenAantal), this.ExamenPaneel.AutoScrollPosition.Y);
                 }
                 this.ExamenBlok[examenAantal].Name = "ExamenBlok";
-                this.ExamenBlok[examenAantal].AutoSize = true;
+                this.ExamenBlok[examenAantal].AutoSize = true;                
                 // 
                 // Examen Titel
                 // 
@@ -1211,7 +1211,7 @@
                 //
                 // Constructeur Box
                 //
-                this.ConstructeurBox[examenAantal].Location = new System.Drawing.Point(120, 47);
+                this.ConstructeurBox[examenAantal].Location = new System.Drawing.Point(160, 47);
                 this.ConstructeurBox[examenAantal].Name = "Constructeur";
                 this.ConstructeurBox[examenAantal].Size = new System.Drawing.Size(160, 20);
                 // 
@@ -1231,7 +1231,7 @@
                 this.PeriodeAfnameBox[examenAantal].Items.AddRange(new object[] {
             "p1",
             "p2","p3","p4","p5","p6","p7","p8","p9","p10","p11","p12","p13","p14","p15","p16"});
-                this.PeriodeAfnameBox[examenAantal].Location = new System.Drawing.Point(120, 77);
+                this.PeriodeAfnameBox[examenAantal].Location = new System.Drawing.Point(160, 77);
                 this.PeriodeAfnameBox[examenAantal].Name = "PeriodeAfnameBox";
                 this.PeriodeAfnameBox[examenAantal].Size = new System.Drawing.Size(160, 21);
                 // 
@@ -1251,7 +1251,7 @@
                 this.ePeriodeAfnameBox[examenAantal].Items.AddRange(new object[] {
             "p1",
             "p2","p3","p4","p5","p6","p7","p8","p9","p10","p11","p12","p13","p14","p15","p16"});
-                this.ePeriodeAfnameBox[examenAantal].Location = new System.Drawing.Point(120, 107);
+                this.ePeriodeAfnameBox[examenAantal].Location = new System.Drawing.Point(160, 107);
                 this.ePeriodeAfnameBox[examenAantal].Name = "PeriodeAfnameBox";
                 this.ePeriodeAfnameBox[examenAantal].Size = new System.Drawing.Size(160, 21);
                 //
@@ -1266,7 +1266,7 @@
                 //
                 // Locatie Box
                 //
-                this.LocatieBox[examenAantal].Location = new System.Drawing.Point(120, 137);
+                this.LocatieBox[examenAantal].Location = new System.Drawing.Point(160, 137);
                 this.LocatieBox[examenAantal].Name = "Locatie";
                 this.LocatieBox[examenAantal].Size = new System.Drawing.Size(160, 20);
                 // 
@@ -1281,7 +1281,7 @@
                 // 
                 // Naam Opdracht Box
                 // 
-                this.NaamOpdrachtBox[examenAantal].Location = new System.Drawing.Point(120, 167);
+                this.NaamOpdrachtBox[examenAantal].Location = new System.Drawing.Point(160, 167);
                 this.NaamOpdrachtBox[examenAantal].Name = "NaamOpdrachtBox";
                 this.NaamOpdrachtBox[examenAantal].Size = new System.Drawing.Size(160, 20);
                 // 
@@ -1302,7 +1302,7 @@
                 "Geconstrueerd",
                 "Gecontroleerd",
                 "Vastgesteld"});
-                this.StatusOpdrachtBox[examenAantal].Location = new System.Drawing.Point(120, 197);
+                this.StatusOpdrachtBox[examenAantal].Location = new System.Drawing.Point(160, 197);
                 this.StatusOpdrachtBox[examenAantal].Name = "StatusOpdrachtBox";
                 this.StatusOpdrachtBox[examenAantal].Size = new System.Drawing.Size(160, 21);
                 //
@@ -1324,7 +1324,7 @@
                 "F1-F2-F3",
                 "A1-A2-B1-B2-C1-C2"});
                 this.BeoordelingBox[examenAantal].DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-                this.BeoordelingBox[examenAantal].Location = new System.Drawing.Point(120, 227);
+                this.BeoordelingBox[examenAantal].Location = new System.Drawing.Point(160, 227);
                 this.BeoordelingBox[examenAantal].Name = "Beoordeling";
                 this.BeoordelingBox[examenAantal].Size = new System.Drawing.Size(160, 20);
                 //
@@ -1339,7 +1339,7 @@
                 //
                 // Opmerking Textbox
                 //
-                this.OpmerkingBox[examenAantal].Location = new System.Drawing.Point(120, 257);
+                this.OpmerkingBox[examenAantal].Location = new System.Drawing.Point(160, 257);
                 this.OpmerkingBox[examenAantal].Name = "OpmerkingBox";
                 this.OpmerkingBox[examenAantal].Size = new System.Drawing.Size(160, 40);
                 // 
@@ -1347,18 +1347,18 @@
                 //
                 this.KtToevoegen[examenAantal].Location = new System.Drawing.Point(15, 300);
                 this.KtToevoegen[examenAantal].Name = "ktToevoegen";
-                this.KtToevoegen[examenAantal].Size = new System.Drawing.Size(120, 23);
-                this.KtToevoegen[examenAantal].Text = "Kerntaak Toevoegen";
+                this.KtToevoegen[examenAantal].Size = new System.Drawing.Size(60, 23);
+                this.KtToevoegen[examenAantal].Text = "KT+";
                 this.KtToevoegen[examenAantal].UseVisualStyleBackColor = true;
                 this.KtToevoegen[examenAantal].Tag = examenAantal;
                 this.KtToevoegen[examenAantal].Click += new System.EventHandler(this.KerntaakPlusButton_Click);                
                 // 
                 // kerntaak verwijderen button
                 //
-                this.KtVerwijderen[examenAantal].Location = new System.Drawing.Point(160, 300);
+                this.KtVerwijderen[examenAantal].Location = new System.Drawing.Point(80, 300);
                 this.KtVerwijderen[examenAantal].Name = "KtVerwijderen";
-                this.KtVerwijderen[examenAantal].Size = new System.Drawing.Size(120, 23);
-                this.KtVerwijderen[examenAantal].Text = "Kerntaak Verwijderen";
+                this.KtVerwijderen[examenAantal].Size = new System.Drawing.Size(60, 23);
+                this.KtVerwijderen[examenAantal].Text = "KT-";
                 this.KtVerwijderen[examenAantal].UseVisualStyleBackColor = true;
                 this.KtVerwijderen[examenAantal].Tag = examenAantal;
                 this.KtVerwijderen[examenAantal].Click += new System.EventHandler(this.KerntaakMinButton_Click);
@@ -1461,14 +1461,15 @@
                 //
                 if (kerntaakAantal[exAantal] == 0)
                 {
-                    this.KerntaakBlok[exAantal, kerntaakAantal[exAantal]].Location = new System.Drawing.Point(0, 330);
+                    this.KerntaakBlok[exAantal, kerntaakAantal[exAantal]].Location = new System.Drawing.Point(5, 335);                    
                 }
                 else
                 {
-                    this.KerntaakBlok[exAantal, kerntaakAantal[exAantal]].Location = new System.Drawing.Point(0, (330 + (89 * kerntaakAantal[exAantal])));
+                    this.KerntaakBlok[exAantal, kerntaakAantal[exAantal]].Location = new System.Drawing.Point(5, (335 + (89 * kerntaakAantal[exAantal])));                    
                 }
                 this.KerntaakBlok[exAantal, kerntaakAantal[exAantal]].Name = "KerntaakBlok";
-                this.KerntaakBlok[exAantal, kerntaakAantal[exAantal]].Size = new System.Drawing.Size(360, 90);
+                this.KerntaakBlok[exAantal, kerntaakAantal[exAantal]].AutoSize = true;
+                this.KerntaakBlok[exAantal, kerntaakAantal[exAantal]].Size = new System.Drawing.Size(350, 90);
                 this.KerntaakBlok[exAantal, kerntaakAantal[exAantal]].BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;                
                 // 
                 // Kerntaken Label
@@ -1482,7 +1483,7 @@
                 // 
                 // Kerntaken Box
                 // 
-                this.KerntakenBox[exAantal, kerntaakAantal[exAantal]].Location = new System.Drawing.Point(120, 2);
+                this.KerntakenBox[exAantal, kerntaakAantal[exAantal]].Location = new System.Drawing.Point(155, 2);
                 this.KerntakenBox[exAantal, kerntaakAantal[exAantal]].Name = "KerntakenBox";
                 this.KerntakenBox[exAantal, kerntaakAantal[exAantal]].Size = new System.Drawing.Size(160, 20);
                 // 
@@ -1497,7 +1498,7 @@
                 // 
                 // Kerntaken Nr Box
                 // 
-                this.KerntaakNrBox[exAantal, kerntaakAantal[exAantal]].Location = new System.Drawing.Point(120, 32);
+                this.KerntaakNrBox[exAantal, kerntaakAantal[exAantal]].Location = new System.Drawing.Point(155, 32);
                 this.KerntaakNrBox[exAantal, kerntaakAantal[exAantal]].Name = "KerntakenBox";
                 this.KerntaakNrBox[exAantal, kerntaakAantal[exAantal]].Size = new System.Drawing.Size(160, 20);
                 // 
@@ -1512,7 +1513,7 @@
                 // 
                 // Werkprocessen Box
                 // 
-                this.WerkprocessenBox[exAantal, kerntaakAantal[exAantal]].Location = new System.Drawing.Point(120, 62);
+                this.WerkprocessenBox[exAantal, kerntaakAantal[exAantal]].Location = new System.Drawing.Point(155, 62);
                 this.WerkprocessenBox[exAantal, kerntaakAantal[exAantal]].Name = "WerkprocessenBox";
                 this.WerkprocessenBox[exAantal, kerntaakAantal[exAantal]].Size = new System.Drawing.Size(160, 20);
 
