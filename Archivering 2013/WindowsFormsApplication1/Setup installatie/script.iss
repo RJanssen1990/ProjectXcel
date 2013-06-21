@@ -5,7 +5,7 @@
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{C19158FE-94E2-4709-9844-E04CD63290FB}
+AppId={{3F24710E-380F-4F4B-A683-E2B5086F5BE9}
 AppName=Archivering
 AppVersion=1.0
 ;AppVerName=Archivering 1.0
